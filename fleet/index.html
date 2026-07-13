@@ -40,11 +40,7 @@
 
                 <p>Manage all hospital fleet vehicles.</p>
               </div>
-              <button
-                class="btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#vehicleModal"
-              >
+              <button id="addVehicleBtn" class="btn-primary">
                 <i class="ph ph-plus"></i>
                 Add Vehicle
               </button>
@@ -109,34 +105,57 @@
 
                   <input
                     type="text"
+                    id="vehicleSearch"
                     placeholder="Search by vehicle name, plate number or driver"
                   />
                 </div>
 
-                <select class="filter-select">
-                  <option>All Vehicle Types</option>
-                  <option>Ambulance</option>
-                  <option>Van</option>
-                  <option>SUV</option>
+                <select class="filter-select" id="vehicleTypeFilter">
+                  <option value="all">All Vehicle Types</option>
+                  <option value="Ambulance">Ambulance</option>
+                  <option value="Van">Van</option>
+                  <option value="SUV">SUV</option>
+                  <option value="Service Vehicle">Service Vehicle</option>
                 </select>
 
-                <select class="filter-select">
-                  <option>All Status</option>
-                  <option>Available</option>
-                  <option>On Trip</option>
-                  <option>Maintenance</option>
+                <select class="filter-select" id="vehicleStatusFilter">
+                  <option value="all">All Status</option>
+                  <option value="Available">Available</option>
+                  <option value="Ontrip">On Trip</option>
+                  <option value="Maintenance">Maintenance</option>
                 </select>
               </div>
 
               <div class="toolbar-right">
-                <button class="btn-outline">
+                <button class="btn-outline" id="refreshVehicles">
                   <i class="ph ph-arrows-clockwise"></i>
                   Refresh
                 </button>
+                <button class="btn-outline" id="printVehicles">
+                  <i class="ph ph-printer"></i>
+                  Print
+                </button>
+                <button class="btn-outline" id="exportPDF">
+                  <i class="ph ph-file-pdf"></i>
+                  Export PDF
+                </button>
 
-                <button class="btn-outline">
-                  <i class="ph ph-download-simple"></i>
-                  Export
+                <button class="btn-outline" id="exportVehicles">
+                  <i class="ph ph-file-xls"></i>
+                  Export Excel
+                </button>
+              </div>
+            </div>
+            <div class="bulk-toolbar" id="bulkToolbar">
+              <span id="selectedCount"> 0 vehicles selected </span>
+
+              <div>
+                <button class="btn-outline" id="clearSelection">Clear</button>
+
+                <button class="btn-danger" id="deleteSelected">
+                  <i class="ph ph-trash"></i>
+
+                  Delete Selected
                 </button>
               </div>
             </div>
@@ -165,55 +184,77 @@
                 <table class="fleet-table">
                   <thead>
                     <tr>
-                      <th><input type="checkbox" /></th>
+                      <th>
+                        <input type="checkbox" id="selectAllVehicles" />
+                      </th>
 
-                      <th>Vehicle</th>
+                      <th class="sortable" data-column="1">
+                        Vehicle
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
-                      <th>Plate No.</th>
+                      <th class="sortable" data-column="2">
+                        Plate No.
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
-                      <th>Type</th>
+                      <th class="sortable" data-column="3">
+                        Type
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
-                      <th>Driver</th>
+                      <th class="sortable" data-column="4">
+                        Driver
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
-                      <th>Status</th>
+                      <th class="sortable" data-column="5">
+                        Status
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
                       <th>Fuel</th>
 
-                      <th>Last Service</th>
+                      <th class="sortable" data-column="7">
+                        Last Service
+                        <i class="ph ph-caret-up-down sort-icon"></i>
+                      </th>
 
                       <th>Actions</th>
                     </tr>
                   </thead>
 
-                  <tbody>
+                  <tbody id="vehicleTableBody">
                     <tr>
                       <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" class="vehicle-checkbox" />
                       </td>
 
                       <td>
                         <div class="vehicle-info">
-                          <div class="vehicle-avatar">
-                            <i class="ph-fill ph-ambulance"></i>
-                          </div>
+                          <img
+                            class="vehicle-photo"
+                            src="../assets/images/vehicle-placeholder.png"
+                            alt="Vehicle"
+                          />
 
                           <div>
                             <div class="vehicle-name">Ambulance 01</div>
 
-                            <small>Emergency Response Unit</small>
+                            <small> Emergency Response Unit </small>
                           </div>
                         </div>
                       </td>
 
-                      <td>ABC-1234</td>
+                      <td>OGAG</td>
 
-                      <td>Ambulance</td>
+                      <td>VAN</td>
 
                       <td>
                         <div class="driver-info">
                           <div class="driver-avatar">JD</div>
 
-                          <span>Juan Dela Cruz</span>
+                          <span>GELYSSA LANDASAN</span>
                         </div>
                       </td>
 
@@ -255,7 +296,7 @@
 
                     <tr>
                       <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" class="vehicle-checkbox" />
                       </td>
 
                       <td>
@@ -265,7 +306,7 @@
                           </div>
 
                           <div>
-                            <div class="vehicle-name">Ambulance 01</div>
+                            <div class="vehicle-name">VAN 01</div>
 
                             <small>Emergency Response Unit</small>
                           </div>
@@ -324,7 +365,7 @@
 
                     <tr>
                       <td>
-                        <input type="checkbox" />
+                        <input type="checkbox" class="vehicle-checkbox" />
                       </td>
 
                       <td>
@@ -334,22 +375,22 @@
                           </div>
 
                           <div>
-                            <div class="vehicle-name">Ambulance 01</div>
+                            <div class="vehicle-name">CAR 01</div>
 
                             <small>Emergency Response Unit</small>
                           </div>
                         </div>
                       </td>
 
-                      <td>ABC-1234</td>
+                      <td>NIGS-1112</td>
 
-                      <td>Ambulance</td>
+                      <td>CAR</td>
 
                       <td>
                         <div class="driver-info">
                           <div class="driver-avatar">JD</div>
 
-                          <span>Juan Dela Cruz</span>
+                          <span>KENNY CANLAS</span>
                         </div>
                       </td>
 
@@ -393,19 +434,11 @@
               </div>
             </div>
             <div class="table-footer">
-              <div>
-                Showing
-
-                <strong>1–3</strong>
-
-                of
-
-                <strong>24</strong>
-
-                vehicles
+              <div id="paginationInfo">
+                Showing <strong>1–3</strong> of <strong>24</strong> vehicles
               </div>
 
-              <div class="pagination">
+              <div class="pagination" id="pagination">
                 <button>
                   <i class="ph ph-caret-left"></i>
                 </button>
@@ -426,12 +459,24 @@
       </main>
     </div>
     <div id="vehicle-modal"></div>
+    <div id="view-vehicle-modal"></div>
+    <div id="edit-vehicle-modal"></div>
+    <div id="delete-vehicle-modal"></div>
+    <div id="toast"></div>
 
     <!-- Components -->
     <script src="../assets/js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
 
     <!-- Main JS -->
+    <script src="../assets/js/toast.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/vehicle.js"></script>
+    <script src="../assets/js/viewVehicle.js"></script>
+    <script src="../assets/js/editVehicle.js"></script>
+    <script src="../assets/js/deleteVehicle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

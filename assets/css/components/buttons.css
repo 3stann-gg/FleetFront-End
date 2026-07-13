@@ -1,0 +1,96 @@
+/* ==========================================
+   BUTTONS
+========================================== */
+
+/* Base Button */
+
+.btn-primary,
+.btn-outline,
+.btn-danger,
+.btn-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 20px;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  text-decoration: none;
+}
+
+/* =========================
+   Primary
+========================= */
+
+.btn-primary {
+  background: #10b981;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Outline
+========================= */
+
+.btn-outline {
+  background: #fff;
+  color: #374151;
+
+  border: 1px solid #d1d5db;
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+}
+
+/* =========================
+   Danger
+========================= */
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* =========================
+   Success
+========================= */
+
+.btn-success {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #15803d;
+}
+
+/* =========================
+   Disabled
+========================= */
+
+.btn-primary:disabled,
+.btn-outline:disabled,
+.btn-danger:disabled,
+.btn-success:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

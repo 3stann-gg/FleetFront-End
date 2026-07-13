@@ -1,9 +1,9 @@
 <div class="modal-overlay" id="vehicleModal">
   <div class="custom-modal">
+    <!-- Header -->
     <div class="modal-header">
       <div>
         <h2>Add New Vehicle</h2>
-
         <p>Register a new hospital fleet vehicle.</p>
       </div>
 
@@ -12,29 +12,37 @@
       </button>
     </div>
 
+    <!-- Body -->
     <div class="modal-body">
-      <form class="vehicle-form">
+      <form class="vehicle-form" id="vehicleForm">
+        <!-- Vehicle Image -->
+        <div class="vehicle-image-section">
+          <label class="vehicle-image-label"> Vehicle Image </label>
+
+          <div class="vehicle-image-upload">
+            <img
+              id="vehiclePreview"
+              src="../assets/images/default-vehicle.png"
+              alt="Vehicle Preview"
+            />
+
+            <input type="file" id="vehicleImage" accept="image/*" hidden />
+
+            <label for="vehicleImage" class="btn-outline upload-btn">
+              <i class="ph ph-image"></i>
+              Choose Image
+            </label>
+          </div>
+        </div>
         <div class="form-grid">
           <div class="form-group">
-            <label>Vehicle Name *</label>
-            <input type="text" placeholder="e.g. Ambulance 01" />
-          </div>
-
-          <div class="form-group">
             <label>Plate Number *</label>
-            <input type="text" placeholder="ABC-1234" />
+            <input type="text" id="vehiclePlate" placeholder="ABC-1234" />
           </div>
 
           <div class="form-group">
             <label>Vehicle Type *</label>
-
-            <select>
-              <option>Select Type</option>
-              <option>Ambulance</option>
-              <option>Van</option>
-              <option>SUV</option>
-              <option>Service Vehicle</option>
-            </select>
+            <select id="vehicleType"></select>
           </div>
 
           <div class="form-group">
@@ -44,22 +52,12 @@
 
           <div class="form-group">
             <label>Assigned Driver</label>
-
-            <select>
-              <option>Select Driver</option>
-              <option>Juan Dela Cruz</option>
-              <option>Maria Santos</option>
-            </select>
+            <select id="vehicleDriver"></select>
           </div>
 
           <div class="form-group">
             <label>Fuel Type</label>
-
-            <select>
-              <option>Gasoline</option>
-              <option>Diesel</option>
-              <option>Electric</option>
-            </select>
+            <select id="vehicleFuel"></select>
           </div>
 
           <div class="form-group">
@@ -69,12 +67,7 @@
 
           <div class="form-group">
             <label>Status</label>
-
-            <select>
-              <option>Available</option>
-              <option>On Trip</option>
-              <option>Maintenance</option>
-            </select>
+            <select id="vehicleStatus"></select>
           </div>
 
           <div class="form-group">
@@ -98,9 +91,11 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn-outline">Cancel</button>
+          <button type="button" class="btn-outline" id="cancelVehicleModal">
+            Cancel
+          </button>
 
-          <button type="submit" class="btn-primary">
+          <button type="submit" class="btn-primary" id="saveVehicleBtn">
             <i class="ph ph-floppy-disk"></i>
             Save Vehicle
           </button>

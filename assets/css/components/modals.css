@@ -110,3 +110,153 @@
     transform: translateY(0) scale(1);
   }
 }
+/* ==========================================
+   Delete Modal
+========================================== */
+
+.delete-modal {
+  width: 100%;
+  max-width: 520px;
+  padding: 40px;
+  text-align: center;
+}
+
+.delete-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #dc2626;
+
+  font-size: 42px;
+}
+
+.delete-modal h2 {
+  margin: 0 0 12px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.delete-modal p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.delete-note {
+  margin-top: 12px !important;
+}
+
+.delete-modal strong {
+  color: #1f2937;
+}
+
+.delete-note {
+  margin-top: 10px;
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+.delete-modal .modal-footer {
+  margin-top: 30px;
+  padding-top: 24px;
+
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.delete-modal .btn-outline,
+.delete-modal .btn-danger {
+  width: 170px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+}
+/* ==========================================
+   Toast Notification
+========================================== */
+
+.toast-container {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  z-index: 9999;
+}
+
+.toast-message {
+  min-width: 320px;
+
+  padding: 16px 18px;
+
+  border-radius: 14px;
+
+  background: white;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  transform: translateX(120%);
+
+  opacity: 0;
+
+  transition: 0.35s;
+}
+
+.toast-message.show {
+  transform: translateX(0);
+
+  opacity: 1;
+}
+
+.toast-message.success {
+  border-left: 5px solid #10b981;
+}
+
+.toast-message.error {
+  border-left: 5px solid #ef4444;
+}
+
+.toast-message.warning {
+  border-left: 5px solid #f59e0b;
+}
+
+.toast-message i {
+  font-size: 24px;
+}
+
+.toast-message.success i {
+  color: #10b981;
+}
+
+.toast-message.error i {
+  color: #ef4444;
+}
+
+.toast-message.warning i {
+  color: #f59e0b;
+}

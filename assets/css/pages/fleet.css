@@ -397,3 +397,216 @@
   width: 100%;
   background: transparent;
 }
+
+.pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+/* ==========================================
+   Bulk Toolbar
+========================================== */
+
+.bulk-toolbar {
+  display: none;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 18px 22px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 16px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.bulk-toolbar.show {
+  display: flex;
+}
+/* ==========================================
+   Print Styles
+========================================== */
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  #sidebar,
+  #navbar,
+  .toolbar,
+  .page-header button,
+  .table-footer,
+  .action-buttons,
+  .bulk-toolbar {
+    display: none !important;
+  }
+
+  .main-content {
+    margin: 0 !important;
+  }
+
+  .page-wrapper {
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: none;
+    border: none;
+  }
+
+  .fleet-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .fleet-table th,
+  .fleet-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .fleet-table th {
+    background: #f3f4f6 !important;
+    color: #000;
+  }
+
+  .stats-grid {
+    display: none;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .page-header p {
+    color: #666;
+  }
+}
+/* ==========================================
+   Sortable Table
+========================================== */
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.sortable:hover {
+  color: #00a86b;
+}
+
+.sort-icon {
+  margin-left: 8px;
+
+  font-size: 14px;
+
+  opacity: 0.45;
+
+  transition: 0.25s;
+}
+
+.sortable.active {
+  color: #00a86b;
+
+  font-weight: 600;
+}
+
+.sortable.active .sort-icon {
+  opacity: 1;
+}
+/* ==========================================
+   Vehicle Image Upload
+========================================== */
+
+.image-upload {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+.image-upload img {
+  width: 170px;
+
+  height: 120px;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  border: 2px dashed #d1d5db;
+
+  background: #f8fafc;
+}
+
+.full-width {
+  grid-column: 1/-1;
+}
+
+/* ==========================================
+   Vehicle Photo
+========================================== */
+
+.vehicle-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vehicle-photo {
+  width: 56px;
+
+  height: 56px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border: 2px solid #e5e7eb;
+
+  background: #fff;
+
+  flex-shrink: 0;
+
+  transition: 0.25s;
+}
+
+.vehicle-photo:hover {
+  transform: scale(1.08);
+}
+.vehicle-profile {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-bottom: 28px;
+}
+
+.vehicle-profile img {
+  width: 140px;
+
+  height: 140px;
+
+  border-radius: 18px;
+
+  object-fit: cover;
+
+  border: 3px solid #e5e7eb;
+
+  margin-bottom: 18px;
+}

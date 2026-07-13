@@ -62,3 +62,52 @@
 .form-group input::placeholder {
   color: #9ca3af;
 }
+/* ==========================================
+   Vehicle Image Upload
+========================================== */
+
+.vehicle-image-section {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vehicle-image-label {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+.vehicle-image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.vehicle-image-upload img {
+  width: 170px;
+  height: 170px;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+
+  border: 2px dashed #d7dde7;
+
+  background: #f8fafc;
+
+  transition: 0.3s;
+}
+
+.vehicle-image-upload img:hover {
+  border-color: var(--primary);
+}
+
+.upload-btn {
+  min-width: 170px;
+  justify-content: center;
+}
