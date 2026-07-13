@@ -1,0 +1,64 @@
+/* ==========================================
+   Forms
+========================================== */
+
+.vehicle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+
+  background: #fff;
+
+  font-size: 14px;
+  color: #1f2937;
+
+  transition: 0.25s;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding: 14px 16px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00a86b;
+  box-shadow: 0 0 0 4px rgba(0, 168, 107, 0.12);
+}
+
+.form-group textarea::placeholder,
+.form-group input::placeholder {
+  color: #9ca3af;
+}

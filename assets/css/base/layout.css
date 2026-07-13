@@ -6,59 +6,64 @@
 /* ===== Main Application Layout ===== */
 
 .app {
-    display: flex;
-    min-height: 100vh;
-    background: var(--color-background);
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-background);
 }
 
 /* ===== Main Content ===== */
 
 .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-left: var(--sidebar-width);
-    min-height: 100vh;
-    transition: margin-left var(--transition-normal);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  transition: margin-left var(--transition-normal);
 }
 
 /* Sidebar Collapse */
 
 .main-content.expanded {
-    margin-left: var(--sidebar-collapse);
+  margin-left: var(--sidebar-collapse);
 }
 
 /* ===== Page Wrapper ===== */
 
 .page-wrapper {
-    flex: 1;
-    padding: var(--content-padding);
+  flex: 1;
+  padding: var(--space-6);
 }
 
 /* ===== Content Container ===== */
 
 .container-fluid-custom {
-    width: 100%;
-    margin: auto;
+  width: 100%;
+  margin: auto;
 }
 
 /* ===== Section ===== */
 
 .section {
-    margin-bottom: var(--space-8);
+  margin-bottom: var(--space-8);
 }
 
 /* ===== Page Header ===== */
 
 .page-header {
-    margin-bottom: var(--space-7);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 .page-title {
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
 }
 
 .page-subtitle {
-    color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
 }

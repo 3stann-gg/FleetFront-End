@@ -1,2 +1,30 @@
-node_modules/
+# OS
 .DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/settings.json
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Build
+dist/
+
+# Cache
+.cache/
+
+# Temp
+temp/
+
+# Environment
+.env
+
+# Mac
+.AppleDouble
+
+# Windows
+Desktop.ini

@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Vehicle Management | HIMS Fleet</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <body data-page="vehicles">
+    <div class="app">
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Navbar -->
+        <div id="navbar"></div>
+
+        <!-- Page Content -->
+        <section class="page-wrapper">
+          <div class="vehicle-page">
+            <!-- Header -->
+            <div class="page-header">
+              <div>
+                <h1>Vehicle Management</h1>
+
+                <p>Manage all hospital fleet vehicles.</p>
+              </div>
+              <button
+                class="btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#vehicleModal"
+              >
+                <i class="ph ph-plus"></i>
+                Add Vehicle
+              </button>
+            </div>
+
+            <!-- Fleet Statistics -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="ph-fill ph-car"></i>
+                </div>
+
+                <div class="stat-content">
+                  <h3>24</h3>
+
+                  <p>Total Fleet</p>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon success">
+                  <i class="ph-fill ph-check-circle"></i>
+                </div>
+
+                <div class="stat-content">
+                  <h3>18</h3>
+
+                  <p>Available</p>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon warning">
+                  <i class="ph-fill ph-truck"></i>
+                </div>
+
+                <div class="stat-content">
+                  <h3>4</h3>
+
+                  <p>On Trip</p>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon danger">
+                  <i class="ph-fill ph-wrench"></i>
+                </div>
+
+                <div class="stat-content">
+                  <h3>2</h3>
+
+                  <p>Maintenance</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <div class="search-box">
+                  <i class="ph ph-magnifying-glass"></i>
+
+                  <input
+                    type="text"
+                    placeholder="Search by vehicle name, plate number or driver"
+                  />
+                </div>
+
+                <select class="filter-select">
+                  <option>All Vehicle Types</option>
+                  <option>Ambulance</option>
+                  <option>Van</option>
+                  <option>SUV</option>
+                </select>
+
+                <select class="filter-select">
+                  <option>All Status</option>
+                  <option>Available</option>
+                  <option>On Trip</option>
+                  <option>Maintenance</option>
+                </select>
+              </div>
+
+              <div class="toolbar-right">
+                <button class="btn-outline">
+                  <i class="ph ph-arrows-clockwise"></i>
+                  Refresh
+                </button>
+
+                <button class="btn-outline">
+                  <i class="ph ph-download-simple"></i>
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <!-- Vehicle Table (Next Sprint) -->
+            <!-- Vehicle Table -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3>Vehicle List</h3>
+
+                  <p class="card-subtitle">
+                    View and manage all registered fleet vehicles.
+                  </p>
+                </div>
+
+                <div class="card-actions">
+                  <button class="btn-outline">
+                    <i class="ph ph-funnel"></i>
+                    Filter
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="fleet-table">
+                  <thead>
+                    <tr>
+                      <th><input type="checkbox" /></th>
+
+                      <th>Vehicle</th>
+
+                      <th>Plate No.</th>
+
+                      <th>Type</th>
+
+                      <th>Driver</th>
+
+                      <th>Status</th>
+
+                      <th>Fuel</th>
+
+                      <th>Last Service</th>
+
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+
+                      <td>
+                        <div class="vehicle-info">
+                          <div class="vehicle-avatar">
+                            <i class="ph-fill ph-ambulance"></i>
+                          </div>
+
+                          <div>
+                            <div class="vehicle-name">Ambulance 01</div>
+
+                            <small>Emergency Response Unit</small>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>ABC-1234</td>
+
+                      <td>Ambulance</td>
+
+                      <td>
+                        <div class="driver-info">
+                          <div class="driver-avatar">JD</div>
+
+                          <span>Juan Dela Cruz</span>
+                        </div>
+                      </td>
+
+                      <td>
+                        <span class="status-badge trip"> Ontrip </span>
+                      </td>
+
+                      <td>
+                        <div class="fuel-progress">
+                          <div class="fuel-progress-bar">
+                            <div
+                              class="fuel-progress-fill"
+                              style="width: 85%"
+                            ></div>
+                          </div>
+
+                          <span>85%</span>
+                        </div>
+                      </td>
+
+                      <td>Jul 12, 2026</td>
+
+                      <td>
+                        <div class="action-buttons">
+                          <button class="action-btn view">
+                            <i class="ph ph-eye"></i>
+                          </button>
+
+                          <button class="action-btn edit">
+                            <i class="ph ph-pencil-simple"></i>
+                          </button>
+
+                          <button class="action-btn delete">
+                            <i class="ph ph-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+
+                      <td>
+                        <div class="vehicle-info">
+                          <div class="vehicle-avatar">
+                            <i class="ph-fill ph-ambulance"></i>
+                          </div>
+
+                          <div>
+                            <div class="vehicle-name">Ambulance 01</div>
+
+                            <small>Emergency Response Unit</small>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>ABC-1234</td>
+
+                      <td>Ambulance</td>
+
+                      <td>
+                        <div class="driver-info">
+                          <div class="driver-avatar">JD</div>
+
+                          <span>Juan Dela Cruz</span>
+                        </div>
+                      </td>
+
+                      <td>
+                        <span class="status-badge maintenance">
+                          Maintenance
+                        </span>
+                      </td>
+
+                      <td>
+                        <div class="fuel-progress">
+                          <div class="fuel-progress-bar">
+                            <div
+                              class="fuel-progress-fill"
+                              style="width: 10%"
+                            ></div>
+                          </div>
+
+                          <span>10%</span>
+                        </div>
+                      </td>
+
+                      <td>Jul 12, 2026</td>
+
+                      <td>
+                        <div class="action-buttons">
+                          <button class="action-btn view">
+                            <i class="ph ph-eye"></i>
+                          </button>
+
+                          <button class="action-btn edit">
+                            <i class="ph ph-pencil-simple"></i>
+                          </button>
+
+                          <button class="action-btn delete">
+                            <i class="ph ph-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <input type="checkbox" />
+                      </td>
+
+                      <td>
+                        <div class="vehicle-info">
+                          <div class="vehicle-avatar">
+                            <i class="ph-fill ph-ambulance"></i>
+                          </div>
+
+                          <div>
+                            <div class="vehicle-name">Ambulance 01</div>
+
+                            <small>Emergency Response Unit</small>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>ABC-1234</td>
+
+                      <td>Ambulance</td>
+
+                      <td>
+                        <div class="driver-info">
+                          <div class="driver-avatar">JD</div>
+
+                          <span>Juan Dela Cruz</span>
+                        </div>
+                      </td>
+
+                      <td>
+                        <span class="status-badge available"> Available </span>
+                      </td>
+
+                      <td>
+                        <div class="fuel-progress">
+                          <div class="fuel-progress-bar">
+                            <div
+                              class="fuel-progress-fill"
+                              style="width: 85%"
+                            ></div>
+                          </div>
+
+                          <span>85%</span>
+                        </div>
+                      </td>
+
+                      <td>Jul 12, 2026</td>
+
+                      <td>
+                        <div class="action-buttons">
+                          <button class="action-btn view">
+                            <i class="ph ph-eye"></i>
+                          </button>
+
+                          <button class="action-btn edit">
+                            <i class="ph ph-pencil-simple"></i>
+                          </button>
+
+                          <button class="action-btn delete">
+                            <i class="ph ph-trash"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-footer">
+              <div>
+                Showing
+
+                <strong>1–3</strong>
+
+                of
+
+                <strong>24</strong>
+
+                vehicles
+              </div>
+
+              <div class="pagination">
+                <button>
+                  <i class="ph ph-caret-left"></i>
+                </button>
+
+                <button class="active">1</button>
+
+                <button>2</button>
+
+                <button>3</button>
+
+                <button>
+                  <i class="ph ph-caret-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div id="vehicle-modal"></div>
+
+    <!-- Components -->
+    <script src="../assets/js/include.js"></script>
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

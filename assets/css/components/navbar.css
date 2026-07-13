@@ -1,23 +1,159 @@
-.navbar-custom{
+/* ==========================================================
+   NAVBAR
+========================================================== */
 
-    height: var(--navbar-height);
+.navbar-custom {
+  height: 80px;
+  background: #fff;
 
-    background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    display: flex;
+  padding: 0 32px;
 
-    align-items: center;
+  border-bottom: 1px solid #e5e7eb;
 
-    padding: 0 var(--content-padding);
+  position: sticky;
+  top: 0;
 
-    border-bottom: 1px solid var(--color-border);
+  z-index: 900;
+}
 
-    box-shadow: var(--shadow-xs);
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
 
-    position: sticky;
+.menu-toggle {
+  width: 42px;
+  height: 42px;
 
-    top: 0;
+  border: none;
 
-    z-index: var(--z-navbar);
+  border-radius: 12px;
 
+  background: #f3f4f6;
+
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background: #e5e7eb;
+}
+
+.page-info h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-info span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  width: 420px;
+
+  height: 46px;
+
+  background: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 18px;
+
+  gap: 12px;
+}
+
+.search-box input {
+  border: none;
+
+  background: none;
+
+  outline: none;
+
+  width: 100%;
+}
+
+.navbar-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.icon-btn {
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f3f4f6;
+
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: #e5e7eb;
+}
+
+.user-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-left: 8px;
+}
+
+.avatar {
+  width: 46px;
+
+  height: 46px;
+
+  background: #00a86b;
+
+  color: white;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-weight: 700;
+}
+
+.user-info h6 {
+  margin: 0;
+
+  font-size: 15px;
+}
+
+.user-info span {
+  font-size: 12px;
+
+  color: #6b7280;
 }
