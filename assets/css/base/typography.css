@@ -1,0 +1,77 @@
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Base */
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-regular);
+    color: var(--color-text-primary);
+}
+
+/* Headings */
+
+h1,
+.fleet-display {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-bold);
+}
+
+h2,
+.fleet-h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-bold);
+}
+
+h3,
+.fleet-h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-semibold);
+}
+
+h4,
+.fleet-h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-semibold);
+}
+
+h5 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-medium);
+}
+
+h6 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-medium);
+}
+
+/* Body */
+
+.fleet-body {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+}
+
+.fleet-small {
+    font-size: var(--font-size-sm);
+}
+
+.fleet-caption {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+}
+
+/* Links */
+
+a {
+    transition: var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
