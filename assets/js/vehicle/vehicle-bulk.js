@@ -1,72 +1,148 @@
-function initBulkActions() {
-  const selectAll = document.getElementById("selectAllVehicles");
+/* ==========================================
+   Vehicle Bulk Actions
+========================================== */
 
-  const toolbar = document.getElementById("bulkToolbar");
+let vehicleBulkState = null;
 
-  const selectedCount = document.getElementById("selectedCount");
+function getVehicleBulkRows() {
+  if (!vehicleBulkState) return [];
 
-  const clearBtn = document.getElementById("clearSelection");
-
-  const deleteBtn = document.getElementById("deleteSelected");
-
-  if (!selectAll || !toolbar || !deleteBtn) return;
-
-  function updateToolbar() {
-    const checkboxes = document.querySelectorAll(".vehicle-checkbox");
-
-    const checked = document.querySelectorAll(".vehicle-checkbox:checked");
-
-    selectedCount.textContent = `${checked.length} vehicle${checked.length !== 1 ? "s" : ""} selected`;
-
-    toolbar.classList.toggle("show", checked.length > 0);
-
-    selectAll.checked =
-      checkboxes.length > 0 && checked.length === checkboxes.length;
+  if (typeof getVehicleDataRows === "function") {
+    return getVehicleDataRows(vehicleBulkState.tableBody);
   }
 
-  selectAll.addEventListener("change", () => {
-    document.querySelectorAll(".vehicle-checkbox").forEach((cb) => {
-      cb.checked = selectAll.checked;
-    });
+  return Array.from(
+    vehicleBulkState.tableBody.querySelectorAll("tr"),
+  ).filter((row) => row.querySelector(".vehicle-checkbox"));
+}
 
-    updateToolbar();
+function getVehicleBulkCheckboxes() {
+  return getVehicleBulkRows()
+    .map((row) => row.querySelector(".vehicle-checkbox"))
+    .filter(Boolean);
+}
+
+function getVisibleVehicleBulkCheckboxes() {
+  return getVehicleBulkRows()
+    .filter((row) => row.style.display !== "none")
+    .map((row) => row.querySelector(".vehicle-checkbox"))
+    .filter(Boolean);
+}
+
+function refreshVehicleBulkState() {
+  if (!vehicleBulkState) return;
+
+  const { selectAll, toolbar, selectedCount } = vehicleBulkState;
+  const checkboxes = getVehicleBulkCheckboxes();
+  const visibleCheckboxes = getVisibleVehicleBulkCheckboxes();
+  const selectedCheckboxes = checkboxes.filter((checkbox) => checkbox.checked);
+  const selectedVisibleCheckboxes = visibleCheckboxes.filter(
+    (checkbox) => checkbox.checked,
+  );
+  const allVisibleSelected =
+    visibleCheckboxes.length > 0 &&
+    selectedVisibleCheckboxes.length === visibleCheckboxes.length;
+
+  selectedCount.textContent = `${selectedCheckboxes.length} vehicle${
+    selectedCheckboxes.length === 1 ? "" : "s"
+  } selected`;
+  toolbar.classList.toggle("show", selectedCheckboxes.length > 0);
+  selectAll.checked = allVisibleSelected;
+  selectAll.indeterminate =
+    selectedVisibleCheckboxes.length > 0 && !allVisibleSelected;
+}
+
+function clearVehicleSelection() {
+  getVehicleBulkCheckboxes().forEach((checkbox) => {
+    checkbox.checked = false;
   });
 
-  document.addEventListener("change", (e) => {
-    if (e.target.classList.contains("vehicle-checkbox")) {
-      updateToolbar();
-    }
-  });
+  if (vehicleBulkState) {
+    vehicleBulkState.selectAll.checked = false;
+    vehicleBulkState.selectAll.indeterminate = false;
+  }
 
-  clearBtn?.addEventListener("click", () => {
-    selectAll.checked = false;
+  refreshVehicleBulkState();
+}
 
-    document.querySelectorAll(".vehicle-checkbox").forEach((cb) => {
-      cb.checked = false;
-    });
+function refreshVehicleAfterBulkDelete() {
+  if (typeof applyVehicleFilters === "function") {
+    applyVehicleFilters();
+  } else if (typeof refreshVehiclePagination === "function") {
+    refreshVehiclePagination();
+  }
 
-    updateToolbar();
-  });
-
-  deleteBtn.addEventListener("click", () => {
-    const checked = document.querySelectorAll(".vehicle-checkbox:checked");
-
-    if (!checked.length) return;
-
-    checked.forEach((cb) => {
-      cb.closest("tr").remove();
-    });
-
+  if (typeof updateVehicleStats === "function") {
     updateVehicleStats();
+  }
 
-    updateToolbar();
+  refreshVehicleBulkState();
+}
 
-    if (typeof initVehiclePagination === "function") {
-      initVehiclePagination();
-    }
+function initBulkActions() {
+  const tableBody = document.getElementById("vehicleTableBody");
+  const selectAll = document.getElementById("selectAllVehicles");
+  const toolbar = document.getElementById("bulkToolbar");
+  const selectedCount = document.getElementById("selectedCount");
+  const clearButton = document.getElementById("clearSelection");
+  const deleteButton = document.getElementById("deleteSelected");
 
-    showToast("Vehicle(s) deleted successfully.", "success");
+  if (
+    !tableBody ||
+    !selectAll ||
+    !toolbar ||
+    !selectedCount ||
+    !deleteButton
+  ) {
+    return;
+  }
+
+  if (tableBody.dataset.vehicleBulkInitialized === "true") {
+    refreshVehicleBulkState();
+    return;
+  }
+
+  tableBody.dataset.vehicleBulkInitialized = "true";
+  vehicleBulkState = {
+    tableBody,
+    selectAll,
+    toolbar,
+    selectedCount,
+  };
+
+  selectAll.addEventListener("change", () => {
+    getVisibleVehicleBulkCheckboxes().forEach((checkbox) => {
+      checkbox.checked = selectAll.checked;
+    });
+
+    refreshVehicleBulkState();
   });
 
-  updateToolbar();
+  tableBody.addEventListener("change", (event) => {
+    if (!event.target?.classList?.contains("vehicle-checkbox")) return;
+
+    refreshVehicleBulkState();
+  });
+
+  clearButton?.addEventListener("click", clearVehicleSelection);
+
+  deleteButton.addEventListener("click", () => {
+    const selectedRows = getVehicleBulkCheckboxes()
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.closest("tr"))
+      .filter(Boolean);
+
+    if (selectedRows.length === 0) return;
+
+    selectedRows.forEach((row) => row.remove());
+    selectAll.checked = false;
+    selectAll.indeterminate = false;
+    refreshVehicleAfterBulkDelete();
+
+    if (typeof window.showToast === "function") {
+      window.showToast("Vehicle(s) deleted successfully.", "success");
+    }
+  });
+
+  refreshVehicleBulkState();
 }

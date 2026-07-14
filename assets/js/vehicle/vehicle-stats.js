@@ -3,43 +3,59 @@
 ========================================== */
 
 function updateVehicleStats() {
-  const rows = document.querySelectorAll("#vehicleTableBody tr");
+  const totalVehicles = document.getElementById("totalVehicles");
+  const availableVehicles = document.getElementById("availableVehicles");
+  const onTripVehicles = document.getElementById("onTripVehicles");
+  const maintenanceVehicles = document.getElementById("maintenanceVehicles");
+  const tableBody = document.getElementById("vehicleTableBody");
+
+  if (
+    !totalVehicles ||
+    !availableVehicles ||
+    !onTripVehicles ||
+    !maintenanceVehicles ||
+    !tableBody
+  ) {
+    return;
+  }
 
   let total = 0;
   let available = 0;
-  let trip = 0;
+  let onTrip = 0;
   let maintenance = 0;
 
-  rows.forEach((row) => {
-    if (row.style.display === "none") return;
+  tableBody.querySelectorAll("tr").forEach((row) => {
+    const isHelperRow =
+      row.classList.contains("helper-row") ||
+      row.classList.contains("empty-state") ||
+      row.classList.contains("temporary-row") ||
+      row.dataset.helperRow === "true" ||
+      row.dataset.temporary === "true";
+    const isVehicleRow = Boolean(
+      row.querySelector(".vehicle-name") ||
+        row.querySelector(".vehicle-checkbox"),
+    );
 
-    total++;
+    if (isHelperRow || !isVehicleRow) return;
 
-    const status =
-      row.querySelector(".status-badge")?.textContent.trim().toLowerCase() ||
-      "";
+    total += 1;
 
-    switch (status) {
-      case "available":
-        available++;
-        break;
+    const status = (row.querySelector(".status-badge")?.textContent || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[\s-]+/g, "");
 
-      case "on trip":
-      case "ontrip":
-        trip++;
-        break;
-
-      case "maintenance":
-        maintenance++;
-        break;
+    if (status === "available") {
+      available += 1;
+    } else if (status === "ontrip") {
+      onTrip += 1;
+    } else if (status === "maintenance") {
+      maintenance += 1;
     }
   });
 
-  document.getElementById("totalVehicles").textContent = total;
-
-  document.getElementById("availableVehicles").textContent = available;
-
-  document.getElementById("onTripVehicles").textContent = trip;
-
-  document.getElementById("maintenanceVehicles").textContent = maintenance;
+  totalVehicles.textContent = total;
+  availableVehicles.textContent = available;
+  onTripVehicles.textContent = onTrip;
+  maintenanceVehicles.textContent = maintenance;
 }

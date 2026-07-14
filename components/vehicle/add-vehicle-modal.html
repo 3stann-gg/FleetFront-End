@@ -1,13 +1,24 @@
-<div class="modal-overlay" id="vehicleModal">
+<div
+  class="modal-overlay"
+  id="vehicleModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="vehicleModalTitle"
+>
   <div class="custom-modal">
     <!-- Header -->
     <div class="modal-header">
       <div>
-        <h2>Add New Vehicle</h2>
+        <h2 id="vehicleModalTitle">Add New Vehicle</h2>
         <p>Register a new hospital fleet vehicle.</p>
       </div>
 
-      <button class="modal-close" id="closeVehicleModal">
+      <button
+        type="button"
+        class="modal-close"
+        id="closeVehicleModal"
+        aria-label="Close add vehicle dialog"
+      >
         <i class="ph ph-x"></i>
       </button>
     </div>
@@ -22,7 +33,7 @@
           <div class="vehicle-image-upload">
             <img
               id="vehiclePreview"
-              src="../assets/images/default-vehicle.png"
+              src="../assets/images/vehicle-placeholder.svg"
               alt="Vehicle Preview"
             />
 
@@ -36,55 +47,61 @@
         </div>
         <div class="form-grid">
           <div class="form-group">
-            <label>Plate Number *</label>
-            <input type="text" id="vehiclePlate" placeholder="ABC-1234" />
+            <label for="vehiclePlate">Plate Number *</label>
+            <input
+              type="text"
+              id="vehiclePlate"
+              placeholder="ABC-1234"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <label>Vehicle Type *</label>
-            <select id="vehicleType"></select>
+            <label for="vehicleType">Vehicle Type *</label>
+            <select id="vehicleType" required></select>
           </div>
 
           <div class="form-group">
-            <label>Capacity</label>
-            <input type="number" placeholder="4" />
+            <label for="vehicleCapacity">Capacity</label>
+            <input type="number" id="vehicleCapacity" placeholder="4" />
           </div>
 
           <div class="form-group">
-            <label>Assigned Driver</label>
+            <label for="vehicleDriver">Assigned Driver</label>
             <select id="vehicleDriver"></select>
           </div>
 
           <div class="form-group">
-            <label>Fuel Type</label>
+            <label for="vehicleFuel">Fuel Type</label>
             <select id="vehicleFuel"></select>
           </div>
 
           <div class="form-group">
-            <label>Current Mileage</label>
-            <input type="number" placeholder="58240" />
+            <label for="vehicleMileage">Current Mileage</label>
+            <input type="number" id="vehicleMileage" placeholder="58240" />
           </div>
 
           <div class="form-group">
-            <label>Status</label>
-            <select id="vehicleStatus"></select>
+            <label for="vehicleStatus">Status *</label>
+            <select id="vehicleStatus" required></select>
           </div>
 
           <div class="form-group">
-            <label>Purchase Date</label>
-            <input type="date" />
+            <label for="vehiclePurchaseDate">Purchase Date</label>
+            <input type="date" id="vehiclePurchaseDate" />
           </div>
 
           <div class="form-group">
-            <label>Insurance Expiry</label>
-            <input type="date" />
+            <label for="vehicleInsuranceExpiry">Insurance Expiry</label>
+            <input type="date" id="vehicleInsuranceExpiry" />
           </div>
         </div>
 
         <div class="form-group">
-          <label>Notes</label>
+          <label for="vehicleNotes">Notes</label>
 
           <textarea
+            id="vehicleNotes"
             rows="4"
             placeholder="Additional vehicle information..."
           ></textarea>

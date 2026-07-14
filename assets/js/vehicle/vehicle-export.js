@@ -1,39 +1,93 @@
 /* ==========================================
-   Export Excel
+   Vehicle Export Reports
 ========================================== */
 
+function getVehicleReportRows() {
+  const tableBody = document.getElementById("vehicleTableBody");
+
+  if (!tableBody) return [];
+
+  const rows =
+    typeof getVehicleDataRows === "function"
+      ? getVehicleDataRows(tableBody)
+      : Array.from(tableBody.querySelectorAll("tr")).filter((row) =>
+          Boolean(row.querySelector(".vehicle-name") || row.querySelector(".vehicle-checkbox")),
+        );
+
+  return rows.filter((row) => row.dataset.vehicleMatchesFilter !== "false");
+}
+
+function getVehicleReportText(row, columnIndex, selector) {
+  const selectedElement = selector ? row.querySelector(selector) : null;
+  const cell = row.children?.[columnIndex];
+  const value = selectedElement ? selectedElement.textContent : cell?.textContent;
+
+  return value ? value.trim() : "";
+}
+
+function getVehicleReportData(row) {
+  return {
+    name: getVehicleReportText(row, 1, ".vehicle-name"),
+    plate: getVehicleReportText(row, 2),
+    type: getVehicleReportText(row, 3),
+    driver: getVehicleReportText(row, 4, ".driver-info span"),
+    status: getVehicleReportText(row, 5, ".status-badge"),
+    lastService: getVehicleReportText(row, 7),
+  };
+}
+
+function showVehicleReportToast(message, type) {
+  if (typeof window.showToast === "function") {
+    window.showToast(message, type);
+  }
+}
+
 function initVehicleExport() {
-  const exportBtn = document.getElementById("exportVehicles");
+  const exportButton = document.getElementById("exportVehicles");
 
-  if (!exportBtn) return;
+  if (
+    !exportButton ||
+    exportButton.dataset.vehicleExportInitialized === "true"
+  ) {
+    return;
+  }
 
-  exportBtn.addEventListener("click", () => {
+  exportButton.dataset.vehicleExportInitialized = "true";
+
+  exportButton.addEventListener("click", () => {
+    const xlsx = window.XLSX;
+
+    if (!xlsx?.utils) {
+      showVehicleReportToast("Excel export is unavailable.", "error");
+      return;
+    }
+
     const data = [
       ["Vehicle", "Plate", "Type", "Driver", "Status", "Last Service"],
+      ...getVehicleReportRows().map((row) => {
+        const vehicle = getVehicleReportData(row);
+
+        return [
+          vehicle.name,
+          vehicle.plate,
+          vehicle.type,
+          vehicle.driver,
+          vehicle.status,
+          vehicle.lastService,
+        ];
+      }),
     ];
 
-    document.querySelectorAll("#vehicleTableBody tr").forEach((row) => {
-      if (row.style.display === "none") return;
+    try {
+      const workbook = xlsx.utils.book_new();
+      const worksheet = xlsx.utils.aoa_to_sheet(data);
 
-      data.push([
-        row.querySelector(".vehicle-name")?.textContent.trim() || "",
-        row.children[2]?.textContent.trim() || "",
-        row.children[3]?.textContent.trim() || "",
-        row.querySelector(".driver-info span")?.textContent.trim() || "",
-        row.querySelector(".status-badge")?.textContent.trim() || "",
-        row.children[7]?.textContent.trim() || "",
-      ]);
-    });
-
-    const workbook = XLSX.utils.book_new();
-
-    const worksheet = XLSX.utils.aoa_to_sheet(data);
-
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Fleet Vehicles");
-
-    XLSX.writeFile(workbook, "Fleet_Vehicles.xlsx");
-
-    showToast("Excel exported successfully.", "success");
+      xlsx.utils.book_append_sheet(workbook, worksheet, "Fleet Vehicles");
+      xlsx.writeFile(workbook, "Fleet_Vehicles.xlsx");
+      showVehicleReportToast("Excel exported successfully.", "success");
+    } catch {
+      showVehicleReportToast("Unable to export vehicles to Excel.", "error");
+    }
   });
 }
 
@@ -42,47 +96,58 @@ function initVehicleExport() {
 ========================================== */
 
 function initVehiclePDFExport() {
-  const btn = document.getElementById("exportPDF");
+  const exportButton = document.getElementById("exportPDF");
 
-  if (!btn) return;
+  if (
+    !exportButton ||
+    exportButton.dataset.vehiclePdfExportInitialized === "true"
+  ) {
+    return;
+  }
 
-  btn.addEventListener("click", () => {
-    const { jsPDF } = window.jspdf;
+  exportButton.dataset.vehiclePdfExportInitialized = "true";
 
-    const doc = new jsPDF();
+  exportButton.addEventListener("click", () => {
+    const jsPDF = window.jspdf?.jsPDF;
 
-    doc.setFontSize(18);
-    doc.text("Fleet Vehicle Report", 14, 18);
+    if (!jsPDF) {
+      showVehicleReportToast("PDF export is unavailable.", "error");
+      return;
+    }
 
-    const rows = [];
+    try {
+      const pdfDocument = new jsPDF();
 
-    document.querySelectorAll("#vehicleTableBody tr").forEach((row) => {
-      if (row.style.display === "none") return;
+      if (typeof pdfDocument.autoTable !== "function") {
+        showVehicleReportToast("PDF export is unavailable.", "error");
+        return;
+      }
 
-      rows.push([
-        row.querySelector(".vehicle-name")?.textContent.trim(),
+      pdfDocument.setFontSize(18);
+      pdfDocument.text("Fleet Vehicle Report", 14, 18);
 
-        row.children[2].textContent.trim(),
+      const rows = getVehicleReportRows().map((row) => {
+        const vehicle = getVehicleReportData(row);
 
-        row.children[3].textContent.trim(),
+        return [
+          vehicle.name,
+          vehicle.plate,
+          vehicle.type,
+          vehicle.driver,
+          vehicle.status,
+        ];
+      });
 
-        row.querySelector(".driver-info span")?.textContent.trim(),
+      pdfDocument.autoTable({
+        head: [["Vehicle", "Plate", "Type", "Driver", "Status"]],
+        body: rows,
+        startY: 30,
+      });
 
-        row.querySelector(".status-badge")?.textContent.trim(),
-      ]);
-    });
-
-    doc.autoTable({
-      head: [["Vehicle", "Plate", "Type", "Driver", "Status"]],
-
-      body: rows,
-
-      startY: 30,
-    });
-
-    doc.save("Fleet_Vehicle_Report.pdf");
-
-    showToast("PDF exported successfully.", "success");
+      pdfDocument.save("Fleet_Vehicle_Report.pdf");
+      showVehicleReportToast("PDF exported successfully.", "success");
+    } catch {
+      showVehicleReportToast("Unable to export the Vehicle report to PDF.", "error");
+    }
   });
 }
-

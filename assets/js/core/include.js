@@ -1,18 +1,28 @@
 async function loadComponent(id, file) {
-  const response = await fetch(file);
+  const target = document.getElementById(id);
 
-  if (!response.ok) {
-    console.error(`Cannot load ${file}`);
+  if (!target) {
     return;
   }
 
-  document.getElementById(id).innerHTML = await response.text();
+  try {
+    const response = await fetch(file);
+
+    if (!response.ok) {
+      console.error(`Cannot load ${file}`);
+      return;
+    }
+
+    target.innerHTML = await response.text();
+  } catch {
+    console.error(`Cannot load ${file}`);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadComponent("sidebar", "../components/shared/sidebar.html");
 
-  if (document.body.dataset.page === "driver" && typeof initializePage === "function") {
+  if (typeof initializePage === "function") {
     initializePage();
   }
 
@@ -103,10 +113,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (typeof initVehiclePagination === "function") {
     initVehiclePagination();
   }
-  if (typeof initVehicleImagePreview === "function") {
-    initVehicleImagePreview();
-  }
-
   /* Initialize Toast */
 
   if (typeof initToast === "function") {

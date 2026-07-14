@@ -1,12 +1,23 @@
-<div class="modal-overlay" id="editVehicleModal">
+<div
+  class="modal-overlay"
+  id="editVehicleModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="editVehicleModalTitle"
+>
   <div class="custom-modal">
     <div class="modal-header">
       <div>
-        <h2>Edit Vehicle</h2>
+        <h2 id="editVehicleModalTitle">Edit Vehicle</h2>
         <p>Update vehicle information.</p>
       </div>
 
-      <button class="modal-close" id="closeEditVehicleModal">
+      <button
+        type="button"
+        class="modal-close"
+        id="closeEditVehicleModal"
+        aria-label="Close edit vehicle dialog"
+      >
         <i class="ph ph-x"></i>
       </button>
     </div>
@@ -15,26 +26,28 @@
       <form class="vehicle-form" id="editVehicleForm">
         <div class="form-grid">
           <div class="form-group">
-            <label>Vehicle Name</label>
+            <label for="editVehicleName">Vehicle Name</label>
             <input
               type="text"
               id="editVehicleName"
               placeholder="Vehicle Name"
+              required
             />
           </div>
 
           <div class="form-group">
-            <label>Plate Number</label>
+            <label for="editVehiclePlate">Plate Number</label>
             <input
               type="text"
               id="editVehiclePlate"
               placeholder="Plate Number"
+              required
             />
           </div>
 
           <div class="form-group">
-            <label>Vehicle Type</label>
-            <select id="editVehicleType">
+            <label for="editVehicleType">Vehicle Type</label>
+            <select id="editVehicleType" required>
               <option value="">Select Vehicle Type</option>
               <option>Ambulance</option>
               <option>Patient Van</option>
@@ -45,7 +58,7 @@
           </div>
 
           <div class="form-group">
-            <label>Assigned Driver</label>
+            <label for="editVehicleDriver">Assigned Driver</label>
             <select id="editVehicleDriver">
               <option value="">Select Driver</option>
               <option>Juan Dela Cruz</option>
@@ -56,7 +69,7 @@
           </div>
 
           <div class="form-group">
-            <label>Fuel Type</label>
+            <label for="editVehicleFuel">Fuel Type</label>
             <select id="editVehicleFuel">
               <option value="">Select Fuel Type</option>
               <option>Diesel</option>
@@ -67,8 +80,8 @@
           </div>
 
           <div class="form-group">
-            <label>Status</label>
-            <select id="editVehicleStatus">
+            <label for="editVehicleStatus">Status</label>
+            <select id="editVehicleStatus" required>
               <option value="">Select Status</option>
               <option>Available</option>
               <option>On Trip</option>
@@ -79,7 +92,7 @@
         </div>
 
         <div class="form-group">
-          <label>Notes</label>
+          <label for="editVehicleNotes">Notes</label>
 
           <textarea
             id="editVehicleNotes"

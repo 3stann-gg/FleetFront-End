@@ -1,4 +1,10 @@
-<div class="modal-overlay" id="viewVehicleModal">
+<div
+  class="modal-overlay"
+  id="viewVehicleModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="viewVehicleName"
+>
   <div class="custom-modal">
     <div class="modal-header">
       <div>
@@ -6,14 +12,19 @@
         <p>View complete vehicle information.</p>
       </div>
 
-      <button class="modal-close" id="closeViewVehicleModal">
+      <button
+        type="button"
+        class="modal-close"
+        id="closeViewVehicleModal"
+        aria-label="Close vehicle details dialog"
+      >
         <i class="ph ph-x"></i>
       </button>
     </div>
     <div class="vehicle-profile">
       <img
         id="viewVehicleImage"
-        src="../assets/images/vehicle-placeholder.png"
+        src="../assets/images/vehicle-placeholder.svg"
         alt="Vehicle"
       />
 
@@ -69,13 +80,12 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn-outline" id="closeViewBtn">Close</button>
+        <button type="button" class="btn-outline" id="closeViewBtn">Close</button>
 
-        <button class="btn-primary" id="editVehicleBtn">
+        <button type="button" class="btn-primary" id="editVehicleBtn">
           <i class="ph ph-pencil-simple"></i>
           Edit Vehicle
         </button>
       </div>
     </div>
-  </div>
 </div>

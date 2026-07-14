@@ -40,7 +40,7 @@
 
                 <p>Manage all hospital fleet vehicles.</p>
               </div>
-              <button id="addVehicleBtn" class="btn-primary">
+              <button type="button" id="addVehicleBtn" class="btn-primary">
                 <i class="ph ph-plus"></i>
                 Add Vehicle
               </button>
@@ -107,6 +107,7 @@
                     type="text"
                     id="vehicleSearch"
                     placeholder="Search by vehicle name, plate number or driver"
+                    aria-label="Search vehicles"
                   />
                 </div>
 
@@ -114,33 +115,37 @@
                   <option value="all">All Vehicle Types</option>
                   <option value="Ambulance">Ambulance</option>
                   <option value="Van">Van</option>
+                  <option value="Patient Van">Patient Van</option>
                   <option value="SUV">SUV</option>
+                  <option value="Car">Car</option>
+                  <option value="Motorcycle">Motorcycle</option>
                   <option value="Service Vehicle">Service Vehicle</option>
                 </select>
 
                 <select class="filter-select" id="vehicleStatusFilter">
                   <option value="all">All Status</option>
                   <option value="Available">Available</option>
-                  <option value="Ontrip">On Trip</option>
+                  <option value="On Trip">On Trip</option>
                   <option value="Maintenance">Maintenance</option>
+                  <option value="Out of Service">Out of Service</option>
                 </select>
               </div>
 
               <div class="toolbar-right">
-                <button class="btn-outline" id="refreshVehicles">
+                <button type="button" class="btn-outline" id="refreshVehicles">
                   <i class="ph ph-arrows-clockwise"></i>
                   Refresh
                 </button>
-                <button class="btn-outline" id="printVehicles">
+                <button type="button" class="btn-outline" id="printVehicles">
                   <i class="ph ph-printer"></i>
                   Print
                 </button>
-                <button class="btn-outline" id="exportPDF">
+                <button type="button" class="btn-outline" id="exportPDF">
                   <i class="ph ph-file-pdf"></i>
                   Export PDF
                 </button>
 
-                <button class="btn-outline" id="exportVehicles">
+                <button type="button" class="btn-outline" id="exportVehicles">
                   <i class="ph ph-file-xls"></i>
                   Export Excel
                 </button>
@@ -150,9 +155,9 @@
               <span id="selectedCount"> 0 vehicles selected </span>
 
               <div>
-                <button class="btn-outline" id="clearSelection">Clear</button>
+                <button type="button" class="btn-outline" id="clearSelection">Clear</button>
 
-                <button id="deleteSelected" class="btn-danger">
+                <button type="button" id="deleteSelected" class="btn-danger">
                   <i class="ph ph-trash"></i>
                   Delete Selected
                 </button>
@@ -179,7 +184,11 @@
                   <thead>
                     <tr>
                       <th>
-                        <input type="checkbox" id="selectAllVehicles" />
+                        <input
+                          type="checkbox"
+                          id="selectAllVehicles"
+                          aria-label="Select all visible vehicles"
+                        />
                       </th>
 
                       <th class="sortable" data-column="1">
@@ -221,14 +230,18 @@
                   <tbody id="vehicleTableBody">
                     <tr>
                       <td>
-                        <input type="checkbox" class="vehicle-checkbox" />
+                        <input
+                          type="checkbox"
+                          class="vehicle-checkbox"
+                          aria-label="Select Ambulance 01"
+                        />
                       </td>
 
                       <td>
                         <div class="vehicle-info">
                           <img
                             class="vehicle-photo"
-                            src="../assets/images/vehicle-placeholder.png"
+                            src="../assets/images/vehicle-placeholder.svg"
                             alt="Vehicle"
                           />
 
@@ -273,15 +286,27 @@
 
                       <td>
                         <div class="action-buttons">
-                          <button class="action-btn view">
+                          <button
+                            type="button"
+                            class="action-btn view"
+                            aria-label="View Ambulance 01"
+                          >
                             <i class="ph ph-eye"></i>
                           </button>
 
-                          <button class="action-btn edit">
+                          <button
+                            type="button"
+                            class="action-btn edit"
+                            aria-label="Edit Ambulance 01"
+                          >
                             <i class="ph ph-pencil-simple"></i>
                           </button>
 
-                          <button class="action-btn delete">
+                          <button
+                            type="button"
+                            class="action-btn delete"
+                            aria-label="Delete Ambulance 01"
+                          >
                             <i class="ph ph-trash"></i>
                           </button>
                         </div>
@@ -290,7 +315,11 @@
 
                     <tr>
                       <td>
-                        <input type="checkbox" class="vehicle-checkbox" />
+                        <input
+                          type="checkbox"
+                          class="vehicle-checkbox"
+                          aria-label="Select VAN 01"
+                        />
                       </td>
 
                       <td>
@@ -342,15 +371,27 @@
 
                       <td>
                         <div class="action-buttons">
-                          <button class="action-btn view">
+                          <button
+                            type="button"
+                            class="action-btn view"
+                            aria-label="View VAN 01"
+                          >
                             <i class="ph ph-eye"></i>
                           </button>
 
-                          <button class="action-btn edit">
+                          <button
+                            type="button"
+                            class="action-btn edit"
+                            aria-label="Edit VAN 01"
+                          >
                             <i class="ph ph-pencil-simple"></i>
                           </button>
 
-                          <button class="action-btn delete">
+                          <button
+                            type="button"
+                            class="action-btn delete"
+                            aria-label="Delete VAN 01"
+                          >
                             <i class="ph ph-trash"></i>
                           </button>
                         </div>
@@ -359,7 +400,11 @@
 
                     <tr>
                       <td>
-                        <input type="checkbox" class="vehicle-checkbox" />
+                        <input
+                          type="checkbox"
+                          class="vehicle-checkbox"
+                          aria-label="Select CAR 01"
+                        />
                       </td>
 
                       <td>
@@ -409,15 +454,27 @@
 
                       <td>
                         <div class="action-buttons">
-                          <button class="action-btn view">
+                          <button
+                            type="button"
+                            class="action-btn view"
+                            aria-label="View CAR 01"
+                          >
                             <i class="ph ph-eye"></i>
                           </button>
 
-                          <button class="action-btn edit">
+                          <button
+                            type="button"
+                            class="action-btn edit"
+                            aria-label="Edit CAR 01"
+                          >
                             <i class="ph ph-pencil-simple"></i>
                           </button>
 
-                          <button class="action-btn delete">
+                          <button
+                            type="button"
+                            class="action-btn delete"
+                            aria-label="Delete CAR 01"
+                          >
                             <i class="ph ph-trash"></i>
                           </button>
                         </div>

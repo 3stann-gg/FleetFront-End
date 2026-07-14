@@ -3,34 +3,44 @@
 ========================================== */
 
 function initVehicleSorting() {
-  const tbody = document.getElementById("vehicleTableBody");
+  const tableBody = document.getElementById("vehicleTableBody");
 
-  if (!tbody) return;
+  if (!tableBody || tableBody.dataset.vehicleSortingInitialized === "true") {
+    return;
+  }
 
-  let current = -1;
-  let asc = true;
+  tableBody.dataset.vehicleSortingInitialized = "true";
+
+  let currentColumn = -1;
+  let ascending = true;
 
   document.querySelectorAll(".sortable").forEach((header) => {
     header.addEventListener("click", () => {
       const column = Number(header.dataset.column);
 
-      asc = current === column ? !asc : true;
+      if (Number.isNaN(column)) return;
 
-      current = column;
+      ascending = currentColumn === column ? !ascending : true;
+      currentColumn = column;
 
-      const rows = [...tbody.querySelectorAll("tr")];
+      const rows = Array.from(tableBody.querySelectorAll("tr"));
 
-      rows.sort((a, b) => {
-        const first = a.children[column].innerText.trim();
+      rows.sort((firstRow, secondRow) => {
+        const first = firstRow.children[column]?.textContent.trim() || "";
+        const second = secondRow.children[column]?.textContent.trim() || "";
 
-        const second = b.children[column].innerText.trim();
-
-        return asc ? first.localeCompare(second) : second.localeCompare(first);
+        return ascending
+          ? first.localeCompare(second)
+          : second.localeCompare(first);
       });
 
-      tbody.innerHTML = "";
+      tableBody.replaceChildren(...rows);
 
-      rows.forEach((row) => tbody.appendChild(row));
+      if (typeof applyVehicleFilters === "function") {
+        applyVehicleFilters();
+      } else if (typeof refreshVehiclePagination === "function") {
+        refreshVehiclePagination();
+      }
     });
   });
 }

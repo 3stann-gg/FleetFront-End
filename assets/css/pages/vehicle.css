@@ -140,7 +140,9 @@
   .page-header button,
   .table-footer,
   .action-buttons,
-  .bulk-toolbar {
+  .bulk-toolbar,
+  .modal-overlay,
+  #toast {
     display: none !important;
   }
 
@@ -232,7 +234,7 @@
   width: 100%;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--color-text-primary);
   margin-bottom: 14px;
 }
 
@@ -259,7 +261,7 @@
 }
 
 .vehicle-image-upload img:hover {
-  border-color: var(--primary);
+  border-color: var(--color-primary);
 }
 
 .upload-btn {

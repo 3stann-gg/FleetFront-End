@@ -2,11 +2,27 @@
    Vehicle Form Dropdowns
 ========================================== */
 
+function getVehicleStatusClass(status) {
+  const normalizedStatus = (status || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[\s-]+/g, "");
+
+  if (normalizedStatus === "available") return "available";
+  if (normalizedStatus === "ontrip") return "trip";
+  if (normalizedStatus === "maintenance") return "maintenance";
+
+  return "out";
+}
+
 function initVehicleForm() {
+  const form = document.getElementById("vehicleForm");
   const vehicleType = document.getElementById("vehicleType");
   const vehicleDriver = document.getElementById("vehicleDriver");
   const vehicleFuel = document.getElementById("vehicleFuel");
   const vehicleStatus = document.getElementById("vehicleStatus");
+
+  if (form?.dataset.vehicleFormInitialized === "true") return;
 
   if (vehicleType) {
     vehicleType.innerHTML = `
@@ -48,5 +64,8 @@ function initVehicleForm() {
       <option>Out of Service</option>
     `;
   }
-}
 
+  if (form) {
+    form.dataset.vehicleFormInitialized = "true";
+  }
+}

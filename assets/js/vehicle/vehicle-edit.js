@@ -2,154 +2,226 @@
    Edit Vehicle Modal
 ========================================== */
 
-function initEditVehicleModal() {
-  const modal = document.getElementById("editVehicleModal");
+function getEditVehicleRowText(row, columnIndex, selector) {
+  const selectedElement = selector ? row.querySelector(selector) : null;
+  const cell = row.children?.[columnIndex];
+  const value = selectedElement ? selectedElement.textContent : cell?.textContent;
 
+  return value && value.trim() ? value.trim() : "";
+}
+
+function setEditVehicleFieldValue(id, value) {
+  const field = document.getElementById(id);
+
+  if (field) {
+    field.value = value;
+  }
+}
+
+function setEditVehicleSelectValue(id, value) {
+  const select = document.getElementById(id);
+
+  if (!select) return;
+
+  if (
+    value &&
+    !Array.from(select.options).some((option) => option.value === value)
+  ) {
+    const option = document.createElement("option");
+
+    option.value = value;
+    option.textContent = value;
+    select.appendChild(option);
+  }
+
+  select.value = value;
+}
+
+function openEditVehicleModal(modal) {
   if (!modal) return;
 
-  const closeBtn = document.getElementById("closeEditVehicleModal");
-  const cancelBtn = document.getElementById("cancelEditVehicle");
-
-  function openModal() {
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
+  if (!modal.classList.contains("show")) {
+    modal.dataset.previousBodyOverflow = document.body.style.overflow;
   }
 
-  function closeModal() {
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeEditVehicleModal(modal) {
+  if (!modal || !modal.classList.contains("show")) return;
+
+  modal.classList.remove("show");
+  document.body.style.overflow = modal.dataset.previousBodyOverflow || "";
+  delete modal.dataset.previousBodyOverflow;
+  modal.currentRow = null;
+}
+
+function populateEditVehicleModal(modal, row) {
+  if (!modal || !row) return;
+
+  modal.currentRow = row;
+
+  setEditVehicleFieldValue(
+    "editVehicleName",
+    getEditVehicleRowText(row, 1, ".vehicle-name"),
+  );
+  setEditVehicleFieldValue("editVehiclePlate", getEditVehicleRowText(row, 2));
+  setEditVehicleSelectValue("editVehicleType", getEditVehicleRowText(row, 3));
+  setEditVehicleSelectValue(
+    "editVehicleDriver",
+    getEditVehicleRowText(row, 4, ".driver-info span"),
+  );
+  setEditVehicleSelectValue(
+    "editVehicleFuel",
+    row.dataset.fuelType || "Diesel",
+  );
+  setEditVehicleSelectValue(
+    "editVehicleStatus",
+    getEditVehicleRowText(row, 5, ".status-badge"),
+  );
+  setEditVehicleFieldValue("editVehicleNotes", row.dataset.notes || "");
+}
+
+function updateVehicleActionLabels(row, name) {
+  const checkbox = row.querySelector(".vehicle-checkbox");
+  const viewButton = row.querySelector(".action-btn.view");
+  const editButton = row.querySelector(".action-btn.edit");
+  const deleteButton = row.querySelector(".action-btn.delete");
+
+  checkbox?.setAttribute("aria-label", `Select ${name}`);
+  viewButton?.setAttribute("aria-label", `View ${name}`);
+  editButton?.setAttribute("aria-label", `Edit ${name}`);
+  deleteButton?.setAttribute("aria-label", `Delete ${name}`);
+}
+
+function refreshVehicleAfterEdit() {
+  if (typeof updateVehicleStats === "function") {
+    updateVehicleStats();
   }
 
-  // Close Buttons
-  closeBtn?.addEventListener("click", closeModal);
-  cancelBtn?.addEventListener("click", closeModal);
+  if (typeof applyVehicleFilters === "function") {
+    applyVehicleFilters();
+  } else if (typeof refreshVehiclePagination === "function") {
+    refreshVehiclePagination();
+  }
 
-  // Click Outside
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+  if (typeof refreshVehicleBulkState === "function") {
+    refreshVehicleBulkState();
+  }
+}
+
+function initEditVehicleModal() {
+  const modal = document.getElementById("editVehicleModal");
+  const form = document.getElementById("editVehicleForm");
+  const closeButton = document.getElementById("closeEditVehicleModal");
+  const cancelButton = document.getElementById("cancelEditVehicle");
+
+  if (!modal || !form || modal.dataset.editVehicleModalInitialized === "true") {
+    return;
+  }
+
+  modal.dataset.editVehicleModalInitialized = "true";
+
+  document.addEventListener("click", (event) => {
+    if (!event.target || typeof event.target.closest !== "function") return;
+
+    const editButton = event.target.closest(".action-btn.edit");
+
+    if (!editButton) return;
+
+    const row = editButton.closest("tr");
+
+    if (!row) return;
+
+    populateEditVehicleModal(modal, row);
+    openEditVehicleModal(modal);
   });
 
-  // ESC
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("show")) {
-      closeModal();
+  closeButton?.addEventListener("click", () => closeEditVehicleModal(modal));
+  cancelButton?.addEventListener("click", () => closeEditVehicleModal(modal));
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeEditVehicleModal(modal);
     }
   });
 
-  /* ===============================
-      CLICK EDIT BUTTON
-  =============================== */
-
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".action-btn.edit");
-
-    if (!btn) return;
-
-    const row = btn.closest("tr");
-
-    // Save row para magamit mamaya sa Save Changes
-    modal.currentRow = row;
-
-    const name = row.querySelector(".vehicle-name")?.textContent.trim() || "";
-
-    const fuel =
-      row.querySelector(".fuel-progress span")?.textContent.trim() || "100%";
-
-    const plate = row.children[2].textContent.trim();
-
-    const type = row.children[3].textContent.trim();
-
-    const driver =
-      row.querySelector(".driver-info span")?.textContent.trim() || "";
-
-    const status = row.querySelector(".status-badge")?.textContent.trim() || "";
-
-    // Fill Form
-    document.getElementById("editVehicleName").value = name;
-
-    document.getElementById("editVehiclePlate").value = plate;
-
-    document.getElementById("editVehicleType").value = type;
-
-    document.getElementById("editVehicleDriver").value = driver;
-
-    document.getElementById("editVehicleStatus").value = status;
-
-    // Optional lang muna dahil wala pang fuel column sa row
-    document.getElementById("editVehicleFuel").value = "Diesel";
-
-    openModal();
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("show")) {
+      closeEditVehicleModal(modal);
+    }
   });
-  const form = document.getElementById("editVehicleForm");
 
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     const row = modal.currentRow;
 
     if (!row) return;
 
-    const name = document.getElementById("editVehicleName").value;
+    const name = document.getElementById("editVehicleName")?.value.trim() || "";
+    const plate = document.getElementById("editVehiclePlate")?.value.trim() || "";
+    const type = document.getElementById("editVehicleType")?.value || "";
+    const driver = document.getElementById("editVehicleDriver")?.value || "";
+    const fuelType = document.getElementById("editVehicleFuel")?.value || "";
+    const status = document.getElementById("editVehicleStatus")?.value || "";
+    const notes = document.getElementById("editVehicleNotes")?.value.trim() || "";
+    const nameElement = row.querySelector(".vehicle-name");
+    const subtitleElement = row.querySelector(".vehicle-info small");
+    const driverElement = row.querySelector(".driver-info span");
+    const driverAvatar = row.querySelector(".driver-avatar");
+    const statusBadge = row.querySelector(".status-badge");
 
-    const plate = document.getElementById("editVehiclePlate").value;
-
-    const type = document.getElementById("editVehicleType").value;
-
-    const driver = document.getElementById("editVehicleDriver").value;
-
-    const status = document.getElementById("editVehicleStatus").value;
-
-    // Vehicle Name
-    row.querySelector(".vehicle-name").textContent = name;
-
-    // Subtitle
-    row.querySelector(".vehicle-info small").textContent = type;
-
-    // Plate
-    row.children[2].textContent = plate;
-
-    // Type
-    row.children[3].textContent = type;
-
-    // Driver
-    row.querySelector(".driver-info span").textContent = driver;
-
-    row.querySelector(".driver-avatar").textContent = driver
-      .substring(0, 2)
-      .toUpperCase();
-
-    // Status
-    const badge = row.querySelector(".status-badge");
-
-    badge.textContent = status;
-
-    badge.className = "status-badge";
-
-    switch (status.toLowerCase()) {
-      case "available":
-        badge.classList.add("available");
-        break;
-
-      case "maintenance":
-        badge.classList.add("maintenance");
-        break;
-
-      case "on trip":
-      case "ontrip":
-        badge.classList.add("trip");
-        break;
-
-      case "out of service":
-        badge.classList.add("out");
-        break;
+    if (nameElement) {
+      nameElement.textContent = name;
     }
 
-    closeModal();
+    if (subtitleElement) {
+      subtitleElement.textContent = type;
+    }
 
-    updateVehicleStats();
+    if (row.children[2]) {
+      row.children[2].textContent = plate;
+    }
 
-    if (typeof showToast === "function") {
-      showToast("Vehicle updated successfully.", "success");
+    if (row.children[3]) {
+      row.children[3].textContent = type;
+    }
+
+    if (driverElement) {
+      driverElement.textContent = driver;
+    }
+
+    if (driverAvatar) {
+      driverAvatar.textContent = driver.substring(0, 2).toUpperCase();
+    }
+
+    if (statusBadge) {
+      const statusClass =
+        typeof getVehicleStatusClass === "function"
+          ? getVehicleStatusClass(status)
+          : "out";
+
+      statusBadge.textContent = status;
+      statusBadge.className = `status-badge ${statusClass}`;
+    }
+
+    row.dataset.fuelType = fuelType;
+    row.dataset.notes = notes;
+    updateVehicleActionLabels(row, name);
+    refreshVehicleAfterEdit();
+
+    form.reset();
+    closeEditVehicleModal(modal);
+
+    if (typeof window.showToast === "function") {
+      window.showToast("Vehicle updated successfully.", "success");
     }
   });
 }

@@ -28,3 +28,6 @@ temp/
 
 # Windows
 Desktop.ini
+
+# Continue local configuration and API keys
+.continue/

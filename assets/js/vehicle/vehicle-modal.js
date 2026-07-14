@@ -2,47 +2,48 @@
    Vehicle Modal
 ========================================== */
 
-function initVehicleModal() {
-  const modal = document.getElementById("vehicleModal");
-
+function openVehicleModal(modal) {
   if (!modal) return;
 
-  const openBtn = document.getElementById("addVehicleBtn");
-  const closeBtn = document.getElementById("closeVehicleModal");
-  const cancelBtn = modal.querySelector(".btn-outline");
-
-  function openModal() {
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
+  if (!modal.classList.contains("show")) {
+    modal.dataset.previousBodyOverflow = document.body.style.overflow;
   }
 
-  function closeModal() {
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-  }
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
 
-  if (openBtn) {
-    openBtn.addEventListener("click", openModal);
-  }
+function closeVehicleModal(modal) {
+  if (!modal || !modal.classList.contains("show")) return;
 
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeModal);
-  }
+  modal.classList.remove("show");
+  document.body.style.overflow = modal.dataset.previousBodyOverflow || "";
+  delete modal.dataset.previousBodyOverflow;
+}
 
-  if (cancelBtn) {
-    cancelBtn.addEventListener("click", closeModal);
-  }
+function initVehicleModal() {
+  const modal = document.getElementById("vehicleModal");
+  const openButton = document.getElementById("addVehicleBtn");
+  const closeButton = document.getElementById("closeVehicleModal");
+  const cancelButton = document.getElementById("cancelVehicleModal");
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeModal();
+  if (!modal || modal.dataset.vehicleModalInitialized === "true") return;
+
+  modal.dataset.vehicleModalInitialized = "true";
+
+  openButton?.addEventListener("click", () => openVehicleModal(modal));
+  closeButton?.addEventListener("click", () => closeVehicleModal(modal));
+  cancelButton?.addEventListener("click", () => closeVehicleModal(modal));
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeVehicleModal(modal);
     }
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("show")) {
-      closeModal();
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("show")) {
+      closeVehicleModal(modal);
     }
   });
 }
-

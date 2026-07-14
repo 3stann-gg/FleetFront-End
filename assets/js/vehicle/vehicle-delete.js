@@ -2,105 +2,100 @@
    Delete Vehicle Modal
 ========================================== */
 
+function openDeleteVehicleModal(modal) {
+  if (!modal.classList.contains("show")) {
+    modal.dataset.previousBodyOverflow = document.body.style.overflow;
+  }
+
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDeleteVehicleModal(modal) {
+  if (!modal.classList.contains("show")) return;
+
+  modal.classList.remove("show");
+  document.body.style.overflow = modal.dataset.previousBodyOverflow || "";
+  delete modal.dataset.previousBodyOverflow;
+  modal.currentRow = null;
+}
+
+function refreshVehicleAfterDelete() {
+  if (typeof updateVehicleStats === "function") {
+    updateVehicleStats();
+  }
+
+  if (typeof applyVehicleFilters === "function") {
+    applyVehicleFilters();
+  } else if (typeof refreshVehiclePagination === "function") {
+    refreshVehiclePagination();
+  }
+
+  if (typeof refreshVehicleBulkState === "function") {
+    refreshVehicleBulkState();
+  }
+}
+
 function initDeleteVehicleModal() {
   const modal = document.getElementById("deleteVehicleModal");
+  const cancelButton = document.getElementById("cancelDeleteVehicle");
+  const confirmButton = document.getElementById("confirmDeleteVehicle");
+  const vehicleNameElement = document.getElementById("deleteVehicleName");
 
-  if (!modal) return;
-
-  const cancelBtn = document.getElementById("cancelDeleteVehicle");
-  const confirmBtn = document.getElementById("confirmDeleteVehicle");
-
-  let selectedRow = null;
-
-  function openModal() {
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
+  if (!modal || modal.dataset.deleteVehicleModalInitialized === "true") {
+    return;
   }
 
-  function closeModal() {
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-    selectedRow = null;
-  }
+  modal.dataset.deleteVehicleModalInitialized = "true";
 
-  /* ==========================
-      CLICK DELETE BUTTON
-  ========================== */
+  document.addEventListener("click", (event) => {
+    if (!event.target || typeof event.target.closest !== "function") return;
 
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".action-btn.delete");
+    const deleteButton = event.target.closest(".action-btn.delete");
 
-    if (!btn) return;
+    if (!deleteButton) return;
 
-    selectedRow = btn.closest("tr");
+    const row = deleteButton.closest("tr");
 
-    const vehicleName =
-      selectedRow.querySelector(".vehicle-name")?.textContent.trim() ||
+    if (!row) return;
+
+    const name = row.querySelector(".vehicle-name")?.textContent.trim() ||
       "this vehicle";
 
-    modal.querySelector("strong").textContent = vehicleName;
+    modal.currentRow = row;
 
-    openModal();
+    if (vehicleNameElement) {
+      vehicleNameElement.textContent = name;
+    }
+
+    openDeleteVehicleModal(modal);
   });
 
-  /* ==========================
-      CANCEL
-  ========================== */
+  cancelButton?.addEventListener("click", () => closeDeleteVehicleModal(modal));
 
-  cancelBtn?.addEventListener("click", closeModal);
+  confirmButton?.addEventListener("click", () => {
+    const row = modal.currentRow;
 
-  /* ==========================
-      CONFIRM DELETE
-  ========================== */
+    if (!row) return;
 
-  confirmBtn?.addEventListener("click", () => {
-    if (!selectedRow) return;
+    row.remove();
+    closeDeleteVehicleModal(modal);
+    refreshVehicleAfterDelete();
 
-    selectedRow.remove();
-
-    /* Update Dashboard Cards */
-    if (typeof updateVehicleStats === "function") {
-      updateVehicleStats();
-    }
-
-    /* Refresh Pagination */
-    if (typeof initVehiclePagination === "function") {
-      initVehiclePagination();
-    }
-
-    /* Refresh Bulk Toolbar */
-    if (typeof initBulkActions === "function") {
-      initBulkActions();
-    }
-
-    closeModal();
-
-    if (typeof initVehiclePagination === "function") {
-      initVehiclePagination();
-    }
-
-    if (typeof showToast === "function") {
-      showToast("Vehicle deleted successfully.", "success");
+    if (typeof window.showToast === "function") {
+      window.showToast("Vehicle deleted successfully.", "success");
     }
   });
 
-  /* ==========================
-      CLICK OUTSIDE
-  ========================== */
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeModal();
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeDeleteVehicleModal(modal);
     }
   });
 
-  /* ==========================
-      ESC
-  ========================== */
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.classList.contains("show")) {
-      closeModal();
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("show")) {
+      closeDeleteVehicleModal(modal);
     }
   });
 }
