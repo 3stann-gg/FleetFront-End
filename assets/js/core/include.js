@@ -85,6 +85,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("add-reservation-modal")) {
+    await loadComponent(
+      "add-reservation-modal",
+      "../components/reservation/add-reservation-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -177,6 +184,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("delete-driver-modal")) {
     if (typeof initDeleteDriverModal === "function") {
       initDeleteDriverModal();
+    }
+  }
+
+  if (document.getElementById("add-reservation-modal")) {
+    if (typeof initReservationModal === "function") {
+      initReservationModal();
+    }
+    if (typeof initReservationAdd === "function") {
+      initReservationAdd();
     }
   }
 
