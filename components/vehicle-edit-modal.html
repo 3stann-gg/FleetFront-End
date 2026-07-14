@@ -12,48 +12,68 @@
     </div>
 
     <div class="modal-body">
-      <form class="vehicle-form">
+      <form class="vehicle-form" id="editVehicleForm">
         <div class="form-grid">
           <div class="form-group">
             <label>Vehicle Name</label>
-            <input type="text" value="Ambulance 01" />
+            <input
+              type="text"
+              id="editVehicleName"
+              placeholder="Vehicle Name"
+            />
           </div>
 
           <div class="form-group">
             <label>Plate Number</label>
-            <input type="text" value="ABC-1234" />
+            <input
+              type="text"
+              id="editVehiclePlate"
+              placeholder="Plate Number"
+            />
           </div>
 
           <div class="form-group">
             <label>Vehicle Type</label>
-            <select>
-              <option selected>Ambulance</option>
-              <option>Van</option>
-              <option>SUV</option>
+            <select id="editVehicleType">
+              <option value="">Select Vehicle Type</option>
+              <option>Ambulance</option>
+              <option>Patient Van</option>
               <option>Service Vehicle</option>
+              <option>SUV</option>
+              <option>Motorcycle</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Assigned Driver</label>
-            <input type="text" value="Juan Dela Cruz" />
+            <select id="editVehicleDriver">
+              <option value="">Select Driver</option>
+              <option>Juan Dela Cruz</option>
+              <option>Pedro Santos</option>
+              <option>Maria Reyes</option>
+              <option>Carlos Mendoza</option>
+            </select>
           </div>
 
           <div class="form-group">
             <label>Fuel Type</label>
-            <select>
-              <option selected>Diesel</option>
+            <select id="editVehicleFuel">
+              <option value="">Select Fuel Type</option>
+              <option>Diesel</option>
               <option>Gasoline</option>
               <option>Electric</option>
+              <option>Hybrid</option>
             </select>
           </div>
 
           <div class="form-group">
             <label>Status</label>
-            <select>
-              <option selected>Available</option>
+            <select id="editVehicleStatus">
+              <option value="">Select Status</option>
+              <option>Available</option>
               <option>On Trip</option>
               <option>Maintenance</option>
+              <option>Out of Service</option>
             </select>
           </div>
         </div>
@@ -61,7 +81,11 @@
         <div class="form-group">
           <label>Notes</label>
 
-          <textarea rows="4">Emergency Response Vehicle</textarea>
+          <textarea
+            id="editVehicleNotes"
+            rows="4"
+            placeholder="Additional notes..."
+          ></textarea>
         </div>
 
         <div class="modal-footer">
@@ -69,7 +93,7 @@
             Cancel
           </button>
 
-          <button type="submit" class="btn-primary">
+          <button type="submit" id="updateVehicleBtn" class="btn-primary">
             <i class="ph ph-floppy-disk"></i>
             Update Vehicle
           </button>

@@ -100,5 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (typeof initVehicleAdd === "function") {
     initVehicleAdd();
   }
+  if (typeof updateVehicleStats === "function") {
+    updateVehicleStats();
+  }
 });
-

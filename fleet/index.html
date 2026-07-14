@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="stat-content">
-                  <h3>24</h3>
+                  <h3 id="totalVehicles">0</h3>
 
                   <p>Total Fleet</p>
                 </div>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="stat-content">
-                  <h3>18</h3>
+                  <h3 id="availableVehicles">0</h3>
 
                   <p>Available</p>
                 </div>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="stat-content">
-                  <h3>4</h3>
+                  <h3 id="onTripVehicles">0</h3>
 
                   <p>On Trip</p>
                 </div>
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="stat-content">
-                  <h3>2</h3>
+                  <h3 id="maintenanceVehicles">0</h3>
 
                   <p>Maintenance</p>
                 </div>
@@ -152,9 +152,8 @@
               <div>
                 <button class="btn-outline" id="clearSelection">Clear</button>
 
-                <button class="btn-danger" id="deleteSelected">
+                <button id="deleteSelected" class="btn-danger">
                   <i class="ph ph-trash"></i>
-
                   Delete Selected
                 </button>
               </div>
@@ -172,12 +171,7 @@
                   </p>
                 </div>
 
-                <div class="card-actions">
-                  <button class="btn-outline">
-                    <i class="ph ph-funnel"></i>
-                    Filter
-                  </button>
-                </div>
+                <div class="card-actions"></div>
               </div>
 
               <div class="table-responsive">

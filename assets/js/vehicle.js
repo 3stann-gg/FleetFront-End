@@ -113,16 +113,14 @@ function initVehicleImageUpload() {
 
     if (!file) return;
 
-    preview.src = URL.createObjectURL(file);
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
   });
-
-  const uploadBtn = document.getElementById("uploadVehicleImage");
-
-  if (uploadBtn) {
-    uploadBtn.addEventListener("click", () => {
-      input.click();
-    });
-  }
 }
 
 /* ==========================================
@@ -147,6 +145,12 @@ function initVehicleAdd() {
 
     const status = document.getElementById("vehicleStatus").value;
 
+    const preview = document.getElementById("vehiclePreview");
+
+    const imageInput = document.getElementById("vehicleImage");
+
+    let imageSrc = preview.src;
+
     const row = document.createElement("tr");
 
     row.innerHTML = `
@@ -164,8 +168,9 @@ function initVehicleAdd() {
         <div class="vehicle-info">
 
             <img
-            class="vehicle-photo"
-            src="../assets/images/default-vehicle.png">
+class="vehicle-photo"
+src="${imageSrc}"
+alt="Vehicle">
 
             <div>
 
@@ -212,42 +217,60 @@ function initVehicleAdd() {
     </td>
 
     <td>
+    <div class="fuel-progress">
 
-        ${new Date().toLocaleDateString()}
+        <div class="fuel-progress-bar">
 
-    </td>
-
-    <td>
-
-        <div class="action-buttons">
-
-            <button class="action-btn view">
-
-                <i class="ph ph-eye"></i>
-
-            </button>
-
-            <button class="action-btn edit">
-
-                <i class="ph ph-pencil-simple"></i>
-
-            </button>
-
-            <button class="action-btn delete">
-
-                <i class="ph ph-trash"></i>
-
-            </button>
+            <div
+                class="fuel-progress-fill"
+                style="width:80%">
+            </div>
 
         </div>
 
-    </td>
+        <span>80%</span>
+
+    </div>
+</td>
+
+<td>
+    ${new Date().toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })}
+</td>
+
+<td>
+
+    <div class="action-buttons">
+
+        <button class="action-btn view">
+            <i class="ph ph-eye"></i>
+        </button>
+
+        <button class="action-btn edit">
+            <i class="ph ph-pencil-simple"></i>
+        </button>
+
+        <button class="action-btn delete">
+            <i class="ph ph-trash"></i>
+        </button>
+
+    </div>
+
+</td> 
 
     `;
 
     tbody.prepend(row);
 
+    updateVehicleStats();
+
     form.reset();
+
+    preview.src = "../assets/images/default-vehicle.png";
+    imageInput.value = "";
 
     document.getElementById("vehicleModal").classList.remove("show");
 
@@ -263,6 +286,78 @@ function initVehicleAdd() {
 
     showToast("Vehicle added successfully.", "success");
   });
+}
+function initBulkActions() {
+  const selectAll = document.getElementById("selectAllVehicles");
+
+  const toolbar = document.getElementById("bulkToolbar");
+
+  const selectedCount = document.getElementById("selectedCount");
+
+  const clearBtn = document.getElementById("clearSelection");
+
+  const deleteBtn = document.getElementById("deleteSelected");
+
+  if (!selectAll || !toolbar || !deleteBtn) return;
+
+  function updateToolbar() {
+    const checkboxes = document.querySelectorAll(".vehicle-checkbox");
+
+    const checked = document.querySelectorAll(".vehicle-checkbox:checked");
+
+    selectedCount.textContent = `${checked.length} vehicle${checked.length !== 1 ? "s" : ""} selected`;
+
+    toolbar.classList.toggle("show", checked.length > 0);
+
+    selectAll.checked =
+      checkboxes.length > 0 && checked.length === checkboxes.length;
+  }
+
+  selectAll.addEventListener("change", () => {
+    document.querySelectorAll(".vehicle-checkbox").forEach((cb) => {
+      cb.checked = selectAll.checked;
+    });
+
+    updateToolbar();
+  });
+
+  document.addEventListener("change", (e) => {
+    if (e.target.classList.contains("vehicle-checkbox")) {
+      updateToolbar();
+    }
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    selectAll.checked = false;
+
+    document.querySelectorAll(".vehicle-checkbox").forEach((cb) => {
+      cb.checked = false;
+    });
+
+    updateToolbar();
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    const checked = document.querySelectorAll(".vehicle-checkbox:checked");
+
+    if (!checked.length) return;
+
+    checked.forEach((cb) => {
+      cb.closest("tr").remove();
+    });
+
+    updateVehicleStats();
+
+    updateToolbar();
+
+    if (typeof initVehiclePagination === "function") {
+      initVehiclePagination();
+    }
+
+    showToast("Vehicle(s) deleted successfully.", "success");
+  });
+
+  updateToolbar();
 }
 /* ==========================================
    Vehicle Search & Filters
@@ -406,63 +501,6 @@ function initVehiclePagination() {
 }
 
 /* ==========================================
-   Bulk Actions
-========================================== */
-
-function initBulkActions() {
-  const selectAll = document.getElementById("selectAllVehicles");
-
-  const toolbar = document.getElementById("bulkToolbar");
-
-  const selectedCount = document.getElementById("selectedCount");
-
-  const clearBtn = document.getElementById("clearSelection");
-
-  if (!selectAll || !toolbar) return;
-
-  function update() {
-    const checkboxes = document.querySelectorAll(".vehicle-checkbox");
-
-    const checked = document.querySelectorAll(".vehicle-checkbox:checked");
-
-    selectedCount.textContent = `${checked.length} vehicle${checked.length === 1 ? "" : "s"} selected`;
-
-    toolbar.classList.toggle("show", checked.length > 0);
-
-    selectAll.checked =
-      checked.length === checkboxes.length && checkboxes.length > 0;
-  }
-
-  selectAll.addEventListener("change", () => {
-    document
-      .querySelectorAll(".vehicle-checkbox")
-      .forEach((cb) => (cb.checked = selectAll.checked));
-
-    update();
-  });
-
-  document.addEventListener("change", (e) => {
-    if (e.target.classList.contains("vehicle-checkbox")) {
-      update();
-    }
-  });
-
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      selectAll.checked = false;
-
-      document
-        .querySelectorAll(".vehicle-checkbox")
-        .forEach((cb) => (cb.checked = false));
-
-      update();
-    });
-  }
-
-  update();
-}
-
-/* ==========================================
    Sorting
 ========================================== */
 
@@ -600,4 +638,49 @@ function initVehiclePrint() {
 
     showToast("Preparing document...", "success");
   });
+}
+/* ==========================================
+   Dashboard Statistics
+========================================== */
+
+function updateVehicleStats() {
+  const rows = document.querySelectorAll("#vehicleTableBody tr");
+
+  let total = 0;
+  let available = 0;
+  let trip = 0;
+  let maintenance = 0;
+
+  rows.forEach((row) => {
+    if (row.style.display === "none") return;
+
+    total++;
+
+    const status =
+      row.querySelector(".status-badge")?.textContent.trim().toLowerCase() ||
+      "";
+
+    switch (status) {
+      case "available":
+        available++;
+        break;
+
+      case "on trip":
+      case "ontrip":
+        trip++;
+        break;
+
+      case "maintenance":
+        maintenance++;
+        break;
+    }
+  });
+
+  document.getElementById("totalVehicles").textContent = total;
+
+  document.getElementById("availableVehicles").textContent = available;
+
+  document.getElementById("onTripVehicles").textContent = trip;
+
+  document.getElementById("maintenanceVehicles").textContent = maintenance;
 }
