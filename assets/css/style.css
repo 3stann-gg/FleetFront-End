@@ -44,3 +44,9 @@
 @import url("./pages/route-planning.css");
 @import url("./pages/reports.css");
 @import url("./pages/profile.css");
+
+/* ==========================================
+   RESPONSIVE OVERRIDES
+========================================== */
+
+@import url("./base/responsive.css");

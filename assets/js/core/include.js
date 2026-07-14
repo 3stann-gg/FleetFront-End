@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   await loadComponent("navbar", "../components/shared/navbar.html");
 
+  if (typeof initResponsiveNavigation === "function") {
+    initResponsiveNavigation();
+  }
+
   if (document.getElementById("vehicle-modal")) {
     await loadComponent("vehicle-modal", "../components/vehicle/add-vehicle-modal.html");
   }
