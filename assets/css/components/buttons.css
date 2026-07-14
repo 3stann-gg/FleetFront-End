@@ -94,3 +94,80 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.btn-filter {
+  border: none;
+
+  background: #f3f4f6;
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.table-btn {
+  border: none;
+  background: #00a86b;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.table-btn:hover {
+  opacity: 0.9;
+}
+
+/* Button */
+
+.btn-primary {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+
+  background: #00a86b;
+
+  color: #fff;
+
+  padding: 14px 22px;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 168, 107, 0.25);
+}
+
+.btn-outline {
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}

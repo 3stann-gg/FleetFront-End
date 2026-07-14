@@ -1,0 +1,64 @@
+
+/* ==========================================
+   Fleet Table
+========================================== */
+
+.fleet-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fleet-table th {
+  text-align: left;
+  padding: 14px;
+  color: #6b7280;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.fleet-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.fleet-table tbody tr {
+  transition: 0.25s;
+}
+
+.fleet-table tbody tr:hover {
+  background: #f8fafc;
+}
+/* ==========================================
+   Sortable Table
+========================================== */
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.sortable:hover {
+  color: #00a86b;
+}
+
+.sort-icon {
+  margin-left: 8px;
+
+  font-size: 14px;
+
+  opacity: 0.45;
+
+  transition: 0.25s;
+}
+
+.sortable.active {
+  color: #00a86b;
+
+  font-weight: 600;
+}
+
+.sortable.active .sort-icon {
+  opacity: 1;
+}

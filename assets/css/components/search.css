@@ -1,0 +1,48 @@
+.search-box {
+  width: 420px;
+
+  height: 46px;
+
+  background: #f9fafb;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 18px;
+
+  gap: 12px;
+}
+
+.search-box input {
+  border: none;
+
+  background: none;
+
+  outline: none;
+
+  width: 100%;
+}
+
+.search-box {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 48px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+}

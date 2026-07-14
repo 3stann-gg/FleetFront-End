@@ -7,37 +7,18 @@
 
 *,
 *::before,
-*::after{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-/* HTML */
-
-html{
-    scroll-behavior:smooth;
-    font-size:16px;
-}
-
-/* Body */
-
-body{
-    min-height:100vh;
-    font-family:var(--font-family);
-    background:var(--color-background);
-    color:var(--color-text-primary);
-    line-height:1.6;
-    overflow-x:hidden;
-    text-rendering:optimizeLegibility;
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Images */
 
 img,
-picture{
-    display:block;
-    max-width:100%;
+picture {
+  display: block;
+  max-width: 100%;
 }
 
 /* Inputs */
@@ -45,73 +26,36 @@ picture{
 input,
 button,
 textarea,
-select{
-    font:inherit;
+select {
+  font: inherit;
 }
 
 /* Buttons */
 
-button{
-    border:none;
-    outline:none;
-    background:none;
-    cursor:pointer;
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
 }
 
 /* Links */
 
-a{
-    color:inherit;
-    text-decoration:none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Lists */
 
 ul,
-ol{
-    list-style:none;
+ol {
+  list-style: none;
 }
 
 /* Tables */
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-/* Headings */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6{
-    font-weight:600;
-    line-height:1.2;
-}
-
-/* Paragraph */
-
-p{
-    color:var(--color-text-secondary);
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#edf2f7;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--color-primary);
-    border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:var(--color-primary-dark);
+table {
+  width: 100%;
+  border-collapse: collapse;
 }

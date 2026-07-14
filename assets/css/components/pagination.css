@@ -1,0 +1,41 @@
+
+.table-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+
+  gap: 10px;
+}
+
+.pagination button {
+  width: 38px;
+
+  height: 38px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+}
+
+.pagination button.active {
+  background: #00a86b;
+
+  color: white;
+}
+.pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}

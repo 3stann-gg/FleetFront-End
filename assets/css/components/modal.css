@@ -58,9 +58,6 @@
   display: flex;
 }
 
-.modal-overlay.show {
-  display: flex;
-}
 .modal-close {
   width: 42px;
   height: 42px;
@@ -186,77 +183,4 @@
   justify-content: center;
 
   border-radius: 12px;
-}
-/* ==========================================
-   Toast Notification
-========================================== */
-
-.toast-container {
-  position: fixed;
-  top: 90px;
-  right: 30px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  z-index: 9999;
-}
-
-.toast-message {
-  min-width: 320px;
-
-  padding: 16px 18px;
-
-  border-radius: 14px;
-
-  background: white;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  transform: translateX(120%);
-
-  opacity: 0;
-
-  transition: 0.35s;
-}
-
-.toast-message.show {
-  transform: translateX(0);
-
-  opacity: 1;
-}
-
-.toast-message.success {
-  border-left: 5px solid #10b981;
-}
-
-.toast-message.error {
-  border-left: 5px solid #ef4444;
-}
-
-.toast-message.warning {
-  border-left: 5px solid #f59e0b;
-}
-
-.toast-message i {
-  font-size: 24px;
-}
-
-.toast-message.success i {
-  color: #10b981;
-}
-
-.toast-message.error i {
-  color: #ef4444;
-}
-
-.toast-message.warning i {
-  color: #f59e0b;
 }

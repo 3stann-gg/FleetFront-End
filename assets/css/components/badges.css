@@ -1,0 +1,61 @@
+
+.badge-green {
+  background: #e8f8f2;
+
+  color: #00a86b;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.trip {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.maintenance {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge.trip {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status-badge.maintenance {
+  background: #fee2e2;
+  color: #dc2626;
+}
