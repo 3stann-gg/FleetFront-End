@@ -11,6 +11,11 @@ async function loadComponent(id, file) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadComponent("sidebar", "../components/shared/sidebar.html");
+
+  if (document.body.dataset.page === "driver" && typeof initializePage === "function") {
+    initializePage();
+  }
+
   await loadComponent("navbar", "../components/shared/navbar.html");
 
   if (document.getElementById("vehicle-modal")) {
@@ -35,6 +40,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponent(
       "delete-vehicle-modal",
       "../components/vehicle/delete-vehicle-modal.html",
+    );
+  }
+
+  if (document.getElementById("add-driver-modal")) {
+    await loadComponent(
+      "add-driver-modal",
+      "../components/driver/add-driver-modal.html",
+    );
+  }
+
+  if (document.getElementById("view-driver-modal")) {
+    await loadComponent(
+      "view-driver-modal",
+      "../components/driver/view-driver-modal.html",
+    );
+  }
+
+  if (document.getElementById("edit-driver-modal")) {
+    await loadComponent(
+      "edit-driver-modal",
+      "../components/driver/edit-driver-modal.html",
+    );
+  }
+
+  if (document.getElementById("delete-driver-modal")) {
+    await loadComponent(
+      "delete-driver-modal",
+      "../components/driver/delete-driver-modal.html",
     );
   }
 
@@ -102,5 +135,62 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   if (typeof updateVehicleStats === "function") {
     updateVehicleStats();
+  }
+
+  if (document.getElementById("add-driver-modal")) {
+    if (typeof initDriverModal === "function") {
+      initDriverModal();
+    }
+    if (typeof initDriverForm === "function") {
+      initDriverForm();
+    }
+    if (typeof initDriverImageUpload === "function") {
+      initDriverImageUpload();
+    }
+    if (typeof initDriverAdd === "function") {
+      initDriverAdd();
+    }
+  }
+
+  if (document.getElementById("view-driver-modal")) {
+    if (typeof initViewDriverModal === "function") {
+      initViewDriverModal();
+    }
+  }
+
+  if (document.getElementById("edit-driver-modal")) {
+    if (typeof initEditDriverModal === "function") {
+      initEditDriverModal();
+    }
+  }
+
+  if (document.getElementById("delete-driver-modal")) {
+    if (typeof initDeleteDriverModal === "function") {
+      initDeleteDriverModal();
+    }
+  }
+
+  if (document.getElementById("driverTableBody")) {
+    if (typeof initDriverSearch === "function") {
+      initDriverSearch();
+    }
+    if (typeof initDriverPagination === "function") {
+      initDriverPagination();
+    }
+    if (typeof initDriverBulkActions === "function") {
+      initDriverBulkActions();
+    }
+    if (typeof updateDriverStats === "function") {
+      updateDriverStats();
+    }
+    if (typeof initDriverExport === "function") {
+      initDriverExport();
+    }
+    if (typeof initDriverPDFExport === "function") {
+      initDriverPDFExport();
+    }
+    if (typeof initDriverPrint === "function") {
+      initDriverPrint();
+    }
   }
 });
