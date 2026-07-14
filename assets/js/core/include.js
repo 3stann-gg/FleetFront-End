@@ -10,37 +10,37 @@ async function loadComponent(id, file) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadComponent("sidebar", "../components/sidebar.html");
-  await loadComponent("navbar", "../components/navbar.html");
+  await loadComponent("sidebar", "../components/shared/sidebar.html");
+  await loadComponent("navbar", "../components/shared/navbar.html");
 
   if (document.getElementById("vehicle-modal")) {
-    await loadComponent("vehicle-modal", "../components/vehicle-modal.html");
+    await loadComponent("vehicle-modal", "../components/vehicle/add-vehicle-modal.html");
   }
 
   if (document.getElementById("view-vehicle-modal")) {
     await loadComponent(
       "view-vehicle-modal",
-      "../components/vehicle-view-modal.html",
+      "../components/vehicle/view-vehicle-modal.html",
     );
   }
 
   if (document.getElementById("edit-vehicle-modal")) {
     await loadComponent(
       "edit-vehicle-modal",
-      "../components/vehicle-edit-modal.html",
+      "../components/vehicle/edit-vehicle-modal.html",
     );
   }
 
   if (document.getElementById("delete-vehicle-modal")) {
     await loadComponent(
       "delete-vehicle-modal",
-      "../components/vehicle-delete-modal.html",
+      "../components/vehicle/delete-vehicle-modal.html",
     );
   }
 
   /* Toast Component */
   if (document.getElementById("toast")) {
-    await loadComponent("toast", "../components/toast.html");
+    await loadComponent("toast", "../components/shared/toast.html");
   }
 
   /* Initialize Modules */
