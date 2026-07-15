@@ -113,6 +113,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("add-dispatch-modal")) {
+    await loadComponent(
+      "add-dispatch-modal",
+      "../components/dispatch/add-dispatch-modal.html",
+    );
+  }
+
+  if (document.getElementById("view-dispatch-modal")) {
+    await loadComponent(
+      "view-dispatch-modal",
+      "../components/dispatch/view-dispatch-modal.html",
+    );
+  }
+
+  if (document.getElementById("edit-dispatch-modal")) {
+    await loadComponent(
+      "edit-dispatch-modal",
+      "../components/dispatch/edit-dispatch-modal.html",
+    );
+  }
+
+  if (document.getElementById("delete-dispatch-modal")) {
+    await loadComponent(
+      "delete-dispatch-modal",
+      "../components/dispatch/delete-dispatch-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -232,6 +260,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("delete-reservation-modal")) {
     if (typeof initDeleteReservationModal === "function") {
       initDeleteReservationModal();
+    }
+  }
+
+  if (document.getElementById("add-dispatch-modal")) {
+    if (typeof initDispatchModal === "function") {
+      initDispatchModal();
+    }
+  }
+
+  if (document.getElementById("view-dispatch-modal")) {
+    if (typeof initViewDispatchModal === "function") {
+      initViewDispatchModal();
+    }
+  }
+
+  if (document.getElementById("edit-dispatch-modal")) {
+    if (typeof initEditDispatchModal === "function") {
+      initEditDispatchModal();
+    }
+  }
+
+  if (document.getElementById("delete-dispatch-modal")) {
+    if (typeof initDeleteDispatchModal === "function") {
+      initDeleteDispatchModal();
     }
   }
 

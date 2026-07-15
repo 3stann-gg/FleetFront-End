@@ -1,0 +1,111 @@
+<div
+  id="viewDispatchModal"
+  class="modal-overlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="viewDispatchModalTitle"
+  aria-describedby="viewDispatchModalDescription"
+>
+  <div class="custom-modal">
+    <div class="modal-header">
+      <div>
+        <h2 id="viewDispatchModalTitle">Dispatch Details</h2>
+
+        <p id="viewDispatchModalDescription">
+          View complete hospital transport dispatch information.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="modal-close"
+        id="closeViewDispatchModal"
+        aria-label="Close dispatch details"
+      >
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="details-summary">
+        <div class="detail-item">
+          <label>Dispatch Number</label>
+          <p id="viewDispatchNumber"></p>
+        </div>
+
+        <div class="detail-item">
+          <label>Reservation Number</label>
+          <p id="viewDispatchReservation"></p>
+        </div>
+
+        <div class="detail-item">
+          <label>Status</label>
+          <p id="viewDispatchStatus"></p>
+        </div>
+      </div>
+
+      <div class="details-grid row g-3">
+        <div class="detail-item col-md-6">
+          <label>Patient Name</label>
+          <p id="viewDispatchPatient"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Request Type</label>
+          <p id="viewDispatchRequestType"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Assigned Vehicle</label>
+          <p id="viewDispatchVehicle"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Assigned Driver</label>
+          <p id="viewDispatchDriver"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Pickup Location</label>
+          <p id="viewDispatchPickup"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Destination</label>
+          <p id="viewDispatchDestination"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Schedule</label>
+          <p id="viewDispatchSchedule"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Priority</label>
+          <p id="viewDispatchPriority"></p>
+        </div>
+
+        <div class="detail-item col-md-6">
+          <label>Contact Number</label>
+          <p id="viewDispatchContact"></p>
+        </div>
+
+        <div class="detail-item col-12">
+          <label>Notes</label>
+          <p id="viewDispatchNotes"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn-outline" id="closeViewDispatchBtn">
+        Close
+      </button>
+
+      <button type="button" class="btn-primary" id="editDispatchFromViewBtn">
+        <i class="ph ph-pencil-simple"></i>
+        Edit Dispatch
+      </button>
+    </div>
+  </div>
+</div>
