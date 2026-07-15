@@ -256,12 +256,12 @@ function initEditReservationModal() {
       })();
 
       const statusClassMap = {
-        Pending: "warning",
-        Approved: "available",
-        Scheduled: "trip",
-        Completed: "success",
-        Rejected: "out",
-        Cancelled: "maintenance",
+        Pending: "pending",
+        Approved: "trip",
+        Scheduled: "scheduled",
+        Completed: "completed",
+        Rejected: "rejected",
+        Cancelled: "cancelled",
       };
 
       const numberEl = row.querySelector(".reservation-number");
@@ -304,6 +304,10 @@ function initEditReservationModal() {
       row.dataset.notes = reservationNotesValue;
       row.dataset.scheduleDate = reservationDateValue;
       row.dataset.scheduleTime = reservationTimeValue;
+
+      if (typeof updateReservationStatistics === "function") {
+        updateReservationStatistics();
+      }
 
       closeEditReservationModal();
 

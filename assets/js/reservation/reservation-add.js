@@ -19,12 +19,12 @@ function createReservationRow(form) {
   const reservationNotes = getVal("reservationNotes");
 
   const statusClassMap = {
-    Pending: "warning",
-    Approved: "available",
-    Scheduled: "trip",
-    Completed: "success",
-    Rejected: "out",
-    Cancelled: "maintenance",
+    Pending: "pending",
+    Approved: "trip",
+    Scheduled: "scheduled",
+    Completed: "completed",
+    Rejected: "rejected",
+    Cancelled: "cancelled",
   };
 
   const scheduleText = (() => {
@@ -184,6 +184,10 @@ function initReservationAdd() {
 
     const row = createReservationRow(form);
     tableBody.prepend(row);
+
+    if (typeof updateReservationStatistics === "function") {
+      updateReservationStatistics();
+    }
 
     form.reset();
 

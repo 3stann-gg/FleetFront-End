@@ -44,6 +44,11 @@ function initDeleteReservationModal() {
     if (!modal.currentRow) return;
 
     modal.currentRow.remove();
+
+    if (typeof updateReservationStatistics === "function") {
+      updateReservationStatistics();
+    }
+
     modal.classList.remove("show");
     document.body.style.overflow = "";
     modal.currentRow = null;

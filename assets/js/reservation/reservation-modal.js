@@ -18,6 +18,7 @@ function closeReservationModal(modal) {
 }
 
 function showReservationFieldError(field, message) {
+  if (!field) return;
   field.classList.add("is-invalid");
   const formGroup = field.closest(".form-group");
   if (formGroup) {
@@ -33,6 +34,7 @@ function showReservationFieldError(field, message) {
 }
 
 function clearReservationFieldError(field) {
+  if (!field) return;
   field.classList.remove("is-invalid");
   const formGroup = field.closest(".form-group");
   if (formGroup) {

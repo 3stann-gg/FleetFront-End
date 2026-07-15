@@ -45,7 +45,7 @@ function initReservationFilters() {
       tableBody.querySelectorAll("tr:not(.reservation-no-results)"),
     );
 
-    let visibleCount = 0;
+    let matchCount = 0;
 
     rows.forEach((row) => {
       const isReal =
@@ -79,18 +79,21 @@ function initReservationFilters() {
       const rowDate = row.dataset.scheduleDate || "";
       const matchesDate = dateValue === "" || rowDate === dateValue;
 
-      if (matchesSearch && matchesStatus && matchesDate) {
-        row.style.display = "";
-        visibleCount++;
-      } else {
-        row.style.display = "none";
+      const matches = matchesSearch && matchesStatus && matchesDate;
+      row.dataset.reservationMatchesFilter = matches ? "true" : "false";
+      if (matches) {
+        matchCount++;
       }
     });
 
-    if (visibleCount === 0) {
+    if (matchCount === 0) {
       addNoResultsRow();
     } else {
       removeNoResultsRow();
+    }
+
+    if (typeof updateReservationPagination === "function") {
+      updateReservationPagination();
     }
   };
 
@@ -107,10 +110,20 @@ function initReservationFilters() {
       tableBody.querySelectorAll("tr:not(.reservation-no-results)"),
     );
     rows.forEach((row) => {
-      row.style.display = "";
+      const isReal =
+        row.querySelector(".reservation-number") ||
+        row.querySelector(".reservation-checkbox");
+      if (!isReal) {
+        return;
+      }
+      row.dataset.reservationMatchesFilter = "true";
     });
 
     removeNoResultsRow();
+
+    if (typeof updateReservationPagination === "function") {
+      updateReservationPagination();
+    }
   });
 }
 
