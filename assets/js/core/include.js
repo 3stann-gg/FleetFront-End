@@ -92,6 +92,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("view-reservation-modal")) {
+    await loadComponent(
+      "view-reservation-modal",
+      "../components/reservation/view-reservation-modal.html",
+    );
+  }
+
+  if (document.getElementById("edit-reservation-modal")) {
+    await loadComponent(
+      "edit-reservation-modal",
+      "../components/reservation/edit-reservation-modal.html",
+    );
+  }
+
+  if (document.getElementById("delete-reservation-modal")) {
+    await loadComponent(
+      "delete-reservation-modal",
+      "../components/reservation/delete-reservation-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -193,6 +214,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     if (typeof initReservationAdd === "function") {
       initReservationAdd();
+    }
+  }
+
+  if (document.getElementById("view-reservation-modal")) {
+    if (typeof initViewReservationModal === "function") {
+      initViewReservationModal();
+    }
+  }
+
+  if (document.getElementById("edit-reservation-modal")) {
+    if (typeof initEditReservationModal === "function") {
+      initEditReservationModal();
+    }
+  }
+
+  if (document.getElementById("delete-reservation-modal")) {
+    if (typeof initDeleteReservationModal === "function") {
+      initDeleteReservationModal();
     }
   }
 
