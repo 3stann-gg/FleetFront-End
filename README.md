@@ -18,6 +18,179 @@ The frontend is developed using HTML, CSS, Bootstrap, and JavaScript, and is str
 
 ---
 
+# 📋 Project Overview
+
+The Fleet & Transportation Management System is a frontend application built for the Hospital Information Management System (HIMS). It provides hospital transport teams with tools to manage vehicles, reservations, and dispatch operations through a clean, responsive, and professional interface. The frontend is structured to be easily migrated into Laravel Blade templates during backend integration.
+
+---
+
+# ✨ Features
+
+- Responsive dashboard with live statistics
+- Vehicle management (create, view, edit, delete, search, filter)
+- Reservation management (create, view, edit, delete, search, filter)
+- Dispatch management (create, view, edit, delete, search, filters, bulk actions, export)
+- Excel, PDF, and print export support
+- Bulk selection and bulk delete
+- Sorting and pagination
+- Mobile-responsive UI
+
+---
+
+# 📊 Current Project Status
+
+| Module | Status |
+|--------|--------|
+| Dashboard | ✅ Completed |
+| Vehicle Management | ✅ Completed |
+| Reservation Management | ✅ Completed |
+| Dispatch Management | ✅ Completed |
+| Maintenance Management | 🚧 In Progress |
+| Fuel Management | ⏳ Upcoming |
+| Route Planning | ⏳ Upcoming |
+| Cost Analysis | ⏳ Upcoming |
+| Reports | ⏳ Upcoming |
+
+---
+
+# ✅ Completed Modules
+
+- Dashboard
+- Vehicle Management
+- Reservation Management
+- Dispatch Management
+
+---
+
+# 🧩 Completed Features by Module
+
+## Dashboard
+
+- Overview cards and live statistics
+- Responsive layout
+
+## Vehicle Management
+
+- Create
+- View
+- Edit
+- Delete
+- Search
+- Filtering
+- Responsive UI
+
+## Reservation Management
+
+- Create
+- View
+- Edit
+- Delete
+- Search
+- Filtering
+- Responsive UI
+
+## Dispatch Management
+
+- Create
+- View
+- Edit
+- Delete
+- Search
+- Status Filter
+- Priority Filter
+- Date Filter
+- Live Statistics
+- Sorting
+- Pagination
+- Excel Export
+- PDF Export
+- Print
+- Bulk Selection
+- Bulk Delete
+- Responsive UI
+- View → Edit integration
+
+---
+
+# 🔜 Upcoming Modules
+
+- Maintenance Management 🚧 (In Progress)
+- Fuel Management
+- Route Planning
+- Cost Analysis
+- Reports
+
+---
+
+# 💻 Tech Stack
+
+## Frontend
+
+- HTML5
+- CSS3
+- Bootstrap 5.3
+- JavaScript (ES6)
+
+## Backend
+
+- Laravel (PHP)
+
+## Database
+
+- MySQL
+
+## Authentication
+
+- Laravel Breeze
+- Session-Based Authentication
+
+## API
+
+- RESTful API
+- Google Maps API
+- Postman (API Testing)
+
+## Version Control
+
+- Git
+- GitHub
+- GitHub Desktop
+
+## Development Environment
+
+- Laragon
+- Vercel (Frontend Deployment)
+
+---
+
+# 🛠️ Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Open the project folder in your preferred code editor.
+
+3. Use a local development server (e.g., Laragon) to serve the static frontend files.
+
+4. Open `index.html` or the relevant module page in your browser.
+
+> Note: This repository contains the frontend only. Backend integration with Laravel is planned.
+
+---
+
+# 📝 Development Notes
+
+- The frontend is structured to be migrated into Laravel Blade templates.
+- No backend features are implemented yet; data handling shown in the UI is frontend-only.
+- Maintenance Management is currently in progress and should not be marked as finished.
+- Follow the existing coding standards, CSS architecture, and naming conventions defined in this README.
+- Use the defined Git commit conventions (`feat:`, `fix:`, `style:`, `refactor:`) for all changes.
+
+---
+
 # 🎯 Objectives
 
 Develop a professional, responsive, and scalable Fleet Management module that supports:
