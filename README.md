@@ -205,13 +205,6 @@ Develop a professional, responsive, and scalable Fleet Management module that su
 
 ---
 
-## Development Environment
-
-- Laragon
-- Vercel (Frontend Deployment)
-
----
-
 # 📁 Project Structure
 
 ```text
