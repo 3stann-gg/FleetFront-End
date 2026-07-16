@@ -39,17 +39,17 @@ The Fleet & Transportation Management System is a frontend application built for
 
 # 📊 Current Project Status
 
-| Module | Status |
-|--------|--------|
-| Dashboard | ✅ Completed |
-| Vehicle Management | ✅ Completed |
-| Reservation Management | ✅ Completed |
-| Dispatch Management | ✅ Completed |
+| Module                 | Status         |
+| ---------------------- | -------------- |
+| Dashboard              | ✅ Completed   |
+| Vehicle Management     | ✅ Completed   |
+| Reservation Management | ✅ Completed   |
+| Dispatch Management    | ✅ Completed   |
 | Maintenance Management | 🚧 In Progress |
-| Fuel Management | ⏳ Upcoming |
-| Route Planning | ⏳ Upcoming |
-| Cost Analysis | ⏳ Upcoming |
-| Reports | ⏳ Upcoming |
+| Fuel Management        | ⏳ Upcoming    |
+| Route Planning         | ⏳ Upcoming    |
+| Cost Analysis          | ⏳ Upcoming    |
+| Reports                | ⏳ Upcoming    |
 
 ---
 
@@ -205,40 +205,6 @@ Develop a professional, responsive, and scalable Fleet Management module that su
 
 ---
 
-# 💻 Tech Stack
-
-## Frontend
-
-- HTML5
-- CSS3
-- Bootstrap 5.3
-- JavaScript (ES6)
-
-## Backend
-
-- Laravel (PHP)
-
-## Database
-
-- MySQL
-
-## Authentication
-
-- Laravel Breeze
-- Session-Based Authentication
-
-## API
-
-- RESTful API
-- Google Maps API
-- Postman (API Testing)
-
-## Version Control
-
-- Git
-- GitHub
-- GitHub Desktop
-
 ## Development Environment
 
 - Laragon
@@ -306,26 +272,26 @@ Responsive
 
 ## Primary Colors
 
-| Name | Hex |
-|------|------|
-| Primary | #00A86B |
+| Name       | Hex     |
+| ---------- | ------- |
+| Primary    | #00A86B |
 | Dark Green | #006D43 |
-| Sidebar | #071E27 |
+| Sidebar    | #071E27 |
 | Background | #F5F5F5 |
-| Card | #FFFFFF |
-| Text | #3D4A41 |
+| Card       | #FFFFFF |
+| Text       | #3D4A41 |
 
 ---
 
 # 📱 Responsive Breakpoints
 
-| Device | Width |
-|---------|-------|
+| Device     | Width  |
+| ---------- | ------ |
 | Desktop XL | 1920px |
-| Desktop | 1440px |
-| Laptop | 1366px |
-| Tablet | 1024px |
-| Mobile | 768px |
+| Desktop    | 1440px |
+| Laptop     | 1366px |
+| Tablet     | 1024px |
+| Mobile     | 768px  |
 
 ---
 
