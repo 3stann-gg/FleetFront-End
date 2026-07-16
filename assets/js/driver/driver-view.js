@@ -101,6 +101,13 @@ function populateViewDriverModal(modal, row) {
     statusBadge.className = "status-badge";
     statusBadge.classList.add(getViewDriverStatusClass(status));
     statusBadge.textContent = status;
+
+    const summaryStatus = modal.querySelector("#viewDriverStatusSummary");
+    if (summaryStatus) {
+      summaryStatus.className = "status-badge";
+      summaryStatus.classList.add(getViewDriverStatusClass(status));
+      summaryStatus.textContent = status;
+    }
   }
 }
 

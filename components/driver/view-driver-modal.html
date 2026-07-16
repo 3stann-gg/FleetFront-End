@@ -41,61 +41,68 @@
     </div>
 
     <div class="modal-body">
-      <div class="details-grid row g-3">
-        <div class="detail-item col-md-6">
-          <label>Employee ID</label>
-          <p id="viewDriverEmployeeId"></p>
+      <div class="view-driver-summary">
+        <div class="view-driver-summary-item">
+          <span class="view-driver-summary-label">Employee ID</span>
+          <span class="view-driver-summary-value" id="viewDriverEmployeeId"></span>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-summary-item">
+          <span class="view-driver-summary-label">License Class</span>
+          <span class="view-driver-summary-value" id="viewDriverLicenseClass"></span>
+        </div>
+
+        <div class="view-driver-summary-item">
+          <span class="view-driver-summary-label">Status</span>
+          <span id="viewDriverStatusSummary"></span>
+        </div>
+
+        <div class="view-driver-summary-item">
+          <span class="view-driver-summary-label">License Status</span>
+          <span class="view-driver-summary-value" id="viewDriverLicenseExpiry"></span>
+        </div>
+      </div>
+
+      <div class="view-driver-details">
+        <div class="view-driver-detail-item">
           <label>License Number</label>
           <p id="viewDriverLicenseNumber"></p>
         </div>
 
-        <div class="detail-item col-md-6">
-          <label>License Class</label>
-          <p id="viewDriverLicenseClass"></p>
-        </div>
-
-        <div class="detail-item col-md-6">
-          <label>License Expiry</label>
-          <p id="viewDriverLicenseExpiry"></p>
-        </div>
-
-        <div class="detail-item col-md-6">
-          <label>Phone Number</label>
+        <div class="view-driver-detail-item">
+          <label>Contact Number</label>
           <p id="viewDriverPhone"></p>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-detail-item">
           <label>Email</label>
           <p id="viewDriverEmail"></p>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-detail-item">
           <label>Assigned Vehicle</label>
           <p id="viewDriverAssignedVehicle"></p>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-detail-item">
           <label>Experience</label>
           <p id="viewDriverExperience"></p>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-detail-item">
           <label>Address</label>
           <p id="viewDriverAddress"></p>
         </div>
 
-        <div class="detail-item col-md-6">
+        <div class="view-driver-detail-item">
           <label>Emergency Contact</label>
           <p id="viewDriverEmergencyContact"></p>
         </div>
+      </div>
 
-        <div class="detail-item col-12">
-          <label>Notes</label>
-          <p id="viewDriverNotes"></p>
-        </div>
+      <div class="view-driver-notes">
+        <label>Notes</label>
+        <p id="viewDriverNotes"></p>
       </div>
     </div>
 

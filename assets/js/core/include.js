@@ -267,6 +267,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (typeof initDispatchModal === "function") {
       initDispatchModal();
     }
+    if (typeof initDispatchAdd === "function") {
+      initDispatchAdd();
+    }
   }
 
   if (document.getElementById("view-dispatch-modal")) {
@@ -287,12 +290,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  if (typeof initDispatchFilters === "function") {
+    initDispatchFilters();
+  }
+
+  if (typeof updateDispatchStatistics === "function") {
+    updateDispatchStatistics();
+  }
+
+  if (typeof initDispatchSorting === "function") {
+    initDispatchSorting();
+  }
+
+  if (typeof initDispatchPagination === "function") {
+    initDispatchPagination();
+  }
+
+  if (typeof initDispatchExport === "function") {
+    initDispatchExport();
+  }
+
+  if (typeof initDispatchPrint === "function") {
+    initDispatchPrint();
+  }
+
+  if (document.getElementById("dispatchTableBody")) {
+    if (typeof initDispatchBulkActions === "function") {
+      initDispatchBulkActions();
+    }
+  }
+
   if (document.getElementById("driverTableBody")) {
     if (typeof initDriverSearch === "function") {
       initDriverSearch();
     }
     if (typeof initDriverPagination === "function") {
       initDriverPagination();
+    }
+    if (typeof initDriverSorting === "function") {
+      initDriverSorting();
     }
     if (typeof initDriverBulkActions === "function") {
       initDriverBulkActions();

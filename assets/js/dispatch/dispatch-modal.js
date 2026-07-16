@@ -116,16 +116,6 @@ function initDispatchModal() {
 
   const form = document.getElementById("dispatchForm");
   if (form) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      if (validateDispatchForm(form)) {
-        if (typeof showToast === "function") {
-          showToast("Dispatch validated successfully.", "success");
-        }
-      }
-    });
-
     const inputs = form.querySelectorAll("input, select, textarea");
     inputs.forEach((input) => {
       input.addEventListener("input", () => {

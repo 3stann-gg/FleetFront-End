@@ -46,9 +46,9 @@ function initViewReservationModal() {
     setText("viewReservationNotes", row.dataset.notes || "");
 
     const statusBadge = row.querySelector(".status-badge");
-    const statusEl = document.getElementById("viewReservationStatus");
+    const statusEl = document.getElementById("viewReservationStatusSummary");
+    const statusText = statusBadge ? statusBadge.textContent.trim() : "";
     if (statusEl) {
-      const statusText = statusBadge ? statusBadge.textContent.trim() : "";
       statusEl.className = "status-badge";
       statusEl.textContent = statusText || NOT_PROVIDED;
       if (statusClassMap[statusText]) {
@@ -61,6 +61,7 @@ function initViewReservationModal() {
     const button = event.target.closest(".action-btn.view-reservation");
     if (button) {
       const row = button.closest("tr");
+      modal.currentRow = row;
       populateViewReservation(row);
       openReservationModal(modal);
     }
@@ -75,6 +76,26 @@ function initViewReservationModal() {
   document.getElementById("closeViewReservationBtn")?.addEventListener("click", () => {
     closeReservationModal(modal);
   });
+
+  document
+    .getElementById("editReservationFromViewBtn")
+    ?.addEventListener("click", () => {
+      const row = modal.currentRow;
+      const editModal = document.getElementById("editReservationModal");
+
+      if (
+        !row ||
+        !editModal ||
+        typeof populateEditReservationForm !== "function" ||
+        typeof openEditReservationModal !== "function"
+      ) {
+        return;
+      }
+
+      closeReservationModal(modal);
+      populateEditReservationForm(row);
+      openEditReservationModal(row);
+    });
 
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {

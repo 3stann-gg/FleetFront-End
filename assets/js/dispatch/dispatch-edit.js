@@ -183,6 +183,96 @@ function updateDispatchRow(row, values) {
   row.dataset.requestType = values.requestType;
 }
 
+function populateEditDispatchForm(row) {
+  const numberEl = document.getElementById("editDispatchNumber");
+  if (numberEl) {
+    numberEl.value =
+      row.querySelector(".dispatch-number")?.textContent?.trim() || "";
+  }
+
+  const reservationEl = document.getElementById("editDispatchReservation");
+  if (reservationEl) {
+    reservationEl.value =
+      row.querySelector(".dispatch-reservation-number")?.textContent?.trim() ||
+      "";
+  }
+
+  const patientEl = document.getElementById("editDispatchPatient");
+  if (patientEl) {
+    patientEl.value =
+      row.querySelector(".dispatch-patient-name")?.textContent?.trim() || "";
+  }
+
+  const requestTypeEl = document.getElementById("editDispatchRequestType");
+  if (requestTypeEl) {
+    requestTypeEl.value =
+      row.querySelector(".dispatch-request-type")?.textContent?.trim() ||
+      row.dataset.requestType ||
+      "";
+  }
+
+  const vehicleEl = document.getElementById("editDispatchVehicle");
+  if (vehicleEl) {
+    vehicleEl.value =
+      row.querySelector(".dispatch-vehicle")?.textContent?.trim() || "";
+  }
+
+  const driverEl = document.getElementById("editDispatchDriver");
+  if (driverEl) {
+    driverEl.value =
+      row.querySelector(".dispatch-driver")?.textContent?.trim() || "";
+  }
+
+  const pickupEl = document.getElementById("editDispatchPickup");
+  if (pickupEl) {
+    pickupEl.value = row.dataset.pickup || "";
+  }
+
+  const destinationEl = document.getElementById("editDispatchDestination");
+  if (destinationEl) {
+    destinationEl.value = row.dataset.destination || "";
+  }
+
+  const dateEl = document.getElementById("editDispatchDate");
+  if (dateEl) {
+    dateEl.value = row.dataset.scheduleDate || "";
+  }
+
+  const timeEl = document.getElementById("editDispatchTime");
+  if (timeEl) {
+    timeEl.value = row.dataset.scheduleTime || "";
+  }
+
+  const priorityEl = document.getElementById("editDispatchPriority");
+  if (priorityEl) {
+    priorityEl.value =
+      row.querySelector(".dispatch-priority")?.textContent?.trim() ||
+      row.dataset.priority ||
+      "";
+  }
+
+  const statusEl = document.getElementById("editDispatchStatus");
+  if (statusEl) {
+    const statusText = (
+      row.querySelector(".status-badge")?.textContent?.trim() || ""
+    ).trim();
+
+    if (statusText) {
+      statusEl.value = statusText;
+    }
+  }
+
+  const contactEl = document.getElementById("editDispatchContact");
+  if (contactEl) {
+    contactEl.value = row.dataset.contact || "";
+  }
+
+  const notesEl = document.getElementById("editDispatchNotes");
+  if (notesEl) {
+    notesEl.value = row.dataset.notes || "";
+  }
+}
+
 function openEditDispatchModal() {
   const modal = document.getElementById("editDispatchModal");
 
@@ -237,93 +327,7 @@ function initEditDispatchModal() {
 
     modal.currentRow = row;
 
-    const numberEl = document.getElementById("editDispatchNumber");
-    if (numberEl) {
-      numberEl.value =
-        row.querySelector(".dispatch-number")?.textContent?.trim() || "";
-    }
-
-    const reservationEl = document.getElementById("editDispatchReservation");
-    if (reservationEl) {
-      reservationEl.value =
-        row.querySelector(".dispatch-reservation-number")?.textContent?.trim() ||
-        "";
-    }
-
-    const patientEl = document.getElementById("editDispatchPatient");
-    if (patientEl) {
-      patientEl.value =
-        row.querySelector(".dispatch-patient-name")?.textContent?.trim() || "";
-    }
-
-    const requestTypeEl = document.getElementById("editDispatchRequestType");
-    if (requestTypeEl) {
-      requestTypeEl.value =
-        row.querySelector(".dispatch-request-type")?.textContent?.trim() ||
-        row.dataset.requestType ||
-        "";
-    }
-
-    const vehicleEl = document.getElementById("editDispatchVehicle");
-    if (vehicleEl) {
-      vehicleEl.value =
-        row.querySelector(".dispatch-vehicle")?.textContent?.trim() || "";
-    }
-
-    const driverEl = document.getElementById("editDispatchDriver");
-    if (driverEl) {
-      driverEl.value =
-        row.querySelector(".dispatch-driver")?.textContent?.trim() || "";
-    }
-
-    const pickupEl = document.getElementById("editDispatchPickup");
-    if (pickupEl) {
-      pickupEl.value = row.dataset.pickup || "";
-    }
-
-    const destinationEl = document.getElementById("editDispatchDestination");
-    if (destinationEl) {
-      destinationEl.value = row.dataset.destination || "";
-    }
-
-    const dateEl = document.getElementById("editDispatchDate");
-    if (dateEl) {
-      dateEl.value = row.dataset.scheduleDate || "";
-    }
-
-    const timeEl = document.getElementById("editDispatchTime");
-    if (timeEl) {
-      timeEl.value = row.dataset.scheduleTime || "";
-    }
-
-    const priorityEl = document.getElementById("editDispatchPriority");
-    if (priorityEl) {
-      priorityEl.value =
-        row.querySelector(".dispatch-priority")?.textContent?.trim() ||
-        row.dataset.priority ||
-        "";
-    }
-
-    const statusEl = document.getElementById("editDispatchStatus");
-    if (statusEl) {
-      const statusText = (
-        row.querySelector(".status-badge")?.textContent?.trim() || ""
-      ).trim();
-
-      if (statusText) {
-        statusEl.value = statusText;
-      }
-    }
-
-    const contactEl = document.getElementById("editDispatchContact");
-    if (contactEl) {
-      contactEl.value = row.dataset.contact || "";
-    }
-
-    const notesEl = document.getElementById("editDispatchNotes");
-    if (notesEl) {
-      notesEl.value = row.dataset.notes || "";
-    }
+    populateEditDispatchForm(row);
 
     openEditDispatchModal();
   });

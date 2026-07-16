@@ -38,46 +38,65 @@
     </div>
 
     <div class="modal-body">
-        <div class="detail-item">
-          <label>Plate Number</label>
-          <p id="viewPlateNumber"></p>
+      <div class="view-vehicle-summary">
+        <div class="view-vehicle-summary-item">
+          <span class="view-vehicle-summary-label">Plate Number</span>
+          <span class="view-vehicle-summary-value" id="viewPlateNumber"></span>
         </div>
 
-        <div class="detail-item">
-          <label>Vehicle Type</label>
-          <p id="viewVehicleType"></p>
+        <div class="view-vehicle-summary-item">
+          <span class="view-vehicle-summary-label">Vehicle Type</span>
+          <span class="view-vehicle-summary-value" id="viewVehicleType"></span>
         </div>
 
-        <div class="detail-item">
-        <label>Driver</label>
-        <p id="viewDriver"></p>
-    </div>
+        <div class="view-vehicle-summary-item">
+          <span class="view-vehicle-summary-label">Status</span>
+          <span id="viewVehicleStatusSummary"></span>
+        </div>
 
-        <div class="detail-item">
-        <label>Fuel Type</label>
-        <p id="viewFuelType"></p>
-    </div>
-
-        <div class="detail-item">
-        <label>Fuel Level</label>
-        <p id="viewFuelLevel"></p>
-    </div>
-
-        <div class="detail-item">
-        <label>Mileage</label>
-        <p id="viewMileage"></p>
-    </div>
-
-        <div class="detail-item">
-        <label>Purchase Date</label>
-        <p id="viewPurchaseDate"></p>
-    </div>
-
-        <div class="detail-item">
-        <label>Insurance Expiry</label>
-        <p id="viewInsuranceExpiry"></p>
-    </div>
+        <div class="view-vehicle-summary-item">
+          <span class="view-vehicle-summary-label">Assigned Driver</span>
+          <span class="view-vehicle-summary-value" id="viewDriver"></span>
+        </div>
       </div>
+
+      <div class="view-vehicle-details">
+        <div class="view-vehicle-detail-item">
+          <label>Model / Subtitle</label>
+          <p id="viewVehicleSubtitle"></p>
+        </div>
+
+        <div class="view-vehicle-detail-item">
+          <label>Fuel Type</label>
+          <p id="viewFuelType"></p>
+        </div>
+
+        <div class="view-vehicle-detail-item">
+          <label>Fuel Level</label>
+          <p id="viewFuelLevel"></p>
+        </div>
+
+        <div class="view-vehicle-detail-item">
+          <label>Mileage</label>
+          <p id="viewMileage"></p>
+        </div>
+
+        <div class="view-vehicle-detail-item">
+          <label>Purchase Date</label>
+          <p id="viewPurchaseDate"></p>
+        </div>
+
+        <div class="view-vehicle-detail-item">
+          <label>Insurance Expiry</label>
+          <p id="viewInsuranceExpiry"></p>
+        </div>
+      </div>
+
+      <div class="view-vehicle-notes">
+        <label>Additional Information</label>
+        <p id="viewVehicleNotes"></p>
+      </div>
+    </div>
 
       <div class="modal-footer">
         <button type="button" class="btn-outline" id="closeViewBtn">Close</button>

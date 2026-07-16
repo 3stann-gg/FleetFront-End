@@ -112,8 +112,8 @@
 ========================================== */
 
 .delete-modal {
-  width: 100%;
-  max-width: 520px;
+  width: min(100% - 32px, 460px);
+  max-width: 460px;
   padding: 40px;
   text-align: center;
 }
@@ -183,4 +183,404 @@
   justify-content: center;
 
   border-radius: 12px;
+}
+
+/* ==========================================
+   View Dispatch Modal - Compact Details
+========================================= */
+
+#viewDispatchModal .custom-modal {
+  width: min(100% - 32px, 760px);
+}
+
+#viewDispatchModal .modal-body {
+  padding: 24px;
+}
+
+#viewDispatchModal .view-dispatch-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 576px) {
+  #viewDispatchModal .view-dispatch-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#viewDispatchModal .view-dispatch-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewDispatchModal .view-dispatch-summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+#viewDispatchModal .view-dispatch-summary-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+#viewDispatchModal .view-dispatch-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  #viewDispatchModal .view-dispatch-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#viewDispatchModal .view-dispatch-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewDispatchModal .view-dispatch-detail-item label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#viewDispatchModal .view-dispatch-detail-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+#viewDispatchModal .view-dispatch-notes {
+  padding-top: 16px;
+  border-top: 1px solid #edf2f7;
+}
+
+#viewDispatchModal .view-dispatch-notes label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+#viewDispatchModal .view-dispatch-notes p {
+  margin: 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#viewDispatchModal .modal-footer {
+  margin-top: 24px;
+  padding: 20px 24px;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 575px) {
+  #viewDispatchModal .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ==========================================
+   View Modals - Shared Compact Layout
+   (Driver, Reservation, Vehicle follow Dispatch)
+   ========================================== */
+
+#viewDriverModal .custom-modal,
+#viewReservationModal .custom-modal,
+#viewVehicleModal .custom-modal {
+  width: min(100% - 32px, 760px);
+}
+
+#viewDriverModal .modal-body,
+#viewReservationModal .modal-body,
+#viewVehicleModal .modal-body {
+  padding: 24px;
+}
+
+#viewDriverModal .modal-footer,
+#viewReservationModal .modal-footer,
+#viewVehicleModal .modal-footer {
+  margin-top: 24px;
+  padding: 20px 24px;
+  justify-content: center;
+  gap: 12px;
+}
+
+@media (max-width: 575px) {
+  #viewDriverModal .modal-footer,
+  #viewReservationModal .modal-footer,
+  #viewVehicleModal .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Driver summary */
+#viewDriverModal .view-driver-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 576px) {
+  #viewDriverModal .view-driver-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#viewDriverModal .view-driver-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewDriverModal .view-driver-summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+#viewDriverModal .view-driver-summary-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+/* Driver details */
+#viewDriverModal .view-driver-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  #viewDriverModal .view-driver-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#viewDriverModal .view-driver-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewDriverModal .view-driver-detail-item label,
+#viewDriverModal .view-driver-notes label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#viewDriverModal .view-driver-detail-item p,
+#viewDriverModal .view-driver-notes p {
+  margin: 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+#viewDriverModal .view-driver-notes {
+  padding-top: 16px;
+  border-top: 1px solid #edf2f7;
+}
+
+/* Reservation summary */
+#viewReservationModal .view-reservation-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 576px) {
+  #viewReservationModal .view-reservation-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#viewReservationModal .view-reservation-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewReservationModal .view-reservation-summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+#viewReservationModal .view-reservation-summary-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+/* Reservation details */
+#viewReservationModal .view-reservation-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  #viewReservationModal .view-reservation-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#viewReservationModal .view-reservation-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewReservationModal .view-reservation-detail-item label,
+#viewReservationModal .view-reservation-notes label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#viewReservationModal .view-reservation-detail-item p,
+#viewReservationModal .view-reservation-notes p {
+  margin: 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+#viewReservationModal .view-reservation-notes {
+  padding-top: 16px;
+  border-top: 1px solid #edf2f7;
+}
+
+/* Vehicle summary */
+#viewVehicleModal .view-vehicle-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 576px) {
+  #viewVehicleModal .view-vehicle-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#viewVehicleModal .view-vehicle-summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewVehicleModal .view-vehicle-summary-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+#viewVehicleModal .view-vehicle-summary-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-word;
+}
+
+/* Vehicle details */
+#viewVehicleModal .view-vehicle-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 640px) {
+  #viewVehicleModal .view-vehicle-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#viewVehicleModal .view-vehicle-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#viewVehicleModal .view-vehicle-detail-item label,
+#viewVehicleModal .view-vehicle-notes label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#viewVehicleModal .view-vehicle-detail-item p,
+#viewVehicleModal .view-vehicle-notes p {
+  margin: 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+#viewVehicleModal .view-vehicle-notes {
+  padding-top: 16px;
+  border-top: 1px solid #edf2f7;
 }

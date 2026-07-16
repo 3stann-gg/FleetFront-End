@@ -16,7 +16,7 @@ function initEditReservationModal() {
     return row.dataset[key] || "";
   };
 
-  const populateEditReservationForm = (row) => {
+  populateEditReservationForm = (row) => {
     const form = document.getElementById("editReservationForm");
     if (!form) return;
 
@@ -42,7 +42,7 @@ function initEditReservationModal() {
     setValue("editReservationNotes", getRowData(row, "notes"));
   };
 
-  const openEditReservationModal = (row) => {
+  openEditReservationModal = (row) => {
     modal.currentRow = row;
     populateEditReservationForm(row);
     modal.classList.add("show");

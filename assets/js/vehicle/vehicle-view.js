@@ -107,6 +107,12 @@ function populateViewVehicleModal(modal, row) {
 
     statusBadge.className = `status-badge ${statusClass}`;
     statusBadge.textContent = status;
+
+    const summaryStatus = modal.querySelector("#viewVehicleStatusSummary");
+    if (summaryStatus) {
+      summaryStatus.className = `status-badge ${statusClass}`;
+      summaryStatus.textContent = status;
+    }
   }
 }
 

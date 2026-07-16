@@ -20,6 +20,10 @@ function closeViewDispatchModal() {
 
   modal.classList.remove("show");
   document.body.style.overflow = "";
+
+  if (modal.currentRow) {
+    modal.currentRow = null;
+  }
 }
 
 function initViewDispatchModal() {
@@ -146,6 +150,8 @@ function initViewDispatchModal() {
       notesEl.textContent = row.dataset.notes || "Not provided";
     }
 
+    modal.currentRow = row;
+
     openViewDispatchModal();
   });
 
@@ -159,6 +165,24 @@ function initViewDispatchModal() {
 
   if (closeBtn) {
     closeBtn.addEventListener("click", closeViewDispatchModal);
+  }
+
+  const editFromViewBtn = document.getElementById("editDispatchFromViewBtn");
+
+  if (editFromViewBtn) {
+    editFromViewBtn.addEventListener("click", () => {
+      const viewModal = document.getElementById("viewDispatchModal");
+      const editModal = document.getElementById("editDispatchModal");
+
+      if (!viewModal || !editModal || !viewModal.currentRow) {
+        return;
+      }
+
+      editModal.currentRow = viewModal.currentRow;
+      populateEditDispatchForm(viewModal.currentRow);
+      closeViewDispatchModal();
+      openEditDispatchModal();
+    });
   }
 
   modal.addEventListener("click", (event) => {
