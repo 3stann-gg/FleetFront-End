@@ -141,6 +141,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("add-maintenance-modal")) {
+    await loadComponent(
+      "add-maintenance-modal",
+      "../components/maintenance/add-maintenance-modal.html",
+    );
+  }
+
+  if (document.getElementById("view-maintenance-modal")) {
+    await loadComponent(
+      "view-maintenance-modal",
+      "../components/maintenance/view-maintenance-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -287,6 +301,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("delete-dispatch-modal")) {
     if (typeof initDeleteDispatchModal === "function") {
       initDeleteDispatchModal();
+    }
+  }
+
+  if (document.getElementById("add-maintenance-modal")) {
+    if (typeof initMaintenanceModal === "function") {
+      initMaintenanceModal();
+    }
+    if (typeof initMaintenanceAdd === "function") {
+      initMaintenanceAdd();
+    }
+  }
+
+  if (document.getElementById("view-maintenance-modal")) {
+    if (typeof initViewMaintenanceModal === "function") {
+      initViewMaintenanceModal();
     }
   }
 
