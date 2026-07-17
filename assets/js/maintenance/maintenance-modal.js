@@ -145,18 +145,21 @@ function validateMaintenanceForm(form) {
     });
   }
 
+  const isEditForm = form.id === "editMaintenanceForm";
+  const prefix = isEditForm ? "editMaintenance" : "maintenance";
+
   const fields = {
-    maintenanceNumber: form.querySelector("#maintenanceNumber"),
-    maintenanceVehicle: form.querySelector("#maintenanceVehicle"),
-    maintenanceServiceType: form.querySelector("#maintenanceServiceType"),
-    maintenanceTechnician: form.querySelector("#maintenanceTechnician"),
-    maintenanceScheduledDate: form.querySelector("#maintenanceScheduledDate"),
-    maintenanceCompletionDate: form.querySelector("#maintenanceCompletionDate"),
-    maintenanceCost: form.querySelector("#maintenanceCost"),
-    maintenancePriority: form.querySelector("#maintenancePriority"),
-    maintenanceStatus: form.querySelector("#maintenanceStatus"),
-    maintenanceOdometer: form.querySelector("#maintenanceOdometer"),
-    maintenanceDescription: form.querySelector("#maintenanceDescription")
+    maintenanceNumber: form.querySelector("#" + prefix + "Number"),
+    maintenanceVehicle: form.querySelector("#" + prefix + "Vehicle"),
+    maintenanceServiceType: form.querySelector("#" + prefix + "ServiceType"),
+    maintenanceTechnician: form.querySelector("#" + prefix + "Technician"),
+    maintenanceScheduledDate: form.querySelector("#" + prefix + "ScheduledDate"),
+    maintenanceCompletionDate: form.querySelector("#" + prefix + "CompletionDate"),
+    maintenanceCost: form.querySelector("#" + prefix + "Cost"),
+    maintenancePriority: form.querySelector("#" + prefix + "Priority"),
+    maintenanceStatus: form.querySelector("#" + prefix + "Status"),
+    maintenanceOdometer: form.querySelector("#" + prefix + "Odometer"),
+    maintenanceDescription: form.querySelector("#" + prefix + "Description")
   };
 
   Object.keys(fields).forEach(function (key) {

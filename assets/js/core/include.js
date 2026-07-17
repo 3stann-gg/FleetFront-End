@@ -330,6 +330,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (typeof initEditMaintenanceModal === "function") {
       initEditMaintenanceModal();
     }
+
+    if (typeof initMaintenanceEdit === "function") {
+      initMaintenanceEdit();
+    }
   }
 
   if (typeof initDispatchFilters === "function") {
