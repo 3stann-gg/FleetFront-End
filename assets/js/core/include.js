@@ -155,6 +155,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("edit-maintenance-modal")) {
+    await loadComponent(
+      "edit-maintenance-modal",
+      "../components/maintenance/edit-maintenance-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -316,6 +323,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("view-maintenance-modal")) {
     if (typeof initViewMaintenanceModal === "function") {
       initViewMaintenanceModal();
+    }
+  }
+
+  if (document.getElementById("edit-maintenance-modal")) {
+    if (typeof initEditMaintenanceModal === "function") {
+      initEditMaintenanceModal();
     }
   }
 
