@@ -136,6 +136,188 @@ function initDesktopSidebarCollapse() {
 applyEarlyDesktopSidebarCollapsedState();
 
 /* =====================================
+   Global Theme System
+===================================== */
+
+const HIMS_FLEET_THEME_KEY = "himsFleetTheme";
+
+function getSavedTheme() {
+  try {
+    return localStorage.getItem(HIMS_FLEET_THEME_KEY) === "dark"
+      ? "dark"
+      : "light";
+  } catch {
+    return "light";
+  }
+}
+
+function applyTheme(theme, options = {}) {
+  const persist = options.persist !== false;
+  const next = theme === "dark" ? "dark" : "light";
+
+  document.documentElement.setAttribute("data-theme", next);
+
+  if (persist) {
+    try {
+      localStorage.setItem(HIMS_FLEET_THEME_KEY, next);
+    } catch {
+      /* Storage may be unavailable */
+    }
+  }
+
+  syncThemeMenuState();
+}
+
+function syncThemeMenuState() {
+  const current = getSavedTheme();
+  const options = document.querySelectorAll("[data-theme-option]");
+
+  options.forEach((option) => {
+    const value = option.getAttribute("data-theme-option");
+    const isActive = value === current;
+
+    option.classList.toggle("is-active", isActive);
+
+    if (option.getAttribute("role") === "menuitemradio") {
+      option.setAttribute("aria-checked", String(isActive));
+    }
+  });
+}
+
+function applyEarlyTheme() {
+  applyTheme(getSavedTheme(), { persist: false });
+}
+
+function initThemeControls() {
+  const menu = document.getElementById("sidebarProfileMenu");
+
+  if (!menu) return;
+
+  if (menu.dataset.themeControlsInitialized === "true") {
+    syncThemeMenuState();
+    return;
+  }
+
+  menu.dataset.themeControlsInitialized = "true";
+
+  menu.addEventListener("click", (event) => {
+    const option = event.target?.closest?.("[data-theme-option]");
+
+    if (!option || option.disabled || option.getAttribute("aria-disabled") === "true") {
+      return;
+    }
+
+    const theme = option.getAttribute("data-theme-option");
+
+    if (theme !== "light" && theme !== "dark") {
+      event.preventDefault();
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    applyTheme(theme);
+  });
+
+  syncThemeMenuState();
+}
+
+applyEarlyTheme();
+
+/* =====================================
+   Sidebar Profile Dropdown
+===================================== */
+
+function initSidebarProfileDropdown() {
+  const wrap = document.querySelector(".sidebar-profile-wrap");
+  const toggle = document.getElementById("sidebarProfileToggle");
+  const menu = document.getElementById("sidebarProfileMenu");
+
+  if (!wrap || !toggle || !menu) return;
+
+  if (wrap.dataset.profileDropdownInitialized === "true") {
+    return;
+  }
+
+  wrap.dataset.profileDropdownInitialized = "true";
+
+  const setOpen = (open) => {
+    wrap.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-hidden", String(!open));
+
+    if (open) {
+      menu.removeAttribute("hidden");
+    } else {
+      menu.setAttribute("hidden", "");
+    }
+  };
+
+  const isOpen = () => wrap.classList.contains("is-open");
+
+  const closeMenu = () => {
+    if (!isOpen()) return;
+    setOpen(false);
+  };
+
+  const openMenu = () => {
+    setOpen(true);
+  };
+
+  const toggleMenu = () => {
+    if (isOpen()) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleMenu();
+  });
+
+  toggle.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!isOpen()) return;
+
+    const target = event.target;
+
+    if (!(target instanceof Node) || !wrap.contains(target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !isOpen()) return;
+
+    closeMenu();
+    toggle.focus();
+  });
+
+  menu.addEventListener("click", (event) => {
+    if (event.target?.closest?.("[data-theme-option]")) {
+      return;
+    }
+
+    const item = event.target?.closest?.('[role="menuitem"], [role="menuitemradio"]');
+
+    if (!item) return;
+
+    /* Frontend placeholder — no navigation or auth */
+    event.preventDefault();
+    closeMenu();
+  });
+}
+
+/* =====================================
    Responsive Sidebar Navigation
 ===================================== */
 

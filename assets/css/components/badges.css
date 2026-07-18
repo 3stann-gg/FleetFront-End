@@ -1,8 +1,7 @@
-
 .badge-green {
-  background: #e8f8f2;
+  background: var(--color-primary-soft);
 
-  color: #00a86b;
+  color: var(--color-primary);
 
   padding: 6px 12px;
 
@@ -21,18 +20,18 @@
 }
 
 .available {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--color-success-soft);
+  color: var(--color-success-text);
 }
 
 .trip {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--color-info-soft);
+  color: var(--color-info-text);
 }
 
 .maintenance {
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--color-danger-soft);
+  color: var(--color-danger-text);
 }
 
 .status-badge {
@@ -46,16 +45,16 @@
 }
 
 .status-badge.available {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--color-success-soft);
+  color: var(--color-success-text);
 }
 
 .status-badge.trip {
-  background: #dbeafe;
-  color: #2563eb;
+  background: var(--color-info-soft);
+  color: var(--color-info-text);
 }
 
 .status-badge.maintenance {
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--color-danger-soft);
+  color: var(--color-danger-text);
 }

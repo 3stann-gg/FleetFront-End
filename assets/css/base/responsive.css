@@ -454,19 +454,17 @@
     gap: 8px;
   }
 
-  .user-profile {
-    margin-left: 0;
+
+
+  .app-identity {
+    max-width: min(200px, 42vw);
   }
 
-  .user-info {
-    display: none;
+  .app-identity-title {
+    font-size: 15px;
   }
 
-  .page-info h4 {
-    font-size: 18px;
-  }
-
-  .page-info span {
+  .app-identity-subtitle {
     display: none;
   }
 
@@ -602,20 +600,12 @@
     height: 38px;
   }
 
-  .avatar {
-    width: 38px;
-    height: 38px;
+  .app-identity {
+    max-width: min(140px, 38vw);
   }
 
-  .page-info {
-    min-width: 0;
-  }
-
-  .page-info h4 {
-    max-width: 120px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .app-identity-title {
+    font-size: 14px;
   }
 
   .page-wrapper {

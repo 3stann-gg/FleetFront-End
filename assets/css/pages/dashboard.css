@@ -5,14 +5,15 @@
 .dashboard {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .dashboard > section {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .dashboard > section:last-child {
-  margin-bottom: 5;
+  margin-bottom: 0;
 }
 
 /* Header */
@@ -21,7 +22,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  gap: 16px;
 }
 
 .dashboard-header-left {
@@ -30,22 +32,25 @@
 }
 
 .dashboard-header h1 {
-  font-size: 52px;
-  line-height: 1.1;
+  font-size: clamp(2rem, 2.6vw, 2.5rem);
+  line-height: 1.15;
   font-weight: 700;
+  letter-spacing: -0.02em;
   margin: 0;
+  color: var(--color-text-primary);
 }
 
 .dashboard-header p {
-  margin-top: 12px;
-  font-size: 17px;
-  color: #6b7280;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
 }
 
 .dashboard-date {
   margin-top: 12px;
-  color: #6b7280;
-  font-size: 16px;
+  color: var(--color-text-muted);
+  font-size: 14px;
   font-weight: 600;
 }
 

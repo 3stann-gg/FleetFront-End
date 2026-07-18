@@ -17,6 +17,15 @@ body {
   text-rendering: optimizeLegibility;
   font-size: var(--font-size-md);
   font-weight: var(--font-regular);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 /* Headings */
@@ -106,7 +115,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #edf2f7;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {

@@ -41,7 +41,7 @@
 
 .page-wrapper {
   flex: 1;
-  padding: var(--space-6);
+  padding: var(--space-7) var(--space-6) var(--space-8);
 }
 
 /* ===== Content Container ===== */
@@ -65,16 +65,29 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--space-5);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.page-header h1,
+.page-title {
+  margin: 0;
+  font-size: clamp(2rem, 2.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.page-header p,
+.page-subtitle {
+  margin: var(--space-2) 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
 }
 
 .page-title {
-  color: var(--color-text-primary);
   margin-bottom: var(--space-2);
-}
-
-.page-subtitle {
-  color: var(--color-text-secondary);
 }
 
 /* Keep layout motion aligned with sidebar; respect reduced motion */

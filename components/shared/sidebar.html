@@ -140,21 +140,102 @@
     </ul>
   </nav>
 
-  <!-- Footer -->
+  <!-- Footer — User Profile -->
   <div class="sidebar-footer">
-    <a
-      href="../profile/settings.html"
-      class="nav-link"
-      data-page="settings"
-      data-tooltip="Settings"
-    >
-      <i class="ph-fill ph-gear"></i>
-      <span class="nav-label">Settings</span>
-    </a>
+    <div class="sidebar-profile-wrap">
+      <button
+        type="button"
+        class="sidebar-profile"
+        id="sidebarProfileToggle"
+        data-tooltip="Profile"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="sidebarProfileMenu"
+        aria-label="Tristan Dave, Fleet Administrator"
+      >
+        <span class="profile-avatar" aria-hidden="true">TD</span>
 
-    <a href="#" class="nav-link logout" data-tooltip="Logout">
-      <i class="ph-fill ph-sign-out"></i>
-      <span class="nav-label">Logout</span>
-    </a>
+        <span class="profile-info">
+          <span class="profile-name">Tristan Dave</span>
+          <span class="profile-role">Fleet Administrator</span>
+        </span>
+
+        <span class="profile-chevron" aria-hidden="true">
+          <i class="ph ph-caret-up-down"></i>
+        </span>
+      </button>
+
+      <div
+        class="sidebar-profile-menu"
+        id="sidebarProfileMenu"
+        role="menu"
+        hidden
+        aria-hidden="true"
+      >
+        <a href="#" class="profile-menu-item" role="menuitem">
+          <i class="ph ph-user-circle" aria-hidden="true"></i>
+          <span>Profile</span>
+        </a>
+
+        <a href="#" class="profile-menu-item" role="menuitem">
+          <i class="ph ph-gear" aria-hidden="true"></i>
+          <span>Account Settings</span>
+        </a>
+
+        <a href="#" class="profile-menu-item" role="menuitem">
+          <i class="ph ph-palette" aria-hidden="true"></i>
+          <span>Appearance</span>
+        </a>
+
+        <a href="#" class="profile-menu-item" role="menuitem">
+          <i class="ph ph-question" aria-hidden="true"></i>
+          <span>Help Center</span>
+        </a>
+
+        <div class="profile-menu-divider" role="separator"></div>
+
+        <button
+          type="button"
+          class="profile-menu-item"
+          role="menuitemradio"
+          data-theme-option="light"
+          aria-checked="true"
+        >
+          <i class="ph ph-sun" aria-hidden="true"></i>
+          <span>Light Mode</span>
+        </button>
+
+        <button
+          type="button"
+          class="profile-menu-item"
+          role="menuitemradio"
+          data-theme-option="dark"
+          aria-checked="false"
+        >
+          <i class="ph ph-moon" aria-hidden="true"></i>
+          <span>Dark Mode</span>
+        </button>
+
+        <button
+          type="button"
+          class="profile-menu-item"
+          role="menuitem"
+          data-theme-option="system"
+          aria-disabled="true"
+          disabled
+          title="Coming soon"
+        >
+          <i class="ph ph-desktop" aria-hidden="true"></i>
+          <span>System</span>
+        </button>
+
+        <div class="profile-menu-divider" role="separator"></div>
+
+        <a href="#" class="profile-menu-item profile-menu-item--danger" role="menuitem">
+          <i class="ph ph-sign-out" aria-hidden="true"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
   </div>
 </aside>

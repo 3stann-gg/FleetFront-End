@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     initializePage();
   }
 
+  if (typeof initSidebarProfileDropdown === "function") {
+    initSidebarProfileDropdown();
+  }
+
+  if (typeof initThemeControls === "function") {
+    initThemeControls();
+  }
+
   await loadComponent("navbar", "../components/shared/navbar.html");
 
   if (typeof initResponsiveNavigation === "function") {

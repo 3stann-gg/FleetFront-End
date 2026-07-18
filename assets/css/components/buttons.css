@@ -1,5 +1,5 @@
 /* ==========================================
-   BUTTONS
+   BUTTONS — visual hierarchy
 ========================================== */
 
 /* Base Button */
@@ -13,6 +13,7 @@
   justify-content: center;
   gap: 8px;
 
+  min-height: 48px;
   padding: 12px 20px;
   border-radius: 12px;
 
@@ -20,39 +21,97 @@
   font-weight: 600;
 
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 
   text-decoration: none;
 }
 
 /* =========================
-   Primary
+   Primary — strongest CTA
 ========================= */
 
 .btn-primary {
-  background: #10b981;
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
   border: none;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 168, 107, 0.22);
 }
 
 .btn-primary:hover {
-  background: #059669;
-  transform: translateY(-2px);
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* =========================
-   Outline
+   Outline — secondary / quiet tools
 ========================= */
 
 .btn-outline {
-  background: #fff;
-  color: #374151;
+  height: 48px;
+  min-height: 48px;
+  padding: 0 18px;
 
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  background: var(--btn-outline-bg);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  box-shadow: none;
 }
 
 .btn-outline:hover {
-  background: #f9fafb;
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Toolbar secondary actions stay quieter than primary CTA */
+.toolbar .btn-outline,
+.card-actions .btn-outline,
+.toolbar-right .btn-outline {
+  min-height: 44px;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.toolbar .btn-outline:hover,
+.card-actions .btn-outline:hover,
+.toolbar-right .btn-outline:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+
+.toolbar .btn-primary,
+.page-header .btn-primary {
+  font-weight: 700;
 }
 
 /* =========================
@@ -60,13 +119,13 @@
 ========================= */
 
 .btn-danger {
-  background: #dc2626;
-  color: #fff;
+  background: var(--color-danger);
+  color: var(--color-text-inverse);
   border: none;
 }
 
 .btn-danger:hover {
-  background: #b91c1c;
+  background: var(--color-danger-hover);
 }
 
 /* =========================
@@ -74,13 +133,13 @@
 ========================= */
 
 .btn-success {
-  background: #16a34a;
-  color: #fff;
+  background: var(--color-success-strong);
+  color: var(--color-text-inverse);
   border: none;
 }
 
 .btn-success:hover {
-  background: #15803d;
+  background: var(--color-primary-dark);
 }
 
 /* =========================
@@ -93,81 +152,35 @@
 .btn-success:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-filter {
-  border: none;
-
-  background: #f3f4f6;
-
+  border: 1px solid var(--color-border);
+  background: var(--btn-muted-bg);
+  color: var(--color-text-muted);
   padding: 10px 16px;
-
   border-radius: 10px;
-
   cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-filter:hover {
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
 }
 
 .table-btn {
   border: none;
-  background: #00a86b;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .table-btn:hover {
   opacity: 0.9;
-}
-
-/* Button */
-
-.btn-primary {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  border: none;
-
-  background: #00a86b;
-
-  color: #fff;
-
-  padding: 14px 22px;
-
-  border-radius: 12px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 168, 107, 0.25);
-}
-
-.btn-outline {
-  height: 48px;
-
-  padding: 0 20px;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 12px;
-
-  background: #fff;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-}
-
-.btn-outline:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
 }

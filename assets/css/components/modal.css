@@ -1,23 +1,23 @@
-﻿.modal-header {
+.modal-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 
   padding: 28px 32px;
 
-  border-bottom: 1px solid #edf2f7;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modal-header h2 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-text);
 }
 
 .modal-header p {
   margin-top: 8px;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 .custom-modal {
   width: 960px;
@@ -25,7 +25,7 @@
 
   max-height: 90vh;
 
-  background: #fff;
+  background: var(--modal-bg);
 
   border-radius: 20px;
 
@@ -47,7 +47,7 @@
   justify-content: center;
   align-items: center;
 
-  background: rgba(15, 23, 42, 0.45);
+  background: var(--modal-overlay);
 
   padding: 30px;
 
@@ -64,7 +64,7 @@
 
   border: none;
 
-  background: #f3f4f6;
+  background: var(--btn-muted-bg);
 
   border-radius: 12px;
 
@@ -78,7 +78,8 @@
 }
 
 .modal-close:hover {
-  background: #e5e7eb;
+  background: var(--color-surface-hover);
+  color: var(--color-text);
 }
 .modal-body {
   padding: 30px 32px;
@@ -92,7 +93,7 @@
 
   padding-top: 30px;
 
-  border-top: 1px solid #edf2f7;
+  border-top: 1px solid var(--color-border);
 
   margin-top: 30px;
 }
@@ -133,8 +134,8 @@
   justify-content: center;
 
   border-radius: 50%;
-  background: #fee2e2;
-  color: #dc2626;
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
 
   font-size: 42px;
 }
@@ -143,12 +144,12 @@
   margin: 0 0 12px;
   font-size: 30px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-text);
 }
 
 .delete-modal p {
   margin: 0;
-  color: #64748b;
+  color: var(--color-text-muted);
   line-height: 1.6;
   font-size: 16px;
 }
@@ -158,12 +159,12 @@
 }
 
 .delete-modal strong {
-  color: #1f2937;
+  color: var(--color-text);
 }
 
 .delete-note {
   margin-top: 10px;
-  color: #94a3b8;
+  color: var(--color-text-light);
   font-size: 15px;
 }
 
@@ -175,7 +176,7 @@
   justify-content: center;
   gap: 14px;
 
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
 }
 
 .delete-modal .btn-outline,
@@ -207,7 +208,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 20px;
-  background: #f8fafc;
+  background: var(--color-surface-muted);
   border-radius: 12px;
   margin-bottom: 24px;
 }
@@ -229,13 +230,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 #viewDispatchModal .view-dispatch-summary-value {
   font-size: 15px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-text);
   word-break: break-word;
 }
 
@@ -261,7 +262,7 @@
 #viewDispatchModal .view-dispatch-detail-item label {
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -269,21 +270,21 @@
 #viewDispatchModal .view-dispatch-detail-item p {
   margin: 0;
   font-size: 14px;
-  color: #1f2937;
+  color: var(--color-text);
   line-height: 1.5;
   word-break: break-word;
 }
 
 #viewDispatchModal .view-dispatch-notes {
   padding-top: 16px;
-  border-top: 1px solid #edf2f7;
+  border-top: 1px solid var(--color-border);
 }
 
 #viewDispatchModal .view-dispatch-notes label {
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 6px;
@@ -292,7 +293,7 @@
 #viewDispatchModal .view-dispatch-notes p {
   margin: 0;
   font-size: 14px;
-  color: #1f2937;
+  color: var(--color-text);
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
@@ -353,7 +354,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 20px;
-  background: #f8fafc;
+  background: var(--color-surface-muted);
   border-radius: 12px;
   margin-bottom: 24px;
 }
@@ -375,13 +376,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 #viewDriverModal .view-driver-summary-value {
   font-size: 15px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-text);
   word-break: break-word;
 }
 
@@ -409,7 +410,7 @@
 #viewDriverModal .view-driver-notes label {
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -418,14 +419,14 @@
 #viewDriverModal .view-driver-notes p {
   margin: 0;
   font-size: 14px;
-  color: #1f2937;
+  color: var(--color-text);
   line-height: 1.5;
   word-break: break-word;
 }
 
 #viewDriverModal .view-driver-notes {
   padding-top: 16px;
-  border-top: 1px solid #edf2f7;
+  border-top: 1px solid var(--color-border);
 }
 
 /* Reservation summary */
@@ -434,7 +435,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 20px;
-  background: #f8fafc;
+  background: var(--color-surface-muted);
   border-radius: 12px;
   margin-bottom: 24px;
 }
@@ -456,13 +457,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 #viewReservationModal .view-reservation-summary-value {
   font-size: 15px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-text);
   word-break: break-word;
 }
 
@@ -490,7 +491,7 @@
 #viewReservationModal .view-reservation-notes label {
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -499,14 +500,14 @@
 #viewReservationModal .view-reservation-notes p {
   margin: 0;
   font-size: 14px;
-  color: #1f2937;
+  color: var(--color-text);
   line-height: 1.5;
   word-break: break-word;
 }
 
 #viewReservationModal .view-reservation-notes {
   padding-top: 16px;
-  border-top: 1px solid #edf2f7;
+  border-top: 1px solid var(--color-border);
 }
 
 /* Vehicle summary */
@@ -515,7 +516,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 20px;
-  background: #f8fafc;
+  background: var(--color-surface-muted);
   border-radius: 12px;
   margin-bottom: 24px;
 }
@@ -537,13 +538,13 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 #viewVehicleModal .view-vehicle-summary-value {
   font-size: 15px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-text);
   word-break: break-word;
 }
 
@@ -571,7 +572,7 @@
 #viewVehicleModal .view-vehicle-notes label {
   font-size: 12px;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -580,14 +581,14 @@
 #viewVehicleModal .view-vehicle-notes p {
   margin: 0;
   font-size: 14px;
-  color: #1f2937;
+  color: var(--color-text);
   line-height: 1.5;
   word-break: break-word;
 }
 
 #viewVehicleModal .view-vehicle-notes {
   padding-top: 16px;
-  border-top: 1px solid #edf2f7;
+  border-top: 1px solid var(--color-border);
 }
 
 .delete-modal .modal-close {
