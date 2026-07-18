@@ -1,4 +1,4 @@
-.modal-header {
+﻿.modal-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -95,6 +95,11 @@
   border-top: 1px solid #edf2f7;
 
   margin-top: 30px;
+}
+
+/* Edit modal footers: center Cancel/Update to match View modal balance */
+[id^="edit"] .modal-footer {
+  justify-content: center;
 }
 @keyframes modalShow {
   from {
@@ -583,4 +588,10 @@
 #viewVehicleModal .view-vehicle-notes {
   padding-top: 16px;
   border-top: 1px solid #edf2f7;
+}
+
+.delete-modal .modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }

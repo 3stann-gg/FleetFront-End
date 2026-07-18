@@ -162,6 +162,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
   }
 
+  if (document.getElementById("delete-maintenance-modal")) {
+    await loadComponent(
+      "delete-maintenance-modal",
+      "../components/maintenance/delete-maintenance-modal.html",
+    );
+  }
+
   /* Toast Component */
   if (document.getElementById("toast")) {
     await loadComponent("toast", "../components/shared/toast.html");
@@ -333,6 +340,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (typeof initMaintenanceEdit === "function") {
       initMaintenanceEdit();
+    }
+  }
+
+  if (document.getElementById("delete-maintenance-modal")) {
+    if (typeof initDeleteMaintenanceModal === "function") {
+      initDeleteMaintenanceModal();
     }
   }
 
