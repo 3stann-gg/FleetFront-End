@@ -65,7 +65,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--space-5);
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--section-gap);
 }
 
 .page-header h1,

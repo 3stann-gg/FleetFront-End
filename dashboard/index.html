@@ -34,342 +34,341 @@
         <!-- Navbar -->
         <div id="navbar"></div>
         <section class="page-wrapper">
+          <!-- Page -->
+          <div class="dashboard">
+            <!-- Welcome Section -->
+            <section class="dashboard-header">
+              <div>
+                <h1>Dashboard</h1>
 
-        <!-- Page -->
-        <div class="dashboard">
-          <!-- Welcome Section -->
-          <section class="dashboard-header">
-            <div>
-              <h1>Magandang Buhay</h1>
-
-              <p>
-                Monitor fleet operations, dispatch requests, and vehicle
-                performance.
-              </p>
-            </div>
-
-            <div class="dashboard-date">Monday, July 13, 2026</div>
-          </section>
-
-          <!-- Statistics -->
-          <section class="stats-grid">
-            <!-- Card 1 -->
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="ph-fill ph-ambulance"></i>
+                <p>
+                  Monitor fleet operations, dispatch requests, and vehicle
+                  performance.
+                </p>
               </div>
 
-              <div class="stat-content">
-                <span>Available Vehicles</span>
+              <div class="dashboard-date">Monday, July 13, 2026</div>
+            </section>
 
-                <h2>28</h2>
-              </div>
-            </div>
+            <!-- Statistics -->
+            <section class="stats-grid">
+              <!-- Card 1 -->
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="ph-fill ph-ambulance"></i>
+                </div>
 
-            <!-- Card 2 -->
+                <div class="stat-content">
+                  <span>Available Vehicles</span>
 
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="ph-fill ph-truck"></i>
-              </div>
-
-              <div class="stat-content">
-                <span>Active Dispatches</span>
-
-                <h2>14</h2>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="ph-fill ph-user"></i>
-              </div>
-
-              <div class="stat-content">
-                <span>Drivers On Duty</span>
-
-                <h2>18</h2>
-              </div>
-            </div>
-
-            <!-- Card 4 -->
-
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class="ph-fill ph-gas-pump"></i>
-              </div>
-
-              <div class="stat-content">
-                <span>Fuel Efficiency</span>
-
-                <h2>92%</h2>
-              </div>
-            </div>
-          </section>
-        </div>
-        <section class="dashboard-grid">
-          <!-- Fleet Activity -->
-          <div class="card dashboard-chart">
-            <div class="card-header">
-              <h3>Fleet Activity</h3>
-              <button class="btn-filter">
-                This Week
-                <i class="ph ph-caret-down"></i>
-              </button>
-            </div>
-
-            <div class="chart-placeholder">
-              <div class="bar" style="height: 65%"></div>
-              <div class="bar" style="height: 85%"></div>
-              <div class="bar" style="height: 45%"></div>
-              <div class="bar" style="height: 95%"></div>
-              <div class="bar" style="height: 75%"></div>
-              <div class="bar" style="height: 55%"></div>
-              <div class="bar" style="height: 90%"></div>
-            </div>
-          </div>
-
-          <!-- Dispatch Queue -->
-
-          <div class="card dispatch-card">
-            <div class="card-header">
-              <h3>Today's Dispatch Queue</h3>
-
-              <span class="badge-green">8 Active</span>
-            </div>
-
-            <div class="dispatch-list">
-              <div class="dispatch-item">
-                <div class="dispatch-dot green"></div>
-
-                <div>
-                  <strong>Emergency Patient Transfer</strong>
-
-                  <small>Ambulance 03 • Driver: Juan Dela Cruz</small>
+                  <h2>28</h2>
                 </div>
               </div>
 
-              <div class="dispatch-item">
-                <div class="dispatch-dot yellow"></div>
+              <!-- Card 2 -->
 
-                <div>
-                  <strong>Laboratory Sample Delivery</strong>
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="ph-fill ph-truck"></i>
+                </div>
 
-                  <small>Van 02 • Driver: Maria Santos</small>
+                <div class="stat-content">
+                  <span>Active Dispatches</span>
+
+                  <h2>14</h2>
                 </div>
               </div>
 
-              <div class="dispatch-item">
-                <div class="dispatch-dot red"></div>
+              <!-- Card 3 -->
 
-                <div>
-                  <strong>Vehicle Maintenance Pickup</strong>
-
-                  <small>Service Vehicle 01</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="dashboard-grid">
-          <!-- Vehicle Status -->
-          <div class="card">
-            <div class="card-header">
-              <h3>Vehicle Status</h3>
-
-              <button class="btn-filter">View All</button>
-            </div>
-
-            <div class="table-responsive">
-              <table class="fleet-table">
-                <thead>
-                  <tr>
-                    <th>Vehicle</th>
-                    <th>Driver</th>
-                    <th>Status</th>
-                    <th>Fuel</th>
-                    <th></th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>Ambulance-01</td>
-                    <td>Juan Dela Cruz</td>
-
-                    <td>
-                      <span class="status available"> Available </span>
-                    </td>
-
-                    <td>85%</td>
-
-                    <td>
-                      <button class="table-btn">View</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Van-02</td>
-                    <td>Maria Santos</td>
-
-                    <td>
-                      <span class="status trip"> On Trip </span>
-                    </td>
-
-                    <td>62%</td>
-
-                    <td>
-                      <button class="table-btn">View</button>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>SUV-03</td>
-                    <td>Pedro Cruz</td>
-
-                    <td>
-                      <span class="status maintenance"> Maintenance </span>
-                    </td>
-
-                    <td>40%</td>
-
-                    <td>
-                      <button class="table-btn">View</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Maintenance -->
-
-          <div class="card">
-            <div class="card-header">
-              <h3>Maintenance Alerts</h3>
-            </div>
-
-            <div class="maintenance-list">
-              <div class="maintenance-item critical">
-                <div class="maintenance-icon">
-                  <i class="ph-fill ph-warning-circle"></i>
-                </div>
-
-                <div>
-                  <strong>Oil Change Due</strong>
-
-                  <small>Ambulance-01</small>
-                </div>
-              </div>
-
-              <div class="maintenance-item warning">
-                <div class="maintenance-icon">
-                  <i class="ph-fill ph-wrench"></i>
-                </div>
-
-                <div>
-                  <strong>Brake Inspection</strong>
-
-                  <small>Van-02</small>
-                </div>
-              </div>
-
-              <div class="maintenance-item success">
-                <div class="maintenance-icon">
-                  <i class="ph-fill ph-shield-check"></i>
-                </div>
-
-                <div>
-                  <strong>Insurance Updated</strong>
-
-                  <small>SUV-03</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="dashboard-grid">
-          <!-- Fleet Operations Map -->
-
-          <div class="card">
-            <div class="card-header">
-              <h3>Fleet Operations Map</h3>
-
-              <button class="btn-filter">Live View</button>
-            </div>
-
-            <div class="map-placeholder">
-              <i class="ph-fill ph-map-trifold"></i>
-
-              <h4>Google Maps Integration</h4>
-
-              <p>
-                Live vehicle tracking and AI route optimization will appear
-                here.
-              </p>
-            </div>
-          </div>
-
-          <!-- Recent Activities -->
-
-          <div class="card">
-            <div class="card-header">
-              <h3>Recent Activities</h3>
-            </div>
-
-            <div class="activity-list">
-              <div class="activity-item">
-                <div class="activity-icon success">
-                  <i class="ph-fill ph-check-circle"></i>
-                </div>
-
-                <div>
-                  <strong>Ambulance-01 dispatched</strong>
-
-                  <small>2 minutes ago</small>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <div class="activity-icon primary">
-                  <i class="ph-fill ph-car"></i>
-                </div>
-
-                <div>
-                  <strong>Vehicle returned to hospital</strong>
-
-                  <small>15 minutes ago</small>
-                </div>
-              </div>
-
-              <div class="activity-item">
-                <div class="activity-icon warning">
+              <div class="stat-card">
+                <div class="stat-icon">
                   <i class="ph-fill ph-user"></i>
                 </div>
 
-                <div>
-                  <strong>Driver Ana logged in</strong>
+                <div class="stat-content">
+                  <span>Drivers On Duty</span>
 
-                  <small>30 minutes ago</small>
+                  <h2>18</h2>
                 </div>
               </div>
 
-              <div class="activity-item">
-                <div class="activity-icon danger">
-                  <i class="ph-fill ph-warning-circle"></i>
+              <!-- Card 4 -->
+
+              <div class="stat-card">
+                <div class="stat-icon">
+                  <i class="ph-fill ph-gas-pump"></i>
                 </div>
 
-                <div>
-                  <strong>Maintenance alert created</strong>
+                <div class="stat-content">
+                  <span>Fuel Efficiency</span>
 
-                  <small>1 hour ago</small>
+                  <h2>92%</h2>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section class="dashboard-grid">
+            <!-- Fleet Activity -->
+            <div class="card dashboard-chart">
+              <div class="card-header">
+                <h3>Fleet Activity</h3>
+                <button class="btn-filter">
+                  This Week
+                  <i class="ph ph-caret-down"></i>
+                </button>
+              </div>
+
+              <div class="chart-placeholder">
+                <div class="bar" style="height: 65%"></div>
+                <div class="bar" style="height: 85%"></div>
+                <div class="bar" style="height: 45%"></div>
+                <div class="bar" style="height: 95%"></div>
+                <div class="bar" style="height: 75%"></div>
+                <div class="bar" style="height: 55%"></div>
+                <div class="bar" style="height: 90%"></div>
+              </div>
+            </div>
+
+            <!-- Dispatch Queue -->
+
+            <div class="card dispatch-card">
+              <div class="card-header">
+                <h3>Today's Dispatch Queue</h3>
+
+                <span class="badge-green">8 Active</span>
+              </div>
+
+              <div class="dispatch-list">
+                <div class="dispatch-item">
+                  <div class="dispatch-dot green"></div>
+
+                  <div>
+                    <strong>Emergency Patient Transfer</strong>
+
+                    <small>Ambulance 03 • Driver: Juan Dela Cruz</small>
+                  </div>
+                </div>
+
+                <div class="dispatch-item">
+                  <div class="dispatch-dot yellow"></div>
+
+                  <div>
+                    <strong>Laboratory Sample Delivery</strong>
+
+                    <small>Van 02 • Driver: Maria Santos</small>
+                  </div>
+                </div>
+
+                <div class="dispatch-item">
+                  <div class="dispatch-dot red"></div>
+
+                  <div>
+                    <strong>Vehicle Maintenance Pickup</strong>
+
+                    <small>Service Vehicle 01</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+          <section class="dashboard-grid">
+            <!-- Vehicle Status -->
+            <div class="card">
+              <div class="card-header">
+                <h3>Vehicle Status</h3>
+
+                <button class="btn-filter">View All</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="fleet-table">
+                  <thead>
+                    <tr>
+                      <th>Vehicle</th>
+                      <th>Driver</th>
+                      <th>Status</th>
+                      <th>Fuel</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Ambulance-01</td>
+                      <td>Juan Dela Cruz</td>
+
+                      <td>
+                        <span class="status available"> Available </span>
+                      </td>
+
+                      <td>85%</td>
+
+                      <td>
+                        <button class="table-btn">View</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Van-02</td>
+                      <td>Maria Santos</td>
+
+                      <td>
+                        <span class="status trip"> On Trip </span>
+                      </td>
+
+                      <td>62%</td>
+
+                      <td>
+                        <button class="table-btn">View</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>SUV-03</td>
+                      <td>Pedro Cruz</td>
+
+                      <td>
+                        <span class="status maintenance"> Maintenance </span>
+                      </td>
+
+                      <td>40%</td>
+
+                      <td>
+                        <button class="table-btn">View</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Maintenance -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Maintenance Alerts</h3>
+              </div>
+
+              <div class="maintenance-list">
+                <div class="maintenance-item critical">
+                  <div class="maintenance-icon">
+                    <i class="ph-fill ph-warning-circle"></i>
+                  </div>
+
+                  <div>
+                    <strong>Oil Change Due</strong>
+
+                    <small>Ambulance-01</small>
+                  </div>
+                </div>
+
+                <div class="maintenance-item warning">
+                  <div class="maintenance-icon">
+                    <i class="ph-fill ph-wrench"></i>
+                  </div>
+
+                  <div>
+                    <strong>Brake Inspection</strong>
+
+                    <small>Van-02</small>
+                  </div>
+                </div>
+
+                <div class="maintenance-item success">
+                  <div class="maintenance-icon">
+                    <i class="ph-fill ph-shield-check"></i>
+                  </div>
+
+                  <div>
+                    <strong>Insurance Updated</strong>
+
+                    <small>SUV-03</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="dashboard-grid">
+            <!-- Fleet Operations Map -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Fleet Operations Map</h3>
+
+                <button class="btn-filter">Live View</button>
+              </div>
+
+              <div class="map-placeholder">
+                <i class="ph-fill ph-map-trifold"></i>
+
+                <h4>Google Maps Integration</h4>
+
+                <p>
+                  Live vehicle tracking and AI route optimization will appear
+                  here.
+                </p>
+              </div>
+            </div>
+
+            <!-- Recent Activities -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Recent Activities</h3>
+              </div>
+
+              <div class="activity-list">
+                <div class="activity-item">
+                  <div class="activity-icon success">
+                    <i class="ph-fill ph-check-circle"></i>
+                  </div>
+
+                  <div>
+                    <strong>Ambulance-01 dispatched</strong>
+
+                    <small>2 minutes ago</small>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon primary">
+                    <i class="ph-fill ph-car"></i>
+                  </div>
+
+                  <div>
+                    <strong>Vehicle returned to hospital</strong>
+
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon warning">
+                    <i class="ph-fill ph-user"></i>
+                  </div>
+
+                  <div>
+                    <strong>Driver Ana logged in</strong>
+
+                    <small>30 minutes ago</small>
+                  </div>
+                </div>
+
+                <div class="activity-item">
+                  <div class="activity-icon danger">
+                    <i class="ph-fill ph-warning-circle"></i>
+                  </div>
+
+                  <div>
+                    <strong>Maintenance alert created</strong>
+
+                    <small>1 hour ago</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
       </main>
 

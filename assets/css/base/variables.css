@@ -135,6 +135,11 @@ html[data-theme="light"] {
   --space-11: 80px;
   --space-12: 96px;
 
+  /* Layout rhythm (reuses spacing scale) */
+  --card-gap: var(--space-6);
+  --section-gap: var(--space-7);
+  --toolbar-gap: var(--space-5);
+
   /* ==========================================
      BORDER RADIUS
   ========================================== */
@@ -161,10 +166,11 @@ html[data-theme="light"] {
   --sidebar-collapsed-width: 88px;
   --sidebar-collapse: var(--sidebar-collapsed-width);
 
-  --sidebar-transition-duration: 220ms;
-  --sidebar-label-transition-duration: 140ms;
-  --sidebar-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
-  --sidebar-label-expand-delay: 70ms;
+  /* Slightly slower open/close for a smoother collapse feel */
+  --sidebar-transition-duration: 380ms;
+  --sidebar-label-transition-duration: 240ms;
+  --sidebar-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --sidebar-label-expand-delay: 90ms;
 
   --sidebar-tooltip-bg: #0c2d3a;
   --sidebar-tooltip-color: #ffffff;

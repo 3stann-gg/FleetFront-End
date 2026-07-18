@@ -139,19 +139,6 @@
                   <i class="ph ph-arrows-clockwise"></i>
                   Refresh
                 </button>
-                <button type="button" class="btn-outline" id="printVehicles">
-                  <i class="ph ph-printer"></i>
-                  Print
-                </button>
-                <button type="button" class="btn-outline" id="exportPDF">
-                  <i class="ph ph-file-pdf"></i>
-                  Export PDF
-                </button>
-
-                <button type="button" class="btn-outline" id="exportVehicles">
-                  <i class="ph ph-file-xls"></i>
-                  Export Excel
-                </button>
               </div>
             </div>
             <div class="bulk-toolbar" id="bulkToolbar">
@@ -179,7 +166,60 @@
                   </p>
                 </div>
 
-                <div class="card-actions"></div>
+                <div class="card-actions">
+                  <div class="export-dropdown">
+                    <button
+                      type="button"
+                      class="btn-outline export-menu-toggle"
+                      id="vehicleExportMenuToggle"
+                      aria-haspopup="menu"
+                      aria-expanded="false"
+                      aria-controls="vehicleExportMenu"
+                    >
+                      <i class="ph ph-export" aria-hidden="true"></i>
+                      Export
+                      <i class="ph ph-caret-down export-menu-chevron" aria-hidden="true"></i>
+                    </button>
+
+                    <div
+                      class="export-menu"
+                      id="vehicleExportMenu"
+                      role="menu"
+                      hidden
+                      aria-label="Export vehicle list"
+                    >
+                      <button
+                        type="button"
+                        class="export-menu-item"
+                        role="menuitem"
+                        id="printVehicles"
+                      >
+                        <i class="ph ph-printer" aria-hidden="true"></i>
+                        Print
+                      </button>
+
+                      <button
+                        type="button"
+                        class="export-menu-item"
+                        role="menuitem"
+                        id="exportPDF"
+                      >
+                        <i class="ph ph-file-pdf" aria-hidden="true"></i>
+                        Export PDF
+                      </button>
+
+                      <button
+                        type="button"
+                        class="export-menu-item"
+                        role="menuitem"
+                        id="exportVehicles"
+                      >
+                        <i class="ph ph-file-xls" aria-hidden="true"></i>
+                        Export Excel
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="table-responsive">
@@ -527,6 +567,7 @@
     <!-- Main JS -->
     <script src="../assets/js/core/toast.js"></script>
     <script src="../assets/js/core/main.js"></script>
+    <script src="../assets/js/components/dropdown.js"></script>
     <script src="../assets/js/vehicle/vehicle-modal.js"></script>
     <script src="../assets/js/vehicle/vehicle-form.js"></script>
     <script src="../assets/js/vehicle/vehicle-image.js"></script>

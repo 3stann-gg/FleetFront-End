@@ -6,9 +6,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: var(--toolbar-gap);
   flex-wrap: wrap;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--section-gap);
   padding: 4px 0;
 }
 

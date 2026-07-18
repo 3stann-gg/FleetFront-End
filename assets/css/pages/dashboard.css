@@ -1,19 +1,18 @@
 /* ===============================
    DASHBOARD
+   Vertical rhythm: parent gap only.
+   Charts/grids sit outside .dashboard — use sibling margin-top.
 ================================ */
 
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--section-gap);
+  margin: 0;
 }
 
 .dashboard > section {
-  margin-bottom: 32px;
-}
-
-.dashboard > section:last-child {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 /* Header */
@@ -22,8 +21,8 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
-  gap: 16px;
+  margin: 0;
+  gap: var(--toolbar-gap);
 }
 
 .dashboard-header-left {
@@ -61,12 +60,20 @@
 .dashboard-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 30px;
-  column-gap: 24px;
-  row-gap: 34px;
+  gap: var(--card-gap);
+  margin: 0;
 }
+
+/* One spacing source between major dashboard sections (no margin stacking) */
+.dashboard + .dashboard-grid,
 .dashboard-grid + .dashboard-grid {
-  margin-top: 36px;
+  margin-top: var(--section-gap);
+}
+
+/* Stats inside .dashboard: horizontal card gap only; vertical via parent */
+.dashboard .stats-grid {
+  gap: var(--card-gap);
+  margin: 0;
 }
 /* ==========================================
    Chart Placeholder

@@ -39,6 +39,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     initDesktopSidebarCollapse();
   }
 
+  /* Collapsed-icon tooltips (floating layer; not clipped by nav overflow) */
+  if (typeof initSidebarCollapsedTooltips === "function") {
+    initSidebarCollapsedTooltips();
+  }
+
+  /* List-card Export dropdown (Print / PDF / Excel) */
+  if (typeof initExportDropdowns === "function") {
+    initExportDropdowns();
+  }
+
   await loadComponent("navbar", "../components/shared/navbar.html");
 
   if (typeof initResponsiveNavigation === "function") {
@@ -179,6 +189,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadComponent(
       "delete-maintenance-modal",
       "../components/maintenance/delete-maintenance-modal.html",
+    );
+  }
+
+  if (document.getElementById("add-fuel-modal")) {
+    await loadComponent(
+      "add-fuel-modal",
+      "../components/fuel/add-fuel-modal.html",
+    );
+  }
+
+  if (document.getElementById("view-fuel-modal")) {
+    await loadComponent(
+      "view-fuel-modal",
+      "../components/fuel/view-fuel-modal.html",
+    );
+  }
+
+  if (document.getElementById("edit-fuel-modal")) {
+    await loadComponent(
+      "edit-fuel-modal",
+      "../components/fuel/edit-fuel-modal.html",
+    );
+  }
+
+  if (document.getElementById("delete-fuel-modal")) {
+    await loadComponent(
+      "delete-fuel-modal",
+      "../components/fuel/delete-fuel-modal.html",
     );
   }
 
@@ -400,6 +438,82 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (typeof initMaintenancePDFExport === "function") {
       initMaintenancePDFExport();
+    }
+  }
+
+  if (document.getElementById("add-fuel-modal")) {
+    if (typeof initFuelModal === "function") {
+      initFuelModal();
+    }
+    if (typeof initFuelAdd === "function") {
+      initFuelAdd();
+    }
+  }
+
+  if (document.getElementById("view-fuel-modal")) {
+    if (typeof initViewFuelModal === "function") {
+      initViewFuelModal();
+    }
+  }
+
+  if (document.getElementById("edit-fuel-modal")) {
+    if (typeof initEditFuelModal === "function") {
+      initEditFuelModal();
+    }
+    if (typeof initFuelEdit === "function") {
+      initFuelEdit();
+    }
+  }
+
+  if (document.getElementById("delete-fuel-modal")) {
+    if (typeof initDeleteFuelModal === "function") {
+      initDeleteFuelModal();
+    }
+  }
+
+  if (document.getElementById("fuelTableBody")) {
+    if (typeof initFuelSorting === "function") {
+      initFuelSorting();
+    }
+
+    if (typeof initFuelPagination === "function") {
+      initFuelPagination();
+    }
+
+    if (typeof initFuelSearch === "function") {
+      initFuelSearch();
+    }
+
+    if (typeof initFuelBulkSelection === "function") {
+      initFuelBulkSelection();
+    } else if (typeof initFuelBulkActions === "function") {
+      initFuelBulkActions();
+    }
+
+    if (typeof initFuelStatistics === "function") {
+      initFuelStatistics();
+    }
+
+    if (typeof refreshFuelTable === "function") {
+      refreshFuelTable({ resetPage: true });
+    }
+
+    if (typeof updateFuelStatistics === "function") {
+      updateFuelStatistics();
+    }
+
+    if (typeof initFuelExcelExport === "function") {
+      initFuelExcelExport();
+    } else if (typeof initFuelExport === "function") {
+      initFuelExport();
+    }
+
+    if (typeof initFuelPDFExport === "function") {
+      initFuelPDFExport();
+    }
+
+    if (typeof initFuelPrint === "function") {
+      initFuelPrint();
     }
   }
 

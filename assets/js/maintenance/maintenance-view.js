@@ -4,6 +4,87 @@ const viewMaintenanceModal = {
   currentRow: null,
 };
 
+function getMaintenanceRecordIdFromRow(row) {
+  if (!row) {
+    return "";
+  }
+
+  const fromDataset = (row.dataset.maintenanceId || "").trim();
+  if (fromDataset) {
+    return fromDataset;
+  }
+
+  const numberCell = row.querySelector(".maintenance-number");
+  return numberCell ? numberCell.textContent.trim() : "";
+}
+
+function resolveMaintenanceRowById(recordId) {
+  const id = (recordId || "").trim();
+  if (!id) {
+    return null;
+  }
+
+  const rows = document.querySelectorAll("#maintenanceTableBody tr[data-maintenance-id]");
+
+  for (const row of rows) {
+    if ((row.dataset.maintenanceId || "").trim() === id) {
+      return row;
+    }
+  }
+
+  const numberCells = document.querySelectorAll(
+    "#maintenanceTableBody tr .maintenance-number",
+  );
+
+  for (const cell of numberCells) {
+    if (cell.textContent.trim() === id) {
+      return cell.closest("tr");
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Close View Details and open Edit for the same maintenance record.
+ * @param {string} [recordId]
+ */
+function openEditMaintenanceFromView(recordId) {
+  const viewModal = document.getElementById("viewMaintenanceModal");
+  const storedId =
+    (recordId || "").trim() ||
+    (viewModal?.dataset.maintenanceId || "").trim() ||
+    getMaintenanceRecordIdFromRow(viewMaintenanceModal.currentRow);
+
+  let row = viewMaintenanceModal.currentRow;
+
+  if (!row || !document.body.contains(row)) {
+    row = resolveMaintenanceRowById(storedId);
+  }
+
+  if (!row || !document.body.contains(row)) {
+    if (typeof showToast === "function") {
+      showToast("Maintenance record is no longer available.", "error");
+    } else {
+      console.error("Edit from View: maintenance record not found", storedId);
+    }
+    return;
+  }
+
+  if (typeof openEditMaintenanceModal !== "function") {
+    console.error("Edit from View: openEditMaintenanceModal is not available");
+    return;
+  }
+
+  closeViewMaintenanceModal();
+
+  const opened = openEditMaintenanceModal(row);
+
+  if (!opened && typeof showToast === "function") {
+    showToast("Unable to open Edit Maintenance.", "error");
+  }
+}
+
 function initViewMaintenanceModal() {
   if (viewMaintenanceInitialized) {
     return;
@@ -30,6 +111,16 @@ function initViewMaintenanceModal() {
       return;
     }
 
+    const editFromViewBtn = event.target.closest("#editMaintenanceFromViewBtn");
+
+    if (editFromViewBtn) {
+      event.preventDefault();
+      openEditMaintenanceFromView(
+        editFromViewBtn.dataset.maintenanceId || modal.dataset.maintenanceId,
+      );
+      return;
+    }
+
     if (event.target.closest("#closeViewMaintenanceModal")) {
       closeViewMaintenanceModal();
       return;
@@ -40,9 +131,7 @@ function initViewMaintenanceModal() {
       return;
     }
 
-    if (
-      event.target === modal
-    ) {
+    if (event.target === modal) {
       closeViewMaintenanceModal();
       return;
     }
@@ -65,6 +154,14 @@ function openViewMaintenanceModal(row) {
   }
 
   viewMaintenanceModal.currentRow = row;
+
+  const recordId = getMaintenanceRecordIdFromRow(row);
+  modal.dataset.maintenanceId = recordId;
+
+  const editFromViewBtn = document.getElementById("editMaintenanceFromViewBtn");
+  if (editFromViewBtn) {
+    editFromViewBtn.dataset.maintenanceId = recordId;
+  }
 
   const getText = (selector, fallback = "Not provided") => {
     const el = row.querySelector(selector);
@@ -136,4 +233,10 @@ function closeViewMaintenanceModal() {
   modal.classList.remove("show");
   document.body.style.overflow = "";
   viewMaintenanceModal.currentRow = null;
+  delete modal.dataset.maintenanceId;
+
+  const editFromViewBtn = document.getElementById("editMaintenanceFromViewBtn");
+  if (editFromViewBtn) {
+    delete editFromViewBtn.dataset.maintenanceId;
+  }
 }

@@ -120,10 +120,18 @@ function initDesktopSidebarCollapse() {
     setDesktopSidebarCollapsedPreference(nextCollapsed);
     document.body.classList.toggle("sidebar-collapsed", nextCollapsed);
     updateDesktopSidebarToggleAria(toggle, nextCollapsed);
+
+    if (typeof hideSidebarCollapsedTooltip === "function") {
+      hideSidebarCollapsedTooltip();
+    }
   });
 
   const onViewportChange = () => {
     syncDesktopSidebarCollapseState(toggle);
+
+    if (typeof hideSidebarCollapsedTooltip === "function") {
+      hideSidebarCollapsedTooltip();
+    }
   };
 
   if (typeof desktopViewport.addEventListener === "function") {
@@ -134,6 +142,191 @@ function initDesktopSidebarCollapse() {
 }
 
 applyEarlyDesktopSidebarCollapsedState();
+
+/* =====================================
+   Collapsed sidebar tooltips
+   Floating layer outside .sidebar-nav so labels are not clipped by overflow-y:auto
+===================================== */
+
+let sidebarTooltipLayer = null;
+let sidebarTooltipActiveTarget = null;
+
+function canShowSidebarCollapsedTooltip() {
+  return (
+    isDesktopSidebarViewport() &&
+    document.body.classList.contains("sidebar-collapsed")
+  );
+}
+
+function ensureSidebarTooltipLayer() {
+  if (sidebarTooltipLayer && document.body.contains(sidebarTooltipLayer)) {
+    return sidebarTooltipLayer;
+  }
+
+  const sidebar = document.querySelector(".sidebar");
+
+  if (!sidebar) return null;
+
+  let layer = document.getElementById("sidebarTooltipLayer");
+
+  if (!layer) {
+    layer = document.createElement("div");
+    layer.id = "sidebarTooltipLayer";
+    layer.className = "sidebar-tooltip-layer";
+    layer.setAttribute("role", "tooltip");
+    layer.hidden = true;
+    layer.setAttribute("aria-hidden", "true");
+    sidebar.appendChild(layer);
+  }
+
+  sidebarTooltipLayer = layer;
+  return layer;
+}
+
+function hideSidebarCollapsedTooltip() {
+  sidebarTooltipActiveTarget = null;
+
+  const layer = sidebarTooltipLayer || document.getElementById("sidebarTooltipLayer");
+
+  if (!layer) return;
+
+  layer.classList.remove("is-visible");
+  layer.hidden = true;
+  layer.setAttribute("aria-hidden", "true");
+  layer.textContent = "";
+}
+
+function showSidebarCollapsedTooltip(target) {
+  if (!canShowSidebarCollapsedTooltip() || !target) {
+    hideSidebarCollapsedTooltip();
+    return;
+  }
+
+  const text = target.getAttribute("data-tooltip");
+
+  if (!text) {
+    hideSidebarCollapsedTooltip();
+    return;
+  }
+
+  if (
+    target.classList.contains("sidebar-profile") &&
+    target.closest(".sidebar-profile-wrap")?.classList.contains("is-open")
+  ) {
+    hideSidebarCollapsedTooltip();
+    return;
+  }
+
+  const layer = ensureSidebarTooltipLayer();
+
+  if (!layer) return;
+
+  sidebarTooltipActiveTarget = target;
+
+  const rect = target.getBoundingClientRect();
+
+  layer.textContent = text;
+  layer.hidden = false;
+  layer.setAttribute("aria-hidden", "false");
+  layer.style.top = `${Math.round(rect.top + rect.height / 2)}px`;
+  layer.style.left = `${Math.round(rect.right + 12)}px`;
+
+  /* Next frame so the opacity transition runs from the hidden state */
+  requestAnimationFrame(() => {
+    if (sidebarTooltipActiveTarget === target) {
+      layer.classList.add("is-visible");
+    }
+  });
+}
+
+function getSidebarTooltipTarget(node) {
+  if (!(node instanceof Element)) return null;
+
+  return node.closest(
+    ".nav-link[data-tooltip], .sidebar-profile[data-tooltip]",
+  );
+}
+
+/**
+ * Single delegated tooltip controller for collapsed desktop icons.
+ * Does not attach per-link listeners.
+ */
+function initSidebarCollapsedTooltips() {
+  const sidebar = document.querySelector(".sidebar");
+
+  if (!sidebar) return;
+
+  if (sidebar.dataset.collapsedTooltipsInitialized === "true") {
+    ensureSidebarTooltipLayer();
+    return;
+  }
+
+  sidebar.dataset.collapsedTooltipsInitialized = "true";
+  ensureSidebarTooltipLayer();
+
+  /* Accessible names for icon-only collapsed state (nav-label is visibility:hidden) */
+  sidebar.querySelectorAll(".nav-link[data-tooltip]").forEach((link) => {
+    if (!link.hasAttribute("aria-label")) {
+      link.setAttribute("aria-label", link.getAttribute("data-tooltip") || "");
+    }
+
+    const icon = link.querySelector("i");
+
+    if (icon) {
+      icon.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  sidebar.addEventListener("pointerover", (event) => {
+    const target = getSidebarTooltipTarget(event.target);
+
+    if (target) {
+      showSidebarCollapsedTooltip(target);
+    }
+  });
+
+  sidebar.addEventListener("pointerout", (event) => {
+    const from = getSidebarTooltipTarget(event.target);
+    const to = getSidebarTooltipTarget(event.relatedTarget);
+
+    if (from && from !== to && !to) {
+      hideSidebarCollapsedTooltip();
+    }
+  });
+
+  sidebar.addEventListener("focusin", (event) => {
+    const target = getSidebarTooltipTarget(event.target);
+
+    if (target) {
+      showSidebarCollapsedTooltip(target);
+    }
+  });
+
+  sidebar.addEventListener("focusout", (event) => {
+    const from = getSidebarTooltipTarget(event.target);
+    const to = getSidebarTooltipTarget(event.relatedTarget);
+
+    if (from && !to) {
+      hideSidebarCollapsedTooltip();
+    }
+  });
+
+  const nav = sidebar.querySelector(".sidebar-nav");
+
+  if (nav) {
+    nav.addEventListener(
+      "scroll",
+      () => {
+        hideSidebarCollapsedTooltip();
+      },
+      { passive: true },
+    );
+  }
+
+  window.addEventListener("resize", () => {
+    hideSidebarCollapsedTooltip();
+  });
+}
 
 /* =====================================
    Global Theme System
@@ -248,6 +441,10 @@ function initSidebarProfileDropdown() {
 
     if (open) {
       menu.removeAttribute("hidden");
+
+      if (typeof hideSidebarCollapsedTooltip === "function") {
+        hideSidebarCollapsedTooltip();
+      }
     } else {
       menu.setAttribute("hidden", "");
     }

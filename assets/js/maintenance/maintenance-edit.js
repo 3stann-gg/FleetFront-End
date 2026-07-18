@@ -92,6 +92,53 @@ function populateEditMaintenanceForm(row) {
   setValue("editMaintenanceNotes", notes);
 }
 
+/**
+ * Open the Edit Maintenance modal for a table row (shared by table action + View handoff).
+ * @param {HTMLTableRowElement} row
+ * @returns {boolean} true when opened and populated
+ */
+function openEditMaintenanceModal(row) {
+  const modal = document.getElementById("editMaintenanceModal");
+
+  if (!modal || !row || !document.body.contains(row)) {
+    return false;
+  }
+
+  if (typeof populateEditMaintenanceForm !== "function") {
+    return false;
+  }
+
+  modal.currentRow = row;
+  populateEditMaintenanceForm(row);
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+
+  const focusTarget =
+    document.getElementById("editMaintenanceVehicle") ||
+    document.getElementById("editMaintenanceModalTitle") ||
+    modal.querySelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+
+  if (focusTarget && typeof focusTarget.focus === "function") {
+    requestAnimationFrame(() => {
+      focusTarget.focus();
+    });
+  }
+
+  return true;
+}
+
+function closeEditMaintenanceModal() {
+  const modal = document.getElementById("editMaintenanceModal");
+
+  if (!modal) {
+    return;
+  }
+
+  modal.classList.remove("show");
+  document.body.style.overflow = "";
+  modal.currentRow = null;
+}
+
 function initEditMaintenanceModal() {
   if (editMaintenanceInitialized) return;
 
@@ -107,10 +154,7 @@ function initEditMaintenanceModal() {
     const row = editBtn.closest("tr");
     if (!row) return;
 
-    modal.currentRow = row;
-    populateEditMaintenanceForm(row);
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
+    openEditMaintenanceModal(row);
   });
 
   const closeHandlers = [
@@ -126,17 +170,13 @@ function initEditMaintenanceModal() {
       if (element === modal && event.target !== modal) return;
       if (element === modal && event.target.closest(".custom-modal")) return;
 
-      modal.classList.remove("show");
-      document.body.style.overflow = "";
-      modal.currentRow = null;
+      closeEditMaintenanceModal();
     });
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("show")) {
-      modal.classList.remove("show");
-      document.body.style.overflow = "";
-      modal.currentRow = null;
+      closeEditMaintenanceModal();
     }
   });
 }
@@ -285,9 +325,13 @@ function initMaintenanceEdit() {
     row.dataset.partsUsed = partsUsed;
     row.dataset.notes = notes;
 
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-    modal.currentRow = null;
+    if (typeof closeEditMaintenanceModal === "function") {
+      closeEditMaintenanceModal();
+    } else {
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+      modal.currentRow = null;
+    }
 
     if (typeof refreshMaintenanceTable === "function") {
       refreshMaintenanceTable({
