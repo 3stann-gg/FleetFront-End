@@ -1,4 +1,5 @@
 <aside class="sidebar">
+  <div class="sidebar-panel">
   <!-- Logo -->
   <div class="sidebar-header">
     <div class="sidebar-logo">
@@ -13,7 +14,7 @@
     </div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Navigation (scrolls independently) -->
   <nav class="sidebar-nav">
     <span class="nav-title">MAIN MENU</span>
 
@@ -83,6 +84,18 @@
         >
           <i class="ph-fill ph-user"></i>
           <span class="nav-label">Drivers</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="../maintenance/index.html"
+          class="nav-link"
+          data-page="maintenance"
+          data-tooltip="Maintenance"
+        >
+          <i class="ph-fill ph-wrench"></i>
+          <span class="nav-label">Maintenance</span>
         </a>
       </li>
 
@@ -238,4 +251,16 @@
       </div>
     </div>
   </div>
+  </div>
+  <!-- Desktop collapse control — fixed to sidebar edge, outside scroll panel -->
+  <button
+    type="button"
+    id="desktopSidebarToggle"
+    class="desktop-sidebar-toggle sidebar-edge-toggle"
+    aria-label="Collapse sidebar"
+    aria-controls="sidebar"
+    aria-expanded="true"
+  >
+    <i class="ph ph-caret-double-left"></i>
+  </button>
 </aside>

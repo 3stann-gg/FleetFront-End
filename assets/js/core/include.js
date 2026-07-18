@@ -34,14 +34,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     initThemeControls();
   }
 
+  /* Desktop edge toggle lives in the sidebar component */
+  if (typeof initDesktopSidebarCollapse === "function") {
+    initDesktopSidebarCollapse();
+  }
+
   await loadComponent("navbar", "../components/shared/navbar.html");
 
   if (typeof initResponsiveNavigation === "function") {
     initResponsiveNavigation();
-  }
-
-  if (typeof initDesktopSidebarCollapse === "function") {
-    initDesktopSidebarCollapse();
   }
 
   if (document.getElementById("vehicle-modal")) {
@@ -358,6 +359,47 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("delete-maintenance-modal")) {
     if (typeof initDeleteMaintenanceModal === "function") {
       initDeleteMaintenanceModal();
+    }
+  }
+
+  if (document.getElementById("maintenanceTableBody")) {
+    /* Register listeners only — single pipeline paint below */
+    if (typeof initMaintenanceSorting === "function") {
+      initMaintenanceSorting();
+    }
+
+    if (typeof initMaintenancePagination === "function") {
+      initMaintenancePagination();
+    }
+
+    if (typeof initMaintenanceSearch === "function") {
+      initMaintenanceSearch();
+    }
+
+    if (typeof initMaintenanceBulkSelection === "function") {
+      initMaintenanceBulkSelection();
+    } else if (typeof initMaintenanceBulkActions === "function") {
+      initMaintenanceBulkActions();
+    }
+
+    if (typeof refreshMaintenanceTable === "function") {
+      refreshMaintenanceTable({ resetPage: true });
+    }
+
+    if (typeof updateMaintenanceStatistics === "function") {
+      updateMaintenanceStatistics();
+    } else if (typeof initMaintenanceStatistics === "function") {
+      initMaintenanceStatistics();
+    }
+
+    if (typeof initMaintenanceExcelExport === "function") {
+      initMaintenanceExcelExport();
+    } else if (typeof initMaintenanceExport === "function") {
+      initMaintenanceExport();
+    }
+
+    if (typeof initMaintenancePDFExport === "function") {
+      initMaintenancePDFExport();
     }
   }
 

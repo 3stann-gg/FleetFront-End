@@ -49,21 +49,7 @@ function initMaintenanceModal() {
     }
   });
 
-  const form = document.getElementById("maintenanceForm");
-  if (form) {
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const valid = validateMaintenanceForm(form);
-      if (!valid) {
-        return;
-      }
-
-      if (typeof showToast === "function") {
-        showToast("Maintenance form validated successfully.", "success");
-      }
-    });
-  }
+  /* Form submit is owned by initMaintenanceAdd — do not bind here. */
 }
 
 function showMaintenanceFieldError(field, message) {
@@ -134,9 +120,12 @@ function validateMaintenanceForm(form) {
   }
 
   function trackCorrection(field) {
-    if (!field) {
+    if (!field || field.dataset.maintenanceErrorClearBound === "true") {
       return;
     }
+
+    field.dataset.maintenanceErrorClearBound = "true";
+
     field.addEventListener("input", function () {
       clearMaintenanceFieldError(field);
     });
@@ -197,7 +186,8 @@ function validateMaintenanceForm(form) {
     const scheduled = new Date(scheduledDate.value);
     if (isNaN(scheduled.getTime())) {
       fail(scheduledDate, "Scheduled date is invalid.");
-    } else if (scheduled < today) {
+    } else if (!isEditForm && scheduled < today) {
+      /* Past-date rule applies to Add only; Edit may update historical records. */
       fail(scheduledDate, "Scheduled date cannot be in the past.");
     }
   }

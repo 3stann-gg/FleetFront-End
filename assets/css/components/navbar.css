@@ -55,95 +55,17 @@
   background: var(--color-surface-hover);
 }
 
-/* Desktop sidebar collapse toggle (mobile drawer uses .menu-toggle) */
-.desktop-sidebar-toggle {
-  display: none;
-
-  width: 42px;
-  height: 42px;
-
-  border: none;
-  border-radius: 12px;
-
-  background: var(--btn-muted-bg);
-
-  cursor: pointer;
-
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-
-  color: var(--color-text);
-  font-size: 20px;
-
-  transition:
-    background var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
-    color var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
-    box-shadow var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
-}
-
-.desktop-sidebar-toggle i {
-  display: block;
-  line-height: 1;
-  transition:
-    opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
-    transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
-}
-
-.desktop-sidebar-toggle:hover {
-  background: var(--color-surface-hover);
-  box-shadow: var(--shadow-xs);
-}
-
-.desktop-sidebar-toggle:hover i {
-  transform: scale(1.06);
-}
-
-.desktop-sidebar-toggle:active {
-  box-shadow: none;
-}
-
-.desktop-sidebar-toggle:active i {
-  transform: scale(0.98);
-}
-
-.desktop-sidebar-toggle:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  box-shadow: var(--shadow-sm);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .desktop-sidebar-toggle,
-  .desktop-sidebar-toggle i {
-    transition: none;
-  }
-
-  .desktop-sidebar-toggle:hover i,
-  .desktop-sidebar-toggle:active i {
-    transform: none;
-  }
-}
-
-/* Desktop (>991px): collapse toggle only; mobile menu toggle hidden */
+/* Desktop (>991px): hide mobile hamburger (edge toggle lives on sidebar) */
 @media (min-width: 992px) {
   .menu-toggle {
     display: none;
   }
-
-  .desktop-sidebar-toggle {
-    display: inline-flex;
-  }
 }
 
-/* Mobile/tablet (≤991px): menu toggle only; desktop collapse toggle hidden */
+/* Mobile/tablet (≤991px): hamburger only */
 @media (max-width: 991px) {
   .menu-toggle {
     display: inline-flex;
-  }
-
-  .desktop-sidebar-toggle {
-    display: none;
   }
 }
 

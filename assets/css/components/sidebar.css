@@ -9,27 +9,37 @@
 
   width: var(--sidebar-width);
   height: 100vh;
+  height: 100dvh;
 
-  background: var(--sidebar-bg);
-
+  /* Shell allows edge toggle to sit outside the panel */
   display: flex;
   flex-direction: column;
-
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-
-  box-shadow: var(--shadow-md);
-
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: visible;
 
   transition: width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 
   z-index: var(--z-sidebar);
 }
 
-/* ===== Header ===== */
+/* Inner panel: full-height column shell with pinned header/footer */
+.sidebar-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  /* visible so profile dropdown can paint over the nav region */
+  overflow: visible;
+
+  background: var(--sidebar-bg);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Header (pinned) ===== */
 
 .sidebar-header {
+  flex-shrink: 0;
   padding: 28px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: padding var(--sidebar-transition-duration) var(--sidebar-transition-easing);
@@ -93,12 +103,25 @@
   font-size: 13px;
 }
 
-/* ===== Navigation ===== */
+/* ===== Navigation (only scrollable region) ===== */
 
 .sidebar-nav {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 20px 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   transition: padding var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
 }
 
 .nav-title {
@@ -233,15 +256,78 @@
   box-shadow: 0 10px 20px rgba(0, 168, 107, 0.3);
 }
 
-/* ===== Footer — User Profile ===== */
+/* ===== Footer — User Profile (pinned) ===== */
 
 .sidebar-footer {
   position: relative;
+  flex-shrink: 0;
   padding: 14px 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   transition:
     padding var(--sidebar-transition-duration) var(--sidebar-transition-easing),
     gap var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+}
+
+/* ===== Desktop edge toggle (outside scroll panel) ===== */
+
+.sidebar-edge-toggle.desktop-sidebar-toggle {
+  position: absolute;
+  top: 88px;
+  right: -16px;
+  z-index: calc(var(--z-sidebar) + 5);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  background: var(--navbar-bg);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 16px;
+
+  transition:
+    background var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    color var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    box-shadow var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    border-color var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
+}
+
+.sidebar-edge-toggle.desktop-sidebar-toggle i {
+  display: block;
+  line-height: 1;
+}
+
+.sidebar-edge-toggle.desktop-sidebar-toggle:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-edge-toggle.desktop-sidebar-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (min-width: 992px) {
+  .sidebar-edge-toggle.desktop-sidebar-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar-edge-toggle.desktop-sidebar-toggle {
+    display: none;
+  }
 }
 
 .sidebar-profile-wrap {
@@ -467,16 +553,7 @@ button.profile-menu-item {
   border: none;
 }
 
-/* ===== Scrollbar ===== */
-
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-}
+/* Scrollbar lives on .sidebar-nav (see navigation section) */
 
 /* ==========================================================
    DESKTOP COLLAPSED — ICONS-ONLY (viewport > 991px)
@@ -690,21 +767,28 @@ button.profile-menu-item {
   }
 
   /*
-   * Overflow: allow tooltips / profile menu to paint outside the 88px shell.
-   * Expanded mode keeps overflow-x hidden (base .sidebar rule).
-   * Vertical scroll is less critical in icons-only mode; nav items fit typical viewports.
+   * Shell stays overflow:visible so edge toggle + tooltips can paint outside.
+   * Panel remains overflow:hidden; nav may still scroll if needed.
    */
   body.sidebar-collapsed .sidebar {
     overflow: visible;
   }
 
+  body.sidebar-collapsed .sidebar-panel {
+    overflow: visible;
+  }
+
   body.sidebar-collapsed .sidebar-header,
-  body.sidebar-collapsed .sidebar-nav,
   body.sidebar-collapsed .sidebar-footer,
   body.sidebar-collapsed .sidebar-profile-wrap,
   body.sidebar-collapsed .sidebar-nav ul,
   body.sidebar-collapsed .sidebar-nav li {
     overflow: visible;
+  }
+
+  body.sidebar-collapsed .sidebar-nav {
+    overflow-x: visible;
+    overflow-y: auto;
   }
 
   /* ----- Collapsed tooltips (hover + keyboard focus) ----- */

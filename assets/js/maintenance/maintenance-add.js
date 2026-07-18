@@ -61,6 +61,7 @@ function createMaintenanceRow(form) {
   const statusClass = statusMap[status] || "scheduled";
 
   const tr = document.createElement("tr");
+  tr.dataset.maintenanceId = number;
   tr.dataset.scheduledDate = scheduledDateRaw;
   tr.dataset.completionDate = completionDateRaw;
   tr.dataset.priority = priority;
@@ -86,7 +87,9 @@ function createMaintenanceRow(form) {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.className = "maintenance-checkbox";
+  checkbox.dataset.maintenanceId = number;
   checkbox.setAttribute("aria-label", "Select " + number);
+  checkbox.checked = false;
   checkboxTd.appendChild(checkbox);
 
   // 2. Maintenance No.
@@ -241,16 +244,14 @@ function initMaintenanceAdd() {
 
     document.body.style.overflow = "";
 
-    if (typeof updateMaintenanceStatistics === "function") {
+    if (typeof refreshMaintenanceTable === "function") {
+      refreshMaintenanceTable({
+        resetPage: false,
+        refreshStatistics: true,
+        reason: "add",
+      });
+    } else if (typeof updateMaintenanceStatistics === "function") {
       updateMaintenanceStatistics();
-    }
-
-    if (typeof updateMaintenancePagination === "function") {
-      updateMaintenancePagination();
-    }
-
-    if (typeof refreshMaintenanceBulkState === "function") {
-      refreshMaintenanceBulkState();
     }
 
     if (typeof showToast === "function") {

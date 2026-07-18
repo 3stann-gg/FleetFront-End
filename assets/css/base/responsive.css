@@ -177,15 +177,23 @@
   .sidebar,
   body.sidebar-collapsed .sidebar {
     width: min(var(--sidebar-width), calc(100vw - 48px));
+    height: 100vh;
     height: 100dvh;
     transform: translateX(-105%);
     transition: transform var(--transition-normal);
     overscroll-behavior: contain;
     z-index: 1100;
+    overflow: visible;
   }
 
-  .desktop-sidebar-toggle {
-    display: none;
+  .sidebar-panel {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .desktop-sidebar-toggle,
+  .sidebar-edge-toggle.desktop-sidebar-toggle {
+    display: none !important;
   }
 
   body.sidebar-open .sidebar {

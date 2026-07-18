@@ -226,8 +226,28 @@ function initMaintenanceEdit() {
       }
     }
 
+    const previousId =
+      (row.dataset.maintenanceId || "").trim() ||
+      (row.querySelector(".maintenance-number")?.textContent || "").trim();
+
+    if (
+      previousId &&
+      previousId !== number &&
+      typeof migrateMaintenanceSelectionId === "function"
+    ) {
+      migrateMaintenanceSelectionId(previousId, number);
+    }
+
+    row.dataset.maintenanceId = number;
+
     const numberCell = row.querySelector(".maintenance-number");
     if (numberCell) numberCell.textContent = number;
+
+    const rowCheckbox = row.querySelector(".maintenance-checkbox");
+    if (rowCheckbox) {
+      rowCheckbox.dataset.maintenanceId = number;
+      rowCheckbox.setAttribute("aria-label", "Select " + number);
+    }
     const vehicleCell = row.querySelector(".maintenance-vehicle");
     if (vehicleCell) vehicleCell.textContent = vehicle;
     const serviceTypeCell = row.querySelector(".maintenance-service-type");
@@ -269,16 +289,14 @@ function initMaintenanceEdit() {
     document.body.style.overflow = "";
     modal.currentRow = null;
 
-    if (typeof updateMaintenanceStatistics === "function") {
+    if (typeof refreshMaintenanceTable === "function") {
+      refreshMaintenanceTable({
+        resetPage: false,
+        refreshStatistics: true,
+        reason: "edit",
+      });
+    } else if (typeof updateMaintenanceStatistics === "function") {
       updateMaintenanceStatistics();
-    }
-
-    if (typeof updateMaintenancePagination === "function") {
-      updateMaintenancePagination();
-    }
-
-    if (typeof refreshMaintenanceBulkState === "function") {
-      refreshMaintenanceBulkState();
     }
 
     if (typeof showToast === "function") {
