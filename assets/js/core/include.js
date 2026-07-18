@@ -517,6 +517,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  if (document.getElementById("reportsPage")) {
+    if (typeof initReportsPage === "function") {
+      initReportsPage();
+    }
+  }
+
+  if (document.getElementById("routePlanningPage")) {
+    if (typeof initRoutePlanningPage === "function") {
+      initRoutePlanningPage();
+    }
+  }
+
   if (typeof initDispatchFilters === "function") {
     initDispatchFilters();
   }
