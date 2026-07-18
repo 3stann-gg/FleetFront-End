@@ -110,7 +110,23 @@
 
     --sidebar-width: 280px;
 
-    --sidebar-collapse: 90px;
+    --sidebar-collapsed-width: 88px;
+
+    /* Legacy alias kept for any prior expanded-main selectors */
+    --sidebar-collapse: var(--sidebar-collapsed-width);
+
+    /* Desktop collapse / expand micro-interaction timing (≤ ~300ms total) */
+    --sidebar-transition-duration: 220ms;
+    --sidebar-label-transition-duration: 140ms;
+    --sidebar-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --sidebar-label-expand-delay: 70ms;
+
+    /* Collapsed-mode nav tooltips (desktop only) */
+    --sidebar-tooltip-bg: #0c2d3a;
+    --sidebar-tooltip-color: #ffffff;
+    --sidebar-tooltip-duration: 140ms;
+    --sidebar-tooltip-max-width: 220px;
+    --sidebar-tooltip-z: 1200;
 
     /* ==========================================
        NAVBAR

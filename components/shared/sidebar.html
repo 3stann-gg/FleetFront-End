@@ -6,7 +6,7 @@
         <i class="ph-fill ph-ambulance"></i>
       </div>
 
-      <div class="logo-text">
+      <div class="logo-text sidebar-brand-text">
         <h2>HIMS Fleet</h2>
         <span>Smart Transportation</span>
       </div>
@@ -23,9 +23,10 @@
           href="../dashboard/index.html"
           class="nav-link"
           data-page="dashboard"
+          data-tooltip="Dashboard"
         >
           <i class="ph-fill ph-squares-four"></i>
-          <span>Dashboard</span>
+          <span class="nav-label">Dashboard</span>
         </a>
       </li>
     </ul>
@@ -34,9 +35,14 @@
 
     <ul>
       <li>
-        <a href="../fleet/index.html" class="nav-link" data-page="vehicles">
+        <a
+          href="../fleet/index.html"
+          class="nav-link"
+          data-page="vehicles"
+          data-tooltip="Vehicles"
+        >
           <i class="ph-fill ph-car"></i>
-          <span>Vehicles</span>
+          <span class="nav-label">Vehicles</span>
         </a>
       </li>
 
@@ -45,16 +51,22 @@
           href="../reservation/index.html"
           class="nav-link"
           data-page="reservations"
+          data-tooltip="Reservations"
         >
           <i class="ph-fill ph-calendar-check"></i>
-          <span>Reservations</span>
+          <span class="nav-label">Reservations</span>
         </a>
       </li>
 
       <li>
-        <a href="../dispatch/index.html" class="nav-link" data-page="dispatch">
+        <a
+          href="../dispatch/index.html"
+          class="nav-link"
+          data-page="dispatch"
+          data-tooltip="Dispatch"
+        >
           <i class="ph-fill ph-truck"></i>
-          <span>Dispatch</span>
+          <span class="nav-label">Dispatch</span>
         </a>
       </li>
     </ul>
@@ -63,16 +75,26 @@
 
     <ul>
       <li>
-        <a href="../driver/index.html" class="nav-link" data-page="driver">
+        <a
+          href="../driver/index.html"
+          class="nav-link"
+          data-page="driver"
+          data-tooltip="Drivers"
+        >
           <i class="ph-fill ph-user"></i>
-          <span>Drivers</span>
+          <span class="nav-label">Drivers</span>
         </a>
       </li>
 
       <li>
-        <a href="../fuel/fuel-dashboard.html" class="nav-link" data-page="fuel">
+        <a
+          href="../fuel/fuel-dashboard.html"
+          class="nav-link"
+          data-page="fuel"
+          data-tooltip="Fuel Management"
+        >
           <i class="ph-fill ph-gas-pump"></i>
-          <span>Fuel Management</span>
+          <span class="nav-label">Fuel Management</span>
         </a>
       </li>
 
@@ -81,9 +103,10 @@
           href="../route-planning/planner.html"
           class="nav-link"
           data-page="route"
+          data-tooltip="Route Planning"
         >
           <i class="ph-fill ph-map-trifold"></i>
-          <span>Route Planning</span>
+          <span class="nav-label">Route Planning</span>
         </a>
       </li>
     </ul>
@@ -96,16 +119,22 @@
           href="../cost-analysis/dashboard.html"
           class="nav-link"
           data-page="cost"
+          data-tooltip="Cost Analysis"
         >
           <i class="ph-fill ph-chart-line"></i>
-          <span>Cost Analysis</span>
+          <span class="nav-label">Cost Analysis</span>
         </a>
       </li>
 
       <li>
-        <a href="../reports/reports.html" class="nav-link" data-page="reports">
+        <a
+          href="../reports/reports.html"
+          class="nav-link"
+          data-page="reports"
+          data-tooltip="Reports"
+        >
           <i class="ph-fill ph-file-text"></i>
-          <span>Reports</span>
+          <span class="nav-label">Reports</span>
         </a>
       </li>
     </ul>
@@ -113,14 +142,19 @@
 
   <!-- Footer -->
   <div class="sidebar-footer">
-    <a href="../profile/settings.html" class="nav-link" data-page="settings">
+    <a
+      href="../profile/settings.html"
+      class="nav-link"
+      data-page="settings"
+      data-tooltip="Settings"
+    >
       <i class="ph-fill ph-gear"></i>
-      <span>Settings</span>
+      <span class="nav-label">Settings</span>
     </a>
 
-    <a href="#" class="nav-link logout">
+    <a href="#" class="nav-link logout" data-tooltip="Logout">
       <i class="ph-fill ph-sign-out"></i>
-      <span>Logout</span>
+      <span class="nav-label">Logout</span>
     </a>
   </div>
 </aside>

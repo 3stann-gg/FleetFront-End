@@ -17,6 +17,125 @@ function initializePage() {
 }
 
 /* =====================================
+   Desktop Sidebar Collapse
+===================================== */
+
+const HIMS_FLEET_SIDEBAR_COLLAPSED_KEY = "himsFleetSidebarCollapsed";
+
+function isDesktopSidebarViewport() {
+  return window.matchMedia("(min-width: 992px)").matches;
+}
+
+function getDesktopSidebarCollapsedPreference() {
+  try {
+    return localStorage.getItem(HIMS_FLEET_SIDEBAR_COLLAPSED_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function setDesktopSidebarCollapsedPreference(collapsed) {
+  try {
+    localStorage.setItem(HIMS_FLEET_SIDEBAR_COLLAPSED_KEY, String(collapsed));
+  } catch {
+    /* Storage may be unavailable; UI state still applies for the session. */
+  }
+}
+
+/**
+ * Apply saved desktop collapse preference early to reduce layout flash.
+ * Safe to call before the toggle exists; does not bind listeners.
+ */
+function applyEarlyDesktopSidebarCollapsedState() {
+  if (!document.body) return;
+
+  if (isDesktopSidebarViewport() && getDesktopSidebarCollapsedPreference()) {
+    document.body.classList.add("sidebar-collapsed");
+  } else {
+    document.body.classList.remove("sidebar-collapsed");
+  }
+}
+
+function updateDesktopSidebarToggleAria(toggle, collapsed) {
+  if (!toggle) return;
+
+  const expanded = !collapsed;
+  toggle.setAttribute("aria-expanded", String(expanded));
+  toggle.setAttribute(
+    "aria-label",
+    collapsed ? "Expand sidebar" : "Collapse sidebar",
+  );
+
+  const icon = toggle.querySelector("i");
+
+  if (icon) {
+    icon.className = collapsed
+      ? "ph ph-caret-double-right"
+      : "ph ph-caret-double-left";
+  }
+}
+
+/**
+ * Sync body class + toggle ARIA for the current viewport.
+ * On mobile, visual collapsed state is cleared; localStorage is preserved.
+ */
+function syncDesktopSidebarCollapseState(toggle) {
+  const desktopToggle =
+    toggle || document.getElementById("desktopSidebarToggle");
+  const preferCollapsed = getDesktopSidebarCollapsedPreference();
+
+  if (!isDesktopSidebarViewport()) {
+    document.body.classList.remove("sidebar-collapsed");
+    updateDesktopSidebarToggleAria(desktopToggle, false);
+    return;
+  }
+
+  document.body.classList.toggle("sidebar-collapsed", preferCollapsed);
+  updateDesktopSidebarToggleAria(desktopToggle, preferCollapsed);
+}
+
+function initDesktopSidebarCollapse() {
+  const toggle = document.getElementById("desktopSidebarToggle");
+
+  if (!toggle) return;
+
+  if (toggle.dataset.desktopCollapseInitialized === "true") {
+    syncDesktopSidebarCollapseState(toggle);
+    return;
+  }
+
+  toggle.dataset.desktopCollapseInitialized = "true";
+  toggle.type = "button";
+  toggle.setAttribute("aria-controls", "sidebar");
+
+  const desktopViewport = window.matchMedia("(min-width: 992px)");
+
+  syncDesktopSidebarCollapseState(toggle);
+
+  toggle.addEventListener("click", () => {
+    if (!isDesktopSidebarViewport()) return;
+
+    const nextCollapsed = !document.body.classList.contains("sidebar-collapsed");
+
+    setDesktopSidebarCollapsedPreference(nextCollapsed);
+    document.body.classList.toggle("sidebar-collapsed", nextCollapsed);
+    updateDesktopSidebarToggleAria(toggle, nextCollapsed);
+  });
+
+  const onViewportChange = () => {
+    syncDesktopSidebarCollapseState(toggle);
+  };
+
+  if (typeof desktopViewport.addEventListener === "function") {
+    desktopViewport.addEventListener("change", onViewportChange);
+  } else {
+    desktopViewport.addListener(onViewportChange);
+  }
+}
+
+applyEarlyDesktopSidebarCollapsedState();
+
+/* =====================================
    Responsive Sidebar Navigation
 ===================================== */
 

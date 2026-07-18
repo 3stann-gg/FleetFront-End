@@ -36,9 +36,18 @@
   max-width: calc(100% - var(--sidebar-width));
 }
 
+/* Legacy class alias (prefer body.sidebar-collapsed) */
 .main-content.expanded {
-  width: calc(100% - var(--sidebar-collapse));
-  max-width: calc(100% - var(--sidebar-collapse));
+  width: calc(100% - var(--sidebar-collapsed-width));
+  max-width: calc(100% - var(--sidebar-collapsed-width));
+}
+
+/* Desktop collapsed shell: keep main content width in sync with sidebar */
+@media (min-width: 992px) {
+  body.sidebar-collapsed .main-content {
+    width: calc(100% - var(--sidebar-collapsed-width));
+    max-width: calc(100% - var(--sidebar-collapsed-width));
+  }
 }
 
 .stats-grid > *,
@@ -158,19 +167,25 @@
 /* Tablet landscape and smaller: switch to an off-canvas navigation shell. */
 @media (max-width: 991px) {
   .main-content,
-  .main-content.expanded {
+  .main-content.expanded,
+  body.sidebar-collapsed .main-content {
     width: 100%;
     max-width: 100%;
     margin-left: 0;
   }
 
-  .sidebar {
+  .sidebar,
+  body.sidebar-collapsed .sidebar {
     width: min(var(--sidebar-width), calc(100vw - 48px));
     height: 100dvh;
     transform: translateX(-105%);
     transition: transform var(--transition-normal);
     overscroll-behavior: contain;
     z-index: 1100;
+  }
+
+  .desktop-sidebar-toggle {
+    display: none;
   }
 
   body.sidebar-open .sidebar {

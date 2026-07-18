@@ -19,7 +19,10 @@
 
   box-shadow: var(--shadow-md);
 
+  overflow-x: hidden;
   overflow-y: auto;
+
+  transition: width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 
   z-index: var(--z-sidebar);
 }
@@ -29,12 +32,14 @@
 .sidebar-header {
   padding: 28px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: padding var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .sidebar-logo {
   display: flex;
   align-items: center;
   gap: 16px;
+  transition: gap var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .logo-icon {
@@ -53,6 +58,27 @@
   font-size: 24px;
 
   flex-shrink: 0;
+
+  transform: scale(1);
+  transition: transform var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+}
+
+.logo-text,
+.sidebar-brand-text {
+  min-width: 0;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  /* Expand: fade in slightly after width opens */
+  transition:
+    opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    visibility 0s linear var(--sidebar-label-expand-delay),
+    max-width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+  max-width: 12rem;
 }
 
 .logo-text h2 {
@@ -72,6 +98,7 @@
 .sidebar-nav {
   flex: 1;
   padding: 20px 16px;
+  transition: padding var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .nav-title {
@@ -88,21 +115,42 @@
   margin: 18px 12px 10px;
 
   text-transform: uppercase;
+
+  overflow: hidden;
+  max-height: 2rem;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+
+  transition:
+    opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    visibility 0s linear var(--sidebar-label-expand-delay),
+    max-height var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    margin var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    font-size var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    letter-spacing var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
 }
 
 .sidebar-nav ul {
   margin: 0;
   padding: 0;
+  transition: margin-bottom var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .sidebar-nav li {
   list-style: none;
   margin-bottom: 6px;
+  transition: margin-bottom var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 /* ===== Links ===== */
 
 .nav-link {
+  position: relative;
+
   display: flex;
   align-items: center;
   gap: 14px;
@@ -113,7 +161,16 @@
 
   color: rgba(255, 255, 255, 0.82);
 
-  transition: 0.25s ease;
+  transition:
+    background var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    color var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+    padding var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    gap var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    width var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    min-height var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    margin var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    box-shadow var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
 
   font-size: 15px;
 
@@ -123,13 +180,41 @@
 .nav-link i {
   font-size: 21px;
   min-width: 22px;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 1;
+  transition:
+    min-width var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    transform var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+}
+
+.nav-label {
+  min-width: 0;
+  max-width: 14rem;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  /* Expand: labels appear after width has room */
+  transition:
+    opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
+      var(--sidebar-label-expand-delay),
+    visibility 0s linear var(--sidebar-label-expand-delay),
+    max-width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .nav-link:hover {
   background: rgba(255, 255, 255, 0.08);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-xs);
+}
 
-  transform: translateX(4px);
+.nav-link:active {
+  transform: translateY(0);
 }
 
 /* ===== Active ===== */
@@ -141,11 +226,21 @@
   box-shadow: 0 10px 20px rgba(0, 168, 107, 0.25);
 }
 
+.nav-link.active:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 168, 107, 0.3);
+}
+
 /* ===== Footer ===== */
 
 .sidebar-footer {
   padding: 18px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    padding var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+    gap var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .logout:hover {
@@ -162,4 +257,325 @@
 .sidebar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.18);
   border-radius: 10px;
+}
+
+/* ==========================================================
+   DESKTOP COLLAPSED — ICONS-ONLY (viewport > 991px)
+========================================================== */
+
+@media (min-width: 992px) {
+  body.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed-width);
+  }
+
+  /* ----- Logo: icon only, centered ----- */
+  body.sidebar-collapsed .sidebar-header {
+    padding: 20px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  body.sidebar-collapsed .sidebar-logo {
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+  }
+
+  body.sidebar-collapsed .logo-icon {
+    transform: scale(0.96);
+  }
+
+  /*
+   * Collapse: fade labels immediately (no expand delay), then clip for a11y.
+   * Clip is applied after visual hide via opacity so text does not flash.
+   */
+  body.sidebar-collapsed .logo-text,
+  body.sidebar-collapsed .sidebar-brand-text {
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-6px);
+    pointer-events: none;
+    /* Collapse: no delay — hide text before / as width contracts */
+    transition:
+      opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      visibility 0s linear var(--sidebar-label-transition-duration),
+      max-width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+  }
+
+  /* ----- Group labels: compact group rhythm ----- */
+  body.sidebar-collapsed .nav-title {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-6px);
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    transition:
+      opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      visibility 0s linear var(--sidebar-label-transition-duration),
+      max-height var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+      margin var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+      font-size var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      letter-spacing var(--sidebar-label-transition-duration) var(--sidebar-transition-easing);
+  }
+
+  body.sidebar-collapsed .sidebar-nav {
+    padding: 12px 10px;
+  }
+
+  body.sidebar-collapsed .sidebar-nav ul {
+    margin-bottom: 12px;
+  }
+
+  body.sidebar-collapsed .sidebar-nav ul:last-child {
+    margin-bottom: 0;
+  }
+
+  body.sidebar-collapsed .sidebar-nav li {
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ----- Nav + footer links: centered icons ----- */
+  body.sidebar-collapsed .nav-link {
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 48px;
+    min-height: 48px;
+    margin: 0 auto;
+    padding: 12px;
+    transform: none;
+  }
+
+  body.sidebar-collapsed .nav-link:hover,
+  body.sidebar-collapsed .nav-link:focus-visible {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: var(--shadow-sm);
+  }
+
+  body.sidebar-collapsed .nav-link:active {
+    transform: scale(1);
+  }
+
+  body.sidebar-collapsed .nav-link i {
+    min-width: 0;
+    width: 22px;
+    font-size: 22px;
+    line-height: 1;
+    transform: translateY(0);
+  }
+
+  /*
+   * Labels remain in the accessibility tree (not display:none).
+   * Visual hide via opacity + max-width so collapse can fade without clipping flash.
+   * End footprint collapses so icons stay centered; text is still announced by AT.
+   */
+  body.sidebar-collapsed .nav-link .nav-label {
+    max-width: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-6px);
+    pointer-events: none;
+    /* Collapse: fade immediately (no expand delay) */
+    transition:
+      opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-label-transition-duration) var(--sidebar-transition-easing),
+      visibility 0s linear var(--sidebar-label-transition-duration),
+      max-width var(--sidebar-transition-duration) var(--sidebar-transition-easing),
+      width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+  }
+
+  body.sidebar-collapsed .nav-link.active {
+    width: 48px;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 168, 107, 0.28);
+  }
+
+  body.sidebar-collapsed .nav-link.active:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 168, 107, 0.32);
+  }
+
+  body.sidebar-collapsed .sidebar-footer {
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  body.sidebar-collapsed .sidebar-footer .nav-link {
+    margin: 0;
+  }
+
+  /*
+   * Overflow: allow tooltips to paint outside the 88px shell.
+   * Expanded mode keeps overflow-x hidden (base .sidebar rule).
+   * Vertical scroll is less critical in icons-only mode; nav items fit typical viewports.
+   */
+  body.sidebar-collapsed .sidebar {
+    overflow: visible;
+  }
+
+  body.sidebar-collapsed .sidebar-header,
+  body.sidebar-collapsed .sidebar-nav,
+  body.sidebar-collapsed .sidebar-footer,
+  body.sidebar-collapsed .sidebar-nav ul,
+  body.sidebar-collapsed .sidebar-nav li {
+    overflow: visible;
+  }
+
+  /* ----- Collapsed tooltips (hover + keyboard focus) ----- */
+  body.sidebar-collapsed .nav-link[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    z-index: var(--sidebar-tooltip-z);
+
+    padding: 8px 12px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--sidebar-tooltip-bg);
+    color: var(--sidebar-tooltip-color);
+
+    font-size: 13px;
+    font-weight: var(--font-medium);
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    max-width: var(--sidebar-tooltip-max-width);
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    box-shadow: var(--shadow-md);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-50%) translateX(-4px);
+    transition:
+      opacity var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      visibility 0s linear var(--sidebar-tooltip-duration);
+  }
+
+  /* Small arrow pointing toward the icon */
+  body.sidebar-collapsed .nav-link[data-tooltip]::before {
+    content: "";
+    position: absolute;
+    left: calc(100% + 6px);
+    top: 50%;
+    z-index: calc(var(--sidebar-tooltip-z) + 1);
+
+    width: 8px;
+    height: 8px;
+
+    background: var(--sidebar-tooltip-bg);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-50%) translateX(-4px) rotate(45deg);
+    transition:
+      opacity var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      visibility 0s linear var(--sidebar-tooltip-duration);
+  }
+
+  body.sidebar-collapsed .nav-link[data-tooltip]:hover::after,
+  body.sidebar-collapsed .nav-link[data-tooltip]:focus-visible::after,
+  body.sidebar-collapsed .nav-link[data-tooltip]:hover::before,
+  body.sidebar-collapsed .nav-link[data-tooltip]:focus-visible::before {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      transform var(--sidebar-tooltip-duration) var(--sidebar-transition-easing),
+      visibility 0s linear 0s;
+  }
+
+  body.sidebar-collapsed .nav-link[data-tooltip]:hover::after,
+  body.sidebar-collapsed .nav-link[data-tooltip]:focus-visible::after {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  body.sidebar-collapsed .nav-link[data-tooltip]:hover::before,
+  body.sidebar-collapsed .nav-link[data-tooltip]:focus-visible::before {
+    transform: translateY(-50%) translateX(0) rotate(45deg);
+  }
+}
+
+/* ==========================================================
+   REDUCED MOTION — keep behavior, drop motion
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar-header,
+  .sidebar-logo,
+  .logo-icon,
+  .logo-text,
+  .sidebar-brand-text,
+  .sidebar-nav,
+  .nav-title,
+  .sidebar-nav ul,
+  .sidebar-nav li,
+  .nav-link,
+  .nav-link i,
+  .nav-label,
+  .sidebar-footer {
+    transition: none;
+  }
+
+  .nav-link:hover,
+  .nav-link.active:hover,
+  .nav-link:active {
+    transform: none;
+  }
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: reduce) {
+  body.sidebar-collapsed .nav-link:hover,
+  body.sidebar-collapsed .nav-link:focus-visible,
+  body.sidebar-collapsed .nav-link.active:hover,
+  body.sidebar-collapsed .nav-link:active {
+    transform: none;
+  }
+
+  body.sidebar-collapsed .logo-icon {
+    transform: none;
+  }
+
+  body.sidebar-collapsed .nav-link[data-tooltip]::after,
+  body.sidebar-collapsed .nav-link[data-tooltip]::before {
+    transition: none;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  body.sidebar-collapsed .nav-link[data-tooltip]::before {
+    transform: translateY(-50%) translateX(0) rotate(45deg);
+  }
 }

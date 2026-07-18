@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     initResponsiveNavigation();
   }
 
+  if (typeof initDesktopSidebarCollapse === "function") {
+    initDesktopSidebarCollapse();
+  }
+
   if (document.getElementById("vehicle-modal")) {
     await loadComponent("vehicle-modal", "../components/vehicle/add-vehicle-modal.html");
   }
