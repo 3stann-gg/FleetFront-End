@@ -327,18 +327,20 @@ Introduce future technologies through documented architectural decisions, not ad
 | [docs/design-system.md](./design-system.md) | UI design system notes |
 | [README.md](../README.md) | High-level repository intro |
 
-### Planned
+### Complete documentation set (selected)
 
 | Document | Purpose |
 | -------- | ------- |
-| `docs/04-PROJECT-ARCHITECTURE.md` | End-to-end architecture |
-| `docs/07-JAVASCRIPT-ARCHITECTURE.md` | JS conventions |
-| `docs/08-ROUTING.md` | Routes and Laravel mapping |
-| `docs/09-AUTHENTICATION.md` | Auth replacement design |
-| `docs/12-BACKEND-INTEGRATION.md` | Integration playbook |
-| `docs/13-DATABASE-MAPPING.md` | Schema mapping |
-| `docs/14-API-CONTRACT.md` | Endpoint contracts |
-| `docs/15-LOCAL-STORAGE.md` | Full storage migration guide |
+| [docs/04-PROJECT-ARCHITECTURE.md](./04-PROJECT-ARCHITECTURE.md) | End-to-end architecture |
+| [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | JS conventions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Routes and Laravel mapping |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Auth replacement design |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Integration playbook |
+| [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Schema mapping |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication guide |
+| [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Full storage migration guide |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
 
 ---
 

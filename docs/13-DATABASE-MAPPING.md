@@ -439,8 +439,8 @@ Because pages are already modular (`fleet/`, `dispatch/`, etc.), new modules can
 | [docs/11-MODULES.md](./11-MODULES.md) | Module features |
 | [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | How frontend meets Laravel |
 | [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | This document |
-| `docs/14-API-CONTRACT.md` | Planned — request/response details |
-| `docs/21-ROLE-MATRIX.md` | Planned — roles and permissions |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication guide |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Roles and permissions |
 
 ---
 

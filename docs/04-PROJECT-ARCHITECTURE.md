@@ -420,20 +420,23 @@ Unsafe patterns: parallel design systems, duplicate auth stacks, renaming `fleet
 | [docs/design-system.md](./design-system.md) | UI design notes |
 | [README.md](../README.md) | Repository intro |
 
-### Planned
+### Complete documentation set (selected)
 
 | Document | Role |
 | -------- | ---- |
-| `docs/07-JAVASCRIPT-ARCHITECTURE.md` | Deep JS conventions |
-| `docs/08-ROUTING.md` | Route map and Laravel mapping |
-| `docs/09-AUTHENTICATION.md` | Auth replacement design |
-| `docs/11-MODULES.md` | Per-module deep dives |
-| `docs/12-BACKEND-INTEGRATION.md` | Integration playbook |
-| `docs/13-DATABASE-MAPPING.md` | Schema mapping |
-| `docs/14-API-CONTRACT.md` | Endpoint contracts |
-| `docs/15-LOCAL-STORAGE.md` | Storage migration |
-| `docs/18-KNOWN-LIMITATIONS.md` | Limitations register |
-| `docs/20-HANDOVER-CHECKLIST.md` | Sign-off checklist |
+| [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Deep JS conventions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Route map and Laravel mapping |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Auth architecture |
+| [docs/11-MODULES.md](./11-MODULES.md) | Per-module deep dives |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Integration playbook |
+| [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Schema mapping |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication |
+| [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Storage migration |
+| [docs/18-KNOWN-LIMITATIONS.md](./18-KNOWN-LIMITATIONS.md) | Limitations register |
+| [docs/20-HANDOVER-CHECKLIST.md](./20-HANDOVER-CHECKLIST.md) | Sign-off checklist |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Role matrix |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
 
 ---
 

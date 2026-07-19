@@ -332,35 +332,38 @@ Replace each source with Laravel-backed data **module by module**. Do not delete
 
 ## 12. Documentation Reading Order
 
-### Existing documents (read these)
+### Complete documentation set (read in order as needed)
+
+The developer documentation set is **complete** (README + `docs/00`–`docs/23`). Prefer this numbered series for current technical detail.
 
 | Order | Document | Purpose |
 | ----- | -------- | ------- |
-| 1 | [docs/00-START-HERE.md](./00-START-HERE.md) | Handover entry, status, integration seams |
-| 2 | [docs/03-FOLDER-STRUCTURE.md](./03-FOLDER-STRUCTURE.md) | Frozen structure, ownership, change control |
-| 3 | [docs/design-system.md](./design-system.md) | UI design system notes |
-| 4 | [README.md](../README.md) | High-level project intro (may lag behind freeze status tables) |
-
-### Planned documentation
-
-The following are **not** created in this task. Suggested future sequence for the project team:
-
-| Suggested order | Planned document | Purpose |
-| --------------- | ---------------- | ------- |
-| — | Project Overview | Expanded product context |
-| — | Tech Stack | Frontend + Laravel stack detail |
-| — | Project Architecture | End-to-end architecture |
-| — | JavaScript Architecture | Module JS conventions |
-| — | Routing | Frontend routes ↔ Laravel routes |
-| — | Authentication | Breeze / session / guard design |
-| — | Modules | Per-module integration notes |
-| — | Backend Integration | Playbook and ownership |
-| — | Database Mapping | Tables ↔ UI entities |
-| — | API Contract | Endpoints and payloads |
-| — | Storage | Migration off browser keys |
-| — | Known Limitations | Explicit gaps |
-| — | Troubleshooting | Common integration failures |
-| — | Handover Checklist | Sign-off criteria |
+| — | [README.md](../README.md) | High-level project intro |
+| 00 | [docs/00-START-HERE.md](./00-START-HERE.md) | Handover entry, status, integration seams |
+| 01 | [docs/01-PROJECT-OVERVIEW.md](./01-PROJECT-OVERVIEW.md) | Product overview and scope |
+| 02 | [docs/02-TECH-STACK.md](./02-TECH-STACK.md) | Technology stack |
+| 03 | [docs/03-FOLDER-STRUCTURE.md](./03-FOLDER-STRUCTURE.md) | Frozen structure, ownership, change control |
+| 04 | [docs/04-PROJECT-ARCHITECTURE.md](./04-PROJECT-ARCHITECTURE.md) | System architecture |
+| 05 | [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md) | Design system (prefer over legacy notes) |
+| 06 | [docs/06-COMPONENT-SYSTEM.md](./06-COMPONENT-SYSTEM.md) | Components |
+| 07 | [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | JavaScript architecture |
+| 08 | [docs/08-ROUTING.md](./08-ROUTING.md) | Routing and navigation |
+| 09 | [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Authentication architecture |
+| 10 | [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Theme system |
+| 11 | [docs/11-MODULES.md](./11-MODULES.md) | Module documentation |
+| 12 | [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Backend integration guide |
+| 13 | [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Database mapping |
+| 14 | [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication |
+| 15 | [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Browser storage |
+| 16 | [docs/16-ASSETS.md](./16-ASSETS.md) | Assets organization |
+| 17 | [docs/17-CODING-STANDARDS.md](./17-CODING-STANDARDS.md) | Coding standards |
+| 18 | [docs/18-KNOWN-LIMITATIONS.md](./18-KNOWN-LIMITATIONS.md) | Known limitations |
+| 19 | [docs/19-TROUBLESHOOTING.md](./19-TROUBLESHOOTING.md) | Troubleshooting |
+| 20 | [docs/20-HANDOVER-CHECKLIST.md](./20-HANDOVER-CHECKLIST.md) | Handover checklist |
+| 21 | [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Role matrix |
+| 22 | [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| 23 | [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
+| — | [docs/design-system.md](./design-system.md) | Legacy design notes (prefer `05`) |
 
 ---
 

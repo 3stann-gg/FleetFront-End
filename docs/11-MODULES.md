@@ -501,7 +501,8 @@ Dashed lines: logical operational relationships presented or anticipated in UI (
 
 ## 17. Role Awareness
 
-**Reference:** planned `docs/21-ROLE-MATRIX.md` (approved User Role Matrix).  
+**Reference:** [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) (approved User Role Matrix).
+
 **Current frontend:** no enforced multi-role authorization; demo identity defaults to Fleet Administrator presentation.
 
 Expected access planning only (not implemented permissions):
@@ -570,10 +571,10 @@ Integration order recommendation remains: Auth → Profile/roles → shared API 
 | [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Login/session |
 | [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Existing | Appearance |
 | [docs/11-MODULES.md](./11-MODULES.md) | Existing | This document |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Integration playbook |
-| `docs/13-DATABASE-MAPPING.md` | Planned | Schema mapping |
-| `docs/14-API-CONTRACT.md` | Planned | Endpoint contracts |
-| `docs/21-ROLE-MATRIX.md` | Planned | Formal permissions |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Integration playbook |
+| [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Existing | Schema mapping |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Existing | Frontend–backend communication |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | Formal permissions |
 
 ---
 

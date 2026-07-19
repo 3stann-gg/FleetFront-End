@@ -329,7 +329,7 @@ See [docs/03-FOLDER-STRUCTURE.md](./03-FOLDER-STRUCTURE.md) for path ownership a
 | Folder structure freeze (v1.0) | Completed |
 | Developer start document | Completed (`docs/00-START-HERE.md`) |
 | Project overview document | Completed (this file) |
-| Additional technical documentation | In progress / planned (see Section 13) |
+| Developer documentation | Complete (`docs/00`–`docs/23` + README; see Section 13) |
 | Frontend module UI | Completed for listed modules |
 | Frontend testing | Suitable for local UI verification; not a substitute for backend QA |
 | Laravel integration | Pending |
@@ -409,22 +409,27 @@ Until those backend criteria are met, the repository remains a **complete fronte
 | [docs/design-system.md](./design-system.md) | UI design system notes |
 | [README.md](../README.md) | High-level repository intro (may lag detailed status) |
 
-### Planned (not created in this task)
+### Complete documentation set
 
-| Planned document | Purpose |
-| ---------------- | ------- |
-| `docs/02-TECH-STACK.md` | Detailed technology inventory |
-| `docs/04-PROJECT-ARCHITECTURE.md` | End-to-end architecture |
-| `docs/07-JAVASCRIPT-ARCHITECTURE.md` | JS module conventions |
-| `docs/08-ROUTING.md` | Frontend routes and future Laravel mapping |
-| `docs/09-AUTHENTICATION.md` | Auth design and Breeze replacement plan |
-| `docs/11-MODULES.md` | Per-module deep dives |
-| `docs/12-BACKEND-INTEGRATION.md` | Integration playbook |
-| `docs/13-DATABASE-MAPPING.md` | Entity / table mapping |
-| `docs/14-API-CONTRACT.md` | Endpoint contracts |
-| `docs/15-LOCAL-STORAGE.md` | Browser key inventory and migration |
-| `docs/18-KNOWN-LIMITATIONS.md` | Expanded limitations register |
-| `docs/20-HANDOVER-CHECKLIST.md` | Sign-off checklist |
+The full developer series is available under `docs/` (`00`–`23`) plus the root README. Key follow-on documents include:
+
+| Document | Purpose |
+| -------- | ------- |
+| [docs/02-TECH-STACK.md](./02-TECH-STACK.md) | Detailed technology inventory |
+| [docs/04-PROJECT-ARCHITECTURE.md](./04-PROJECT-ARCHITECTURE.md) | End-to-end architecture |
+| [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | JS module conventions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Frontend routes and future Laravel mapping |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Auth design and Breeze replacement plan |
+| [docs/11-MODULES.md](./11-MODULES.md) | Per-module deep dives |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Integration playbook |
+| [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Entity / table mapping |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication guide |
+| [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Browser key inventory and migration |
+| [docs/18-KNOWN-LIMITATIONS.md](./18-KNOWN-LIMITATIONS.md) | Expanded limitations register |
+| [docs/20-HANDOVER-CHECKLIST.md](./20-HANDOVER-CHECKLIST.md) | Sign-off checklist |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Role matrix |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
 
 ---
 

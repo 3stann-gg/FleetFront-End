@@ -224,7 +224,7 @@ Current frontend session key `himsFleetSession` is **temporary**. Details: [docs
 | [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Overall backend plan |
 | [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Tables and fields guide |
 | [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | This communication guide |
-| `docs/21-ROLE-MATRIX.md` | Planned role permissions |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Role permissions |
 
 ---
 

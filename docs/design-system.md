@@ -1,5 +1,19 @@
 # Fleet & Transportation Management UI Design System
 
+> **LEGACY / ARCHIVED REFERENCE**
+>
+> This file is retained as **historical design notes** from an earlier documentation stage.
+>
+> It is **not** the official design system contract for the current frontend.
+>
+> **Authoritative document:** [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md)
+>
+> For implementation, tokens, components, theme, and charts, follow `05-DESIGN-SYSTEM.md` and the live CSS under `assets/css/` (especially `assets/css/base/variables.css` and `assets/css/style.css`).
+>
+> Some statements below may be outdated or incomplete relative to the cleaned repository (for example, charts are implemented with custom CSS/SVG rendering—not Chart.js). Historical wording is preserved below for reference only.
+
+---
+
 ## Design Philosophy
 
 The Fleet & Transportation Management System follows a modern enterprise dashboard design focused on clarity, usability, consistency, and scalability.
@@ -153,6 +167,8 @@ Phosphor Icons
 # Charts
 
 Chart.js
+
+> **Historical note (do not treat as current):** The original notes listed Chart.js. The **current** frontend does **not** use Chart.js. Reports and cost analysis use custom CSS/SVG chart rendering. See [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md) and [docs/02-TECH-STACK.md](./02-TECH-STACK.md).
 
 ---
 

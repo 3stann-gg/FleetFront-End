@@ -322,8 +322,8 @@ Frontend remains responsible for **rendering and synchronization**. Laravel rema
 | [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | Theme functions in core layer |
 | [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Logout preserves theme |
 | [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Existing | This document |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Preference sync cutover |
-| `docs/15-LOCAL-STORAGE.md` | Planned | Full storage inventory including theme key |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Preference sync cutover |
+| [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Existing | Full storage inventory including theme key |
 
 ---
 

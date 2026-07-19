@@ -714,14 +714,14 @@ Do not duplicate the full permission table in this design document.
 | [docs/04-PROJECT-ARCHITECTURE.md](./04-PROJECT-ARCHITECTURE.md) | Existing | Architecture blueprint |
 | [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md) | Existing | This design system contract |
 | [docs/design-system.md](./design-system.md) | Existing (legacy notes) | Earlier design notes; prefer this official `05` document for integration |
-| `docs/06-COMPONENT-SYSTEM.md` | Planned | Deeper component inventory |
-| `docs/07-JAVASCRIPT-ARCHITECTURE.md` | Planned | JS conventions |
-| `docs/08-ROUTING.md` | Planned | Routing map |
-| `docs/09-AUTHENTICATION.md` | Planned | Auth replacement |
-| `docs/10-THEME-SYSTEM.md` | Planned | Expanded theme notes (optional; theme already covered here) |
-| `docs/11-MODULES.md` | Planned | Module deep dives |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Integration playbook |
-| `docs/21-ROLE-MATRIX.md` | Planned | User role permission matrix |
+| [docs/06-COMPONENT-SYSTEM.md](./06-COMPONENT-SYSTEM.md) | Existing | Deeper component inventory |
+| [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | JS conventions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Existing | Routing map |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Auth architecture |
+| [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Existing | Theme system notes |
+| [docs/11-MODULES.md](./11-MODULES.md) | Existing | Module deep dives |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Integration playbook |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | User role permission matrix |
 
 ---
 

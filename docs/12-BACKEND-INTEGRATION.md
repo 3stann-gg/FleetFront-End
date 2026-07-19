@@ -175,7 +175,7 @@ In general:
 - Validation errors should map to existing `.is-invalid` / field error messages.  
 
 **This document does not invent endpoint URLs or write API code.**  
-When endpoints are decided, they should be listed in a future API contract document (planned `docs/14-API-CONTRACT.md`).
+Communication expectations are documented in [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md). Concrete endpoint paths can be added there when the team freezes routes.
 
 Recommended approach for students:
 
@@ -318,9 +318,11 @@ The Fleet module is meant to be deployed under the **school-provided HostForge**
 | [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Light / dark / system theme |
 | [docs/11-MODULES.md](./11-MODULES.md) | Each module explained |
 | [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | This guide |
-| `docs/13-DATABASE-MAPPING.md` | Planned — tables and fields |
-| `docs/14-API-CONTRACT.md` | Planned — endpoint list when ready |
-| `docs/21-ROLE-MATRIX.md` | Planned — roles and permissions |
+| [docs/13-DATABASE-MAPPING.md](./13-DATABASE-MAPPING.md) | Tables and fields guide |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication guide |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Roles and permissions |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
 
 ---
 

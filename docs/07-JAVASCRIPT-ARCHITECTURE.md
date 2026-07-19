@@ -608,7 +608,7 @@ Role-based UI is **not enforced** by current JavaScript authorization checks.
 
 | Guidance | Detail |
 | -------- | ------ |
-| Reference | Planned `docs/21-ROLE-MATRIX.md` (User Role Matrix) |
+| Reference | [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) (User Role Matrix) |
 | Future UI | Optionally hide nav items/actions client-side for UX |
 | Server truth | Laravel policies, gates, middleware, validation |
 | Demo identity | Session/profile default label **Fleet Administrator** |
@@ -679,12 +679,12 @@ Do not implement security solely in JS visibility helpers.
 | [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md) | Existing | Visual tokens |
 | [docs/06-COMPONENT-SYSTEM.md](./06-COMPONENT-SYSTEM.md) | Existing | Component inventory |
 | [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | This document |
-| `docs/08-ROUTING.md` | Planned | Route map |
-| `docs/09-AUTHENTICATION.md` | Planned | Auth replacement design |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Integration playbook |
-| `docs/14-API-CONTRACT.md` | Planned | Endpoint contracts |
-| `docs/15-LOCAL-STORAGE.md` | Planned | Storage migration detail |
-| `docs/21-ROLE-MATRIX.md` | Planned | Role permissions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Existing | Route map |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Auth architecture |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Integration playbook |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Existing | Frontend–backend communication |
+| [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Existing | Storage migration detail |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | Role permissions |
 
 ---
 

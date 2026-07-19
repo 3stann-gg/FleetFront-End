@@ -190,7 +190,7 @@ Do not invent middleware class names beyond standard Laravel concepts.
 
 **Status:** Not implemented as enforced authorization in the frontend.
 
-Reference the future dedicated matrix: planned `docs/21-ROLE-MATRIX.md` (User Role Matrix).
+Reference the official matrix: [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) (User Role Matrix).
 
 Illustrative roles for **navigation visibility planning** only:
 
@@ -359,10 +359,12 @@ Preserve navigation labels and hierarchy even if URL shapes become `/vehicles` i
 | [docs/06-COMPONENT-SYSTEM.md](./06-COMPONENT-SYSTEM.md) | Existing | Components / sidebar |
 | [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | Auth/theme JS |
 | [docs/08-ROUTING.md](./08-ROUTING.md) | Existing | This routing document |
-| `docs/09-AUTHENTICATION.md` | Planned | Auth replacement design |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Integration playbook |
-| `docs/14-API-CONTRACT.md` | Planned | API endpoints when defined |
-| `docs/21-ROLE-MATRIX.md` | Planned | Role navigation and permissions |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Auth architecture |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Integration playbook |
+| [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Existing | Frontend–backend communication |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | Role navigation and permissions |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Existing | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Existing | Hosting infrastructure |
 
 ---
 

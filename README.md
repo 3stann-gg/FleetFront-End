@@ -26,11 +26,14 @@ The Fleet & Transportation Management System is a frontend application built for
 
 # ✨ Features
 
-- Responsive dashboard with live statistics
-- Vehicle management (create, view, edit, delete, search, filter)
-- Reservation management (create, view, edit, delete, search, filter)
+- Responsive dashboard with overview cards and sample/frontend statistics
+- Vehicle management (create, view, edit, delete, search, filter, export)
+- Reservation management (create, view, edit, delete, search, filter, export)
 - Dispatch management (create, view, edit, delete, search, filters, bulk actions, export)
-- Excel, PDF, and print export support
+- Driver, maintenance, and fuel management modules
+- Route planning, cost analysis, and reports UI
+- Login, profile, settings, and theme support (light / dark / system)
+- Excel, PDF, and print export support (client-side where implemented)
 - Bulk selection and bulk delete
 - Sorting and pagination
 - Mobile-responsive UI
@@ -39,26 +42,40 @@ The Fleet & Transportation Management System is a frontend application built for
 
 # 📊 Current Project Status
 
-| Module                 | Status         |
-| ---------------------- | -------------- |
-| Dashboard              | ✅ Completed   |
-| Vehicle Management     | ✅ Completed   |
-| Reservation Management | ✅ Completed   |
-| Dispatch Management    | ✅ Completed   |
-| Maintenance Management | 🚧 In Progress |
-| Fuel Management        | ⏳ Upcoming    |
-| Route Planning         | ⏳ Upcoming    |
-| Cost Analysis          | ⏳ Upcoming    |
-| Reports                | ⏳ Upcoming    |
+| Module                 | Status                                      |
+| ---------------------- | ------------------------------------------- |
+| Login                  | ✅ Completed (frontend session simulation)  |
+| Dashboard              | ✅ Completed (frontend)                     |
+| Vehicle Management     | ✅ Completed (frontend)                     |
+| Reservation Management | ✅ Completed (frontend)                     |
+| Dispatch Management    | ✅ Completed (frontend)                     |
+| Driver Management      | ✅ Completed (frontend)                     |
+| Maintenance Management | ✅ Completed (frontend)                     |
+| Fuel Management        | ✅ Completed (frontend)                     |
+| Route Planning         | ✅ Completed (frontend; map is a placeholder)|
+| Cost Analysis          | ✅ Completed (frontend)                     |
+| Reports                | ✅ Completed (frontend)                     |
+| Profile                | ✅ Completed (frontend)                     |
+| Settings               | ✅ Completed (frontend)                     |
+| Laravel / MySQL        | ⏳ Pending backend integration             |
 
 ---
 
-# ✅ Completed Modules
+# ✅ Completed Modules (Frontend)
 
+- Login
 - Dashboard
-- Vehicle Management
+- Vehicle Management (`fleet/`)
 - Reservation Management
 - Dispatch Management
+- Driver Management
+- Maintenance Management
+- Fuel Management
+- Route Planning
+- Cost Analysis
+- Reports
+- Profile
+- Settings
 
 ---
 
@@ -66,8 +83,9 @@ The Fleet & Transportation Management System is a frontend application built for
 
 ## Dashboard
 
-- Overview cards and live statistics
+- Overview cards and sample/frontend statistics (not live production data)
 - Responsive layout
+- Navigation shortcuts into fleet modules
 
 ## Vehicle Management
 
@@ -77,6 +95,9 @@ The Fleet & Transportation Management System is a frontend application built for
 - Delete
 - Search
 - Filtering
+- Sorting
+- Pagination
+- Export / print
 - Responsive UI
 
 ## Reservation Management
@@ -87,6 +108,9 @@ The Fleet & Transportation Management System is a frontend application built for
 - Delete
 - Search
 - Filtering
+- Sorting
+- Pagination
+- Export / print
 - Responsive UI
 
 ## Dispatch Management
@@ -99,7 +123,7 @@ The Fleet & Transportation Management System is a frontend application built for
 - Status Filter
 - Priority Filter
 - Date Filter
-- Live Statistics
+- Frontend statistics cards
 - Sorting
 - Pagination
 - Excel Export
@@ -110,15 +134,34 @@ The Fleet & Transportation Management System is a frontend application built for
 - Responsive UI
 - View → Edit integration
 
+## Driver, Maintenance, and Fuel Management
+
+- List, search/filter, CRUD modals, statistics, pagination, and export patterns as implemented in each module
+
+## Route Planning, Cost Analysis, and Reports
+
+- Full frontend UI for planning, cost views, and multi-view reports
+- Client-side charts (custom CSS/SVG) and export tooling where implemented
+- Route map area is a visual placeholder until backend map integration
+
+## Login, Profile, and Settings
+
+- Frontend login session simulation (not production security)
+- Profile and fleet settings UI with browser storage where used
+- Shared light / dark / system theme support
+
 ---
 
-# 🔜 Upcoming Modules
+# 🔜 Upcoming Work
 
-- Maintenance Management 🚧 (In Progress)
-- Fuel Management
-- Route Planning
-- Cost Analysis
-- Reports
+- Laravel backend integration
+- MySQL database connection
+- Laravel Breeze session authentication (replace frontend session simulation)
+- Live dashboard metrics and server-side reports
+- Role-based access control
+- HostForge production deployment
+
+> Developer documentation for architecture, modules, limitations, and integration is available under `docs/` (start with `docs/00-START-HERE.md`).
 
 ---
 
@@ -130,25 +173,26 @@ The Fleet & Transportation Management System is a frontend application built for
 - CSS3
 - Bootstrap 5.3
 - JavaScript (ES6)
+- Phosphor Icons (CDN)
 
-## Backend
+## Backend (Planned)
 
 - Laravel (PHP)
 
-## Database
+## Database (Planned)
 
 - MySQL
 
 ## Authentication
 
-- Laravel Breeze
-- Session-Based Authentication
+- Frontend session simulation (current, local UI only)
+- Laravel Breeze with session-based authentication (planned)
 
-## API
+## API (Planned)
 
-- RESTful API
-- Google Maps API
-- Postman (API Testing)
+- RESTful API / web integration with Laravel
+- Google Maps API (planned for route map integration)
+- Postman (API testing during backend work)
 
 ## Version Control
 
@@ -158,8 +202,9 @@ The Fleet & Transportation Management System is a frontend application built for
 
 ## Development Environment
 
-- Laragon
-- Vercel (Frontend Deployment)
+- Local HTTP server or Laragon for static frontend preview
+- Laragon for full-stack Laravel development (planned)
+- HostForge for production hosting (planned)
 
 ---
 
@@ -173,20 +218,20 @@ The Fleet & Transportation Management System is a frontend application built for
 
 2. Open the project folder in your preferred code editor.
 
-3. Use a local development server (e.g., Laragon) to serve the static frontend files.
+3. Use a local development server from the **project root** (e.g., Live Server, Laragon, or `python -m http.server`) so shared components load correctly.
 
-4. Open `index.html` or the relevant module page in your browser.
+4. Open `login/index.html` (or `index.html`, which redirects to login or dashboard based on frontend session).
 
-> Note: This repository contains the frontend only. Backend integration with Laravel is planned.
+> Note: This repository contains the frontend only. Data and login shown in the UI are frontend-only. Backend integration with Laravel is planned. See `docs/00-START-HERE.md` for details.
 
 ---
 
 # 📝 Development Notes
 
 - The frontend is structured to be migrated into Laravel Blade templates.
-- No backend features are implemented yet; data handling shown in the UI is frontend-only.
-- Maintenance Management is currently in progress and should not be marked as finished.
-- Follow the existing coding standards, CSS architecture, and naming conventions defined in this README.
+- No Laravel backend is implemented in this repository; data handling shown in the UI is frontend-only (sample data and/or browser storage where used).
+- All listed fleet modules above are complete on the frontend; remaining work is primarily backend integration and live data.
+- Follow the existing coding standards, CSS architecture, and naming conventions. Prefer `docs/17-CODING-STANDARDS.md` and `docs/03-FOLDER-STRUCTURE.md` for the current frozen structure.
 - Use the defined Git commit conventions (`feat:`, `fix:`, `style:`, `refactor:`) for all changes.
 
 ---

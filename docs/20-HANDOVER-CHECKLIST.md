@@ -263,8 +263,11 @@ Confirm these docs exist and are readable in `docs/`:
 - [ ] `18-KNOWN-LIMITATIONS.md` — limitations
 - [ ] `19-TROUBLESHOOTING.md` — troubleshooting
 - [ ] `20-HANDOVER-CHECKLIST.md` — this checklist
-- [ ] Root `README.md` reviewed (may lag freeze docs; prefer `docs/` for current detail)
-- [ ] Planned later: Role Matrix (`21-ROLE-MATRIX.md`) when approved
+- [ ] `21-ROLE-MATRIX.md` — role matrix
+- [ ] `22-DEPLOYMENT-ARCHITECTURE.md` — deployment architecture
+- [ ] `23-HOSTING-INFRASTRUCTURE.md` — hosting infrastructure
+- [ ] Root `README.md` reviewed (prefer numbered `docs/` for technical detail)
+- [ ] Confirm documentation set is complete (README + `docs/00`–`docs/23`)
 
 ---
 

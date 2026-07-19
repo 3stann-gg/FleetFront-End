@@ -37,7 +37,7 @@ Limitations here are **expected** for a frontend-first build. They are not alway
 | ---- | ------ |
 | Frontend interface | **Completed** — pages, components, modules, theme, navigation |
 | Folder structure | **Frozen** (see structure documentation) |
-| Developer documentation | In progress / largely available under `docs/` |
+| Developer documentation | Complete (`docs/00`–`docs/23` + README) |
 | Backend (Laravel) | **Not in this repository** — planned next |
 | Database (MySQL) | **Not connected** — planned with Laravel |
 | Production deployment | **Pending** backend readiness and HostForge setup |
@@ -189,7 +189,9 @@ Until Laravel auth and database are live, do not treat the static demo as a secu
 | [docs/14-API-CONTRACT.md](./14-API-CONTRACT.md) | Frontend–backend communication |
 | [docs/15-LOCAL-STORAGE.md](./15-LOCAL-STORAGE.md) | Browser storage limits |
 | [docs/18-KNOWN-LIMITATIONS.md](./18-KNOWN-LIMITATIONS.md) | This document |
-| `docs/21-ROLE-MATRIX.md` | Planned role permissions |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Role permissions |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Hosting infrastructure |
 
 ---
 

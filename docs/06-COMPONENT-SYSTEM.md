@@ -527,12 +527,12 @@ Auth simulation is temporary; presentation of login/logout remains frontend-owne
 | [docs/04-PROJECT-ARCHITECTURE.md](./04-PROJECT-ARCHITECTURE.md) | Existing | Architecture |
 | [docs/05-DESIGN-SYSTEM.md](./05-DESIGN-SYSTEM.md) | Existing | Tokens, visual rules |
 | [docs/06-COMPONENT-SYSTEM.md](./06-COMPONENT-SYSTEM.md) | Existing | This component inventory |
-| `docs/07-JAVASCRIPT-ARCHITECTURE.md` | Planned | JS module conventions |
-| `docs/08-ROUTING.md` | Planned | Routes |
-| `docs/09-AUTHENTICATION.md` | Planned | Auth replacement |
-| `docs/11-MODULES.md` | Planned | Module deep dives |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Integration playbook |
-| `docs/21-ROLE-MATRIX.md` | Planned | Role visibility matrix |
+| [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | JS module conventions |
+| [docs/08-ROUTING.md](./08-ROUTING.md) | Existing | Routes |
+| [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | Auth architecture |
+| [docs/11-MODULES.md](./11-MODULES.md) | Existing | Module deep dives |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Integration playbook |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | Role visibility matrix |
 
 ---
 

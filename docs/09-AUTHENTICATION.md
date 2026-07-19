@@ -239,7 +239,7 @@ Laravel logout should destroy **auth session** only unless product rules require
 
 Default simulated user label: **Fleet Administrator** (`auth.js` session `user` field / profile defaults).
 
-Reference planned matrix: `docs/21-ROLE-MATRIX.md` (User Role Matrix).
+Reference the official matrix: [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) (User Role Matrix).
 
 ### Expected login behavior (future — presentation + server)
 
@@ -372,11 +372,11 @@ flowchart LR
 | [docs/07-JAVASCRIPT-ARCHITECTURE.md](./07-JAVASCRIPT-ARCHITECTURE.md) | Existing | Auth JS APIs and init order |
 | [docs/08-ROUTING.md](./08-ROUTING.md) | Existing | Public/protected routes, redirects, subdomain |
 | [docs/09-AUTHENTICATION.md](./09-AUTHENTICATION.md) | Existing | This document |
-| `docs/10-THEME-SYSTEM.md` | Planned | Theme (session logout preserves theme key) |
-| `docs/12-BACKEND-INTEGRATION.md` | Planned | Cutover playbook including auth |
-| `docs/21-ROLE-MATRIX.md` | Planned | Roles and permissions |
-| `docs/22-SECURITY.md` | Planned | Broader security controls (if created) |
-| `docs/23-DEPLOYMENT.md` | Planned | HostForge deployment details (if created) |
+| [docs/10-THEME-SYSTEM.md](./10-THEME-SYSTEM.md) | Existing | Theme (session logout preserves theme key) |
+| [docs/12-BACKEND-INTEGRATION.md](./12-BACKEND-INTEGRATION.md) | Existing | Cutover playbook including auth |
+| [docs/21-ROLE-MATRIX.md](./21-ROLE-MATRIX.md) | Existing | Roles and permissions |
+| [docs/22-DEPLOYMENT-ARCHITECTURE.md](./22-DEPLOYMENT-ARCHITECTURE.md) | Existing | Deployment architecture |
+| [docs/23-HOSTING-INFRASTRUCTURE.md](./23-HOSTING-INFRASTRUCTURE.md) | Existing | HostForge hosting infrastructure |
 | [docs/00-START-HERE.md](./00-START-HERE.md) | Existing | Integrator entry and demo notice |
 
 ---
