@@ -71,6 +71,12 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* Keep 5–6 card modules balanced after responsive base override */
+.stats-grid:has(> .stat-card:nth-child(5):last-child),
+.stats-grid:has(> .stat-card:nth-child(6):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .dashboard-grid {
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
 }
@@ -113,7 +119,9 @@
     padding: var(--space-5);
   }
 
-  .stats-grid {
+  .stats-grid,
+  .stats-grid:has(> .stat-card:nth-child(5):last-child),
+  .stats-grid:has(> .stat-card:nth-child(6):last-child) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-5);
     margin-bottom: var(--space-6);
@@ -300,7 +308,9 @@
     padding: var(--space-4);
   }
 
-  .stats-grid {
+  .stats-grid,
+  .stats-grid:has(> .stat-card:nth-child(5):last-child),
+  .stats-grid:has(> .stat-card:nth-child(6):last-child) {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     margin-bottom: var(--space-5);
@@ -326,7 +336,9 @@
   .page-header,
   .vehicle-page .page-header,
   .driver-page .page-header,
-  .dashboard-header {
+  .dashboard-header,
+  .reports-page .page-header,
+  .cost-analysis-page .page-header {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-3);
@@ -335,7 +347,48 @@
   .page-header > .btn-primary,
   .vehicle-page .page-header > .btn-primary,
   .driver-page .page-header > .btn-primary {
-    align-self: flex-start;
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-left,
+  .toolbar-right {
+    width: 100%;
+  }
+
+  .toolbar .search-box {
+    max-width: none;
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .toolbar .filter-select,
+  .toolbar input[type="date"].filter-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reports-presets-bar,
+  .cost-presets-bar,
+  .route-templates-bar,
+  .fleet-utility-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reports-presets-bar .filter-select,
+  .reports-presets-bar .btn-outline,
+  .cost-presets-bar .filter-select,
+  .cost-presets-bar .btn-outline,
+  .route-templates-bar .filter-select,
+  .route-templates-bar .btn-outline {
+    width: 100%;
+    max-width: none;
   }
 
   .dashboard-header h1,

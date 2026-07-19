@@ -62,7 +62,7 @@
 .page-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: var(--space-5);
   margin-bottom: var(--section-gap);
@@ -84,6 +84,12 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-text-secondary);
+}
+
+.page-header > .btn-primary,
+.page-header > .btn-outline {
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .page-title {

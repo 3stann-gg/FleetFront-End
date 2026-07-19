@@ -2,35 +2,16 @@
    VEHICLE PAGE
 ===================================== */
 
+/* Module shell — spacing from shared page-header / stats / toolbar / card margins */
 .vehicle-page {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 0;
 }
 
-/* Header */
-
+/* Align with shared layout.css page-header (no local size drift) */
 .vehicle-page .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
-}
-
-.vehicle-page .page-header h1 {
-  margin: 0;
-  font-size: clamp(2rem, 2.5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--color-text-primary);
-}
-
-.vehicle-page .page-header p {
-  margin-top: 8px;
-  color: var(--color-text-secondary);
-  font-size: 16px;
-  line-height: 1.5;
+  margin-bottom: var(--section-gap);
 }
 
 /* ===================================

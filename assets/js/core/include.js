@@ -529,6 +529,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  if (document.getElementById("costAnalysisPage")) {
+    if (typeof initCostAnalysisPage === "function") {
+      initCostAnalysisPage();
+    }
+  }
+
   if (typeof initDispatchFilters === "function") {
     initDispatchFilters();
   }

@@ -12,17 +12,7 @@
   white-space: nowrap;
 }
 
-.route-templates-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 var(--section-gap);
-  padding: 12px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
+/* route-templates-bar chrome shared via toolbar.css */
 
 .route-timeline {
   list-style: none;
