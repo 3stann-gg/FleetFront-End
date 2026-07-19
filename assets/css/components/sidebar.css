@@ -592,6 +592,98 @@ button.profile-menu-item {
   border: none;
 }
 
+/* Appearance nested submenu */
+.profile-appearance-group {
+  position: relative;
+}
+
+.profile-appearance-trigger {
+  position: relative;
+}
+
+.profile-appearance-trigger .profile-menu-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-appearance-current {
+  margin-left: auto;
+  margin-right: 4px;
+  font-size: 12px;
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.profile-submenu-chevron {
+  font-size: 14px !important;
+  margin-left: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.profile-appearance-trigger.is-submenu-open .profile-submenu-chevron {
+  transform: rotate(90deg);
+}
+
+.profile-appearance-submenu {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  margin: 2px 0 4px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-muted);
+}
+
+.profile-appearance-submenu.is-open,
+.profile-appearance-submenu:not([hidden]) {
+  display: flex;
+}
+
+.profile-appearance-submenu[hidden] {
+  display: none !important;
+}
+
+.profile-theme-option {
+  position: relative;
+  padding-right: 36px;
+}
+
+.profile-theme-check {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px !important;
+  opacity: 0;
+  color: var(--color-primary) !important;
+}
+
+.profile-theme-option.is-active .profile-theme-check,
+.profile-theme-option[aria-checked="true"] .profile-theme-check {
+  opacity: 1;
+}
+
+.profile-theme-option.is-active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Desktop flyout when enough width; accordion by default for reliability */
+@media (min-width: 992px) {
+  body:not(.sidebar-collapsed) .profile-appearance-submenu.is-open {
+    /* Keep nested under Appearance for stable footprint in narrow sidebar */
+    display: flex;
+  }
+}
+
+@media (max-width: 991px) {
+  .profile-appearance-submenu.is-open {
+    display: flex;
+  }
+}
+
 /* Scrollbar lives on .sidebar-nav (see navigation section) */
 
 /* ==========================================================

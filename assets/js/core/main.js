@@ -330,35 +330,80 @@ function initSidebarCollapsedTooltips() {
 
 /* =====================================
    Global Theme System
+   Preference: light | dark | system (himsFleetTheme)
+   Resolved data-theme attribute: light | dark
 ===================================== */
 
 const HIMS_FLEET_THEME_KEY = "himsFleetTheme";
+let systemThemeMediaQuery = null;
+let systemThemeListenerBound = false;
 
-function getSavedTheme() {
+function getSystemTheme() {
   try {
-    return localStorage.getItem(HIMS_FLEET_THEME_KEY) === "dark"
-      ? "dark"
-      : "light";
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
   } catch {
-    return "light";
+    /* ignore */
   }
+  return "light";
+}
+
+/** Saved user preference: light | dark | system */
+function getThemePreference() {
+  try {
+    const value = localStorage.getItem(HIMS_FLEET_THEME_KEY);
+    if (value === "dark" || value === "light" || value === "system") {
+      return value;
+    }
+  } catch {
+    /* ignore */
+  }
+  return "light";
+}
+
+/** Resolved theme applied to the document (light | dark) */
+function getResolvedTheme(preference) {
+  const pref = preference || getThemePreference();
+  if (pref === "system") return getSystemTheme();
+  return pref === "dark" ? "dark" : "light";
+}
+
+/**
+ * Backward-compatible helper used across modules.
+ * Returns resolved light/dark for document styling and Settings form radios.
+ */
+function getSavedTheme() {
+  return getResolvedTheme();
+}
+
+function updateAppearanceTriggerLabel() {
+  const label = document.getElementById("profileAppearanceCurrent");
+  if (!label) return;
+  const pref = getThemePreference();
+  if (pref === "dark") label.textContent = "Dark";
+  else if (pref === "system") label.textContent = "System";
+  else label.textContent = "Light";
 }
 
 function applyTheme(theme, options = {}) {
   const persist = options.persist !== false;
-  const next = theme === "dark" ? "dark" : "light";
+  let preference = theme;
+  if (preference !== "light" && preference !== "dark" && preference !== "system") {
+    preference = "light";
+  }
 
-  document.documentElement.setAttribute("data-theme", next);
+  const resolved = getResolvedTheme(preference);
+  document.documentElement.setAttribute("data-theme", resolved);
 
   if (persist) {
     try {
-      localStorage.setItem(HIMS_FLEET_THEME_KEY, next);
+      localStorage.setItem(HIMS_FLEET_THEME_KEY, preference);
     } catch {
       /* Storage may be unavailable */
     }
   }
 
-  /* Menu active state follows saved preference; during preview keep menu on saved */
   syncThemeMenuState();
 }
 
@@ -367,14 +412,14 @@ function applyTheme(theme, options = {}) {
  * Settings page uses name="settingsTheme" and must not share data-theme-option.
  */
 function syncThemeMenuState() {
-  const current = getSavedTheme();
+  const preference = getThemePreference();
   const options = document.querySelectorAll(
     "#sidebarProfileMenu [data-theme-option]",
   );
 
   options.forEach((option) => {
     const value = option.getAttribute("data-theme-option");
-    const isActive = value === current;
+    const isActive = value === preference;
 
     option.classList.toggle("is-active", isActive);
 
@@ -382,16 +427,40 @@ function syncThemeMenuState() {
       option.setAttribute("aria-checked", String(isActive));
     }
   });
+
+  updateAppearanceTriggerLabel();
+}
+
+function initSystemThemeListener() {
+  if (systemThemeListenerBound) return;
+  if (!window.matchMedia) return;
+
+  systemThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const onChange = () => {
+    if (getThemePreference() !== "system") return;
+    document.documentElement.setAttribute("data-theme", getSystemTheme());
+    syncThemeMenuState();
+  };
+
+  if (typeof systemThemeMediaQuery.addEventListener === "function") {
+    systemThemeMediaQuery.addEventListener("change", onChange);
+  } else if (typeof systemThemeMediaQuery.addListener === "function") {
+    systemThemeMediaQuery.addListener(onChange);
+  }
+
+  systemThemeListenerBound = true;
 }
 
 function applyEarlyTheme() {
-  applyTheme(getSavedTheme(), { persist: false });
+  applyTheme(getThemePreference(), { persist: false });
 }
 
 function initThemeControls() {
   const menu = document.getElementById("sidebarProfileMenu");
 
   if (!menu) return;
+
+  initSystemThemeListener();
 
   if (menu.dataset.themeControlsInitialized === "true") {
     syncThemeMenuState();
@@ -403,13 +472,17 @@ function initThemeControls() {
   menu.addEventListener("click", (event) => {
     const option = event.target?.closest?.("[data-theme-option]");
 
-    if (!option || option.disabled || option.getAttribute("aria-disabled") === "true") {
+    if (
+      !option ||
+      option.disabled ||
+      option.getAttribute("aria-disabled") === "true"
+    ) {
       return;
     }
 
     const theme = option.getAttribute("data-theme-option");
 
-    if (theme !== "light" && theme !== "dark") {
+    if (theme !== "light" && theme !== "dark" && theme !== "system") {
       event.preventDefault();
       return;
     }
@@ -432,6 +505,8 @@ function initSidebarProfileDropdown() {
   const wrap = document.querySelector(".sidebar-profile-wrap");
   const toggle = document.getElementById("sidebarProfileToggle");
   const menu = document.getElementById("sidebarProfileMenu");
+  const appearanceTrigger = document.getElementById("profileAppearanceTrigger");
+  const appearanceSubmenu = document.getElementById("profileAppearanceSubmenu");
 
   if (!wrap || !toggle || !menu) return;
 
@@ -440,6 +515,41 @@ function initSidebarProfileDropdown() {
   }
 
   wrap.dataset.profileDropdownInitialized = "true";
+
+  const isAppearanceOpen = () =>
+    appearanceSubmenu &&
+    !appearanceSubmenu.hidden &&
+    appearanceTrigger?.getAttribute("aria-expanded") === "true";
+
+  const setAppearanceOpen = (open) => {
+    if (!appearanceTrigger || !appearanceSubmenu) return;
+    appearanceTrigger.setAttribute("aria-expanded", String(open));
+    appearanceTrigger.classList.toggle("is-submenu-open", open);
+    if (open) {
+      appearanceSubmenu.hidden = false;
+      appearanceSubmenu.classList.add("is-open");
+    } else {
+      appearanceSubmenu.hidden = true;
+      appearanceSubmenu.classList.remove("is-open");
+    }
+  };
+
+  const closeAppearanceSubmenu = () => {
+    if (!isAppearanceOpen()) return;
+    setAppearanceOpen(false);
+  };
+
+  const openAppearanceSubmenu = () => {
+    setAppearanceOpen(true);
+    if (typeof syncThemeMenuState === "function") {
+      syncThemeMenuState();
+    }
+  };
+
+  const toggleAppearanceSubmenu = () => {
+    if (isAppearanceOpen()) closeAppearanceSubmenu();
+    else openAppearanceSubmenu();
+  };
 
   const setOpen = (open) => {
     wrap.classList.toggle("is-open", open);
@@ -452,8 +562,12 @@ function initSidebarProfileDropdown() {
       if (typeof hideSidebarCollapsedTooltip === "function") {
         hideSidebarCollapsedTooltip();
       }
+      if (typeof syncThemeMenuState === "function") {
+        syncThemeMenuState();
+      }
     } else {
       menu.setAttribute("hidden", "");
+      closeAppearanceSubmenu();
     }
   };
 
@@ -502,8 +616,52 @@ function initSidebarProfileDropdown() {
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape" || !isOpen()) return;
 
+    if (isAppearanceOpen()) {
+      event.preventDefault();
+      closeAppearanceSubmenu();
+      appearanceTrigger?.focus();
+      return;
+    }
+
     closeMenu();
     toggle.focus();
+  });
+
+  appearanceTrigger?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleAppearanceSubmenu();
+  });
+
+  appearanceTrigger?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleAppearanceSubmenu();
+      return;
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      event.stopPropagation();
+      openAppearanceSubmenu();
+      appearanceSubmenu
+        ?.querySelector("[data-theme-option].is-active, [data-theme-option]")
+        ?.focus();
+      return;
+    }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      event.stopPropagation();
+      closeAppearanceSubmenu();
+    }
+  });
+
+  appearanceSubmenu?.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      closeAppearanceSubmenu();
+      appearanceTrigger?.focus();
+    }
   });
 
   menu.addEventListener("click", (event) => {
@@ -511,13 +669,71 @@ function initSidebarProfileDropdown() {
       return;
     }
 
-    const item = event.target?.closest?.('[role="menuitem"], [role="menuitemradio"]');
+    if (event.target?.closest?.("#profileAppearanceTrigger")) {
+      return;
+    }
+
+    const item = event.target?.closest?.(
+      '[role="menuitem"], [role="menuitemradio"]',
+    );
 
     if (!item) return;
 
-    /* Frontend placeholder — no navigation or auth */
+    /* Close submenu when choosing other profile actions */
+    closeAppearanceSubmenu();
+
+    const action = item.getAttribute("data-profile-action");
+    const label = (item.textContent || "").replace(/\s+/g, " ").trim();
+
+    if (action === "account-settings" || /account settings/i.test(label)) {
+      /* Allow natural navigation for real href */
+      if (item.tagName === "A" && item.getAttribute("href")?.includes("settings")) {
+        closeMenu();
+        return;
+      }
+      event.preventDefault();
+      closeMenu();
+      window.location.href = "../settings/index.html";
+      return;
+    }
+
+    if (action === "profile" || /^profile$/i.test(label)) {
+      if (item.tagName === "A" && item.getAttribute("href")?.includes("profile")) {
+        closeMenu();
+        return;
+      }
+      event.preventDefault();
+      closeMenu();
+      window.location.href = "../profile/index.html";
+      return;
+    }
+
     event.preventDefault();
     closeMenu();
+
+    if (action === "help" || /help/i.test(label)) {
+      if (typeof showToast === "function") {
+        showToast("Help Center is not connected in this frontend build.", "info");
+      }
+      return;
+    }
+
+    if (action === "logout" || /logout/i.test(label)) {
+      if (typeof performFleetLogout === "function") {
+        performFleetLogout();
+      } else if (typeof logout === "function") {
+        if (
+          window.confirm(
+            "Sign out of HIMS Fleet?\n\nYou will need to sign in again to continue.\nTheme, profile, and fleet settings will be kept.",
+          )
+        ) {
+          logout();
+          window.location.replace("../login/index.html");
+        }
+      } else if (typeof showToast === "function") {
+        showToast("Unable to sign out. Auth utility is unavailable.", "error");
+      }
+    }
   });
 }
 

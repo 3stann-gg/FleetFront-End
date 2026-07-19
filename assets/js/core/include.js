@@ -19,11 +19,48 @@ async function loadComponent(id, file) {
   }
 }
 
+function loadSharedScriptOnce(src) {
+  return new Promise((resolve) => {
+    if (document.querySelector('script[data-shared-src="' + src + '"]')) {
+      resolve();
+      return;
+    }
+    const existing = Array.from(document.scripts).some((s) =>
+      (s.getAttribute("src") || "").includes(src.replace("../", "")),
+    );
+    if (existing) {
+      resolve();
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = false;
+    script.dataset.sharedSrc = src;
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+  /* Shared UX scripts for all pages (idempotent) */
+  await loadSharedScriptOnce("../assets/js/core/auth.js");
+  if (typeof requireAuth === "function" && !requireAuth()) {
+    return;
+  }
+
+  await loadSharedScriptOnce("../assets/js/core/pending-action.js");
+  await loadSharedScriptOnce("../assets/js/core/user-profile.js");
+  await loadSharedScriptOnce("../assets/js/components/navbar.js");
+
   await loadComponent("sidebar", "../components/shared/sidebar.html");
 
   if (typeof initializePage === "function") {
     initializePage();
+  }
+
+  if (typeof syncUserProfileUI === "function") {
+    syncUserProfileUI();
   }
 
   if (typeof initSidebarProfileDropdown === "function") {
@@ -53,6 +90,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (typeof initResponsiveNavigation === "function") {
     initResponsiveNavigation();
+  }
+
+  if (typeof initNavbarInteractions === "function") {
+    initNavbarInteractions();
+  }
+
+  if (typeof initDashboardPage === "function") {
+    initDashboardPage();
   }
 
   if (document.getElementById("vehicle-modal")) {
@@ -538,6 +583,48 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("settingsPage")) {
     if (typeof initSettingsPage === "function") {
       initSettingsPage();
+    }
+  }
+
+  if (document.getElementById("userProfilePage")) {
+    if (typeof initProfilePage === "function") {
+      initProfilePage();
+    }
+  }
+
+  /* One-shot cross-page intents (sessionStorage) */
+  if (typeof consumePendingFleetAction === "function") {
+    const pendingHandlers = {};
+    if (document.getElementById("addVehicleBtn")) {
+      pendingHandlers.addVehicle = () =>
+        document.getElementById("addVehicleBtn")?.click();
+    }
+    if (document.getElementById("addReservationBtn")) {
+      pendingHandlers.addReservation = () =>
+        document.getElementById("addReservationBtn")?.click();
+    }
+    if (document.getElementById("createDispatchBtn")) {
+      pendingHandlers.createDispatch = () =>
+        document.getElementById("createDispatchBtn")?.click();
+    }
+    if (document.getElementById("addDriverBtn")) {
+      pendingHandlers.addDriver = () =>
+        document.getElementById("addDriverBtn")?.click();
+    }
+    if (document.getElementById("addMaintenanceBtn")) {
+      pendingHandlers.addMaintenance = () =>
+        document.getElementById("addMaintenanceBtn")?.click();
+    }
+    if (document.getElementById("addFuelBtn")) {
+      pendingHandlers.addFuel = () =>
+        document.getElementById("addFuelBtn")?.click();
+    }
+    if (document.getElementById("newRouteBtn")) {
+      pendingHandlers.addRoute = () =>
+        document.getElementById("newRouteBtn")?.click();
+    }
+    if (Object.keys(pendingHandlers).length) {
+      consumePendingFleetAction(pendingHandlers);
     }
   }
 

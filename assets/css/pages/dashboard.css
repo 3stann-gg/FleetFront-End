@@ -546,6 +546,21 @@
   border: 0;
 }
 
+/* Functional list items (cursor + focus only; layout preserved) */
+.dashboard-interactive {
+  cursor: pointer;
+}
+
+.dashboard-interactive:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.dashboard-page .dispatch-card .badge-green.dashboard-interactive {
+  cursor: pointer;
+}
+
 /* ----- Responsive ----- */
 
 @media (max-width: 1199px) {

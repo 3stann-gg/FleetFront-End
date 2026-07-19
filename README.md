@@ -210,27 +210,35 @@ Develop a professional, responsive, and scalable Fleet Management module that su
 ```text
 Fleet-Transportation/
 │
+├── login/
 ├── dashboard/
 ├── fleet/
 ├── reservation/
-├── drivers/
+├── dispatch/
+├── driver/
+├── maintenance/
 ├── fuel/
 ├── cost-analysis/
 ├── route-planning/
 ├── reports/
+├── settings/
 ├── profile/
-├── auth/
 │
 ├── components/
+│   ├── shared/
+│   ├── vehicle/
+│   ├── reservation/
+│   ├── dispatch/
+│   ├── driver/
+│   ├── maintenance/
+│   └── fuel/
 │
 ├── assets/
 │   ├── css/
 │   ├── js/
-│   ├── data/
-│   ├── images/
-│   ├── icons/
-│   └── fonts/
+│   └── images/
 │
+├── docs/
 ├── README.md
 └── index.html
 ```
@@ -332,11 +340,35 @@ pages/
 
 assets/js/
 
-utils/
+core/
 
 components/
 
-pages/
+auth/
+
+dashboard/
+
+vehicle/
+
+reservation/
+
+dispatch/
+
+driver/
+
+maintenance/
+
+fuel/
+
+route-planning/
+
+cost-analysis/
+
+reports/
+
+settings/
+
+profile/
 
 ---
 
