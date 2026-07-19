@@ -48,6 +48,14 @@
 .route-map-card,
 .route-opt-card {
   min-height: 320px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-xs);
+}
+
+.route-planning-page .page-header h1,
+.vehicle-page.route-planning-page .page-header h1 {
+  font-size: clamp(1.75rem, 2.2vw, 2rem);
+  font-weight: var(--font-semibold);
 }
 
 .route-map-stage {
@@ -55,15 +63,9 @@
   min-height: 220px;
   border-radius: var(--radius-md);
   border: 1px dashed var(--color-border-strong);
-  background:
-    linear-gradient(
-      135deg,
-      var(--color-primary-soft) 0%,
-      var(--color-surface-muted) 55%,
-      var(--color-surface) 100%
-    );
+  background: var(--color-surface-muted);
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .route-map-line {
@@ -219,16 +221,7 @@
   color: var(--color-text-muted);
 }
 
-.route-empty-state {
-  text-align: center;
-  padding: 40px 20px;
-  color: var(--color-text-muted);
-}
-
-.route-empty-state h3 {
-  margin: 12px 0 6px;
-  color: var(--color-text);
-}
+/* Empty state uses shared .route-empty-state / .fleet-empty-state styles */
 
 #routeFormModal .field-error,
 #routeFormModal .is-invalid {

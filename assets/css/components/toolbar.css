@@ -1,5 +1,5 @@
 /* =====================================
-   Toolbar
+   Toolbar — CRUD module toolbars
 ===================================== */
 
 .toolbar {
@@ -27,6 +27,25 @@
   gap: var(--space-3);
   flex-wrap: wrap;
   flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Search in module toolbars */
+.toolbar .search-box {
+  flex: 1 1 240px;
+  width: auto;
+  max-width: 360px;
+  min-width: min(100%, 200px);
+  height: var(--control-height);
+  min-height: var(--control-height);
+}
+
+.toolbar .filter-select,
+.toolbar input[type="date"].filter-select,
+.toolbar input.filter-select {
+  height: var(--control-height);
+  min-height: var(--control-height);
+  box-sizing: border-box;
 }
 
 /* Shared utility / presets / templates bar */
@@ -41,8 +60,9 @@
   margin: 0 0 var(--section-gap);
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   background: var(--color-surface);
+  box-shadow: var(--shadow-xs);
 }
 
 .fleet-utility-bar .filter-select,
@@ -54,51 +74,62 @@
 .cost-presets-bar .btn-outline,
 .route-templates-bar .filter-select,
 .route-templates-bar .btn-outline {
-  min-height: 44px;
-  height: 44px;
+  min-height: var(--control-height-sm);
+  height: var(--control-height-sm);
 }
 
-.toolbar .search-box {
-  flex: 1 1 220px;
-  width: auto;
-  max-width: 340px;
-  min-width: min(100%, 200px);
-  height: 48px;
-}
-
-.toolbar .filter-select,
-.toolbar input[type="date"].filter-select,
-.toolbar input.filter-select {
-  height: 48px;
-  min-height: 48px;
-  box-sizing: border-box;
-}
-
-/* ==========================================
-   Bulk Toolbar
-========================================== */
-
+/* Bulk toolbar */
 .bulk-toolbar {
   display: none;
-
   justify-content: space-between;
-
   align-items: center;
-
-  padding: 16px 20px;
-
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
   background: var(--card-bg);
-
   border: 1px solid var(--color-border);
-
-  border-radius: 16px;
-
-  margin-bottom: 20px;
-
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-5);
   box-shadow: var(--shadow-xs);
   color: var(--color-text);
 }
 
 .bulk-toolbar.show {
   display: flex;
+}
+
+.bulk-toolbar .bulk-count,
+.bulk-toolbar strong {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+
+@media (max-width: 767px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-left,
+  .toolbar-right {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .toolbar .search-box {
+    max-width: none;
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .toolbar .filter-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .toolbar-right .btn-outline,
+  .toolbar-right .btn-primary {
+    flex: 1 1 auto;
+  }
 }

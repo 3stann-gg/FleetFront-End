@@ -40,37 +40,42 @@
 
 .sidebar-header {
   flex-shrink: 0;
-  padding: 28px 24px;
+  min-height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: padding var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+  box-sizing: border-box;
 }
 
 .sidebar-logo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
   transition: gap var(--sidebar-transition-duration) var(--sidebar-transition-easing);
 }
 
 .logo-icon {
-  width: 54px;
-  height: 54px;
-
-  border-radius: 16px;
-
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
   background: var(--color-primary);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: white;
-  font-size: 24px;
-
+  color: var(--color-text-inverse);
   flex-shrink: 0;
-
   transform: scale(1);
   transition: transform var(--sidebar-transition-duration) var(--sidebar-transition-easing);
+}
+
+.logo-icon .brand-mark {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
 .logo-text,
@@ -80,6 +85,9 @@
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   /* Expand: fade in slightly after width opens */
   transition:
     opacity var(--sidebar-label-transition-duration) var(--sidebar-transition-easing)
@@ -88,19 +96,33 @@
       var(--sidebar-label-expand-delay),
     visibility 0s linear var(--sidebar-label-expand-delay),
     max-width var(--sidebar-transition-duration) var(--sidebar-transition-easing);
-  max-width: 12rem;
+  max-width: 13.5rem;
 }
 
 .logo-text h2 {
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   margin: 0;
+  white-space: nowrap;
 }
 
-.logo-text span {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 13px;
+.logo-text .brand-tagline {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: var(--font-medium);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.logo-text .brand-suite {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 11px;
+  font-weight: var(--font-regular);
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 /* ===== Navigation (only scrollable region) ===== */

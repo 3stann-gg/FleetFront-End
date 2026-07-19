@@ -12,7 +12,7 @@ body {
   font-family: var(--font-family);
   background: var(--color-background);
   color: var(--color-text-primary);
-  line-height: 1.6;
+  line-height: var(--line-height-body);
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   font-size: var(--font-size-md);
@@ -36,20 +36,22 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
-  line-height: 1.2;
+  font-weight: var(--font-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
 }
 
 h1,
 .fleet-display {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-bold);
+  font-size: clamp(1.75rem, 2.2vw, var(--font-size-3xl));
+  font-weight: var(--font-semibold);
 }
 
 h2,
 .fleet-h1 {
   font-size: var(--font-size-2xl);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-semibold);
 }
 
 h3,
@@ -78,6 +80,30 @@ h6 {
 
 p {
   color: var(--color-text-secondary);
+  line-height: var(--line-height-body);
+}
+
+.fleet-label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-text);
+}
+
+.fleet-meta {
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-muted);
+}
+
+.fleet-kpi-value {
+  font-size: var(--font-size-kpi);
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-tight);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
 }
 
 /* Body */
@@ -108,21 +134,4 @@ a:hover {
   color: var(--color-primary);
 }
 
-/* Scrollbar */
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-dark);
-}
+/* Scrollbar styling is centralized in base/motion.css */

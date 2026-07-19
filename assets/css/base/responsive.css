@@ -578,18 +578,25 @@
     width: 100%;
   }
 
-  .stat-card {
-    padding: 20px;
+  .stat-card,
+  .stat-card.dashboard-kpi,
+  .stat-card.report-kpi-card {
+    padding: var(--space-4);
+    min-height: 100px;
   }
 
   .stat-icon {
-    width: 52px;
-    height: 52px;
-    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 20px;
   }
 
-  .stat-content h3 {
-    font-size: 26px;
+  .stat-content > h2,
+  .stat-content > h3,
+  .stat-content > .kpi-value {
+    font-size: 24px;
   }
 
   .card {

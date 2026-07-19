@@ -14,8 +14,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 44px;
-  height: 44px;
+  min-height: var(--control-height-sm);
+  height: var(--control-height-sm);
   padding: 0 14px;
   white-space: nowrap;
 }

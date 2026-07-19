@@ -37,9 +37,10 @@
 
 .cost-chart-card {
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   padding: var(--space-5);
-  background: var(--color-surface-muted);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-xs);
   min-height: 260px;
   min-width: 0;
   display: flex;
@@ -47,11 +48,21 @@
 }
 
 .cost-chart-card h4 {
-  margin: 0 0 var(--space-3);
-  font-size: 15px;
-  font-weight: 700;
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-semibold);
   letter-spacing: -0.01em;
   color: var(--color-text);
+}
+
+.cost-analysis-page .page-header h1 {
+  font-size: clamp(1.75rem, 2.2vw, 2rem);
+  font-weight: var(--font-semibold);
+}
+
+.cost-analysis-page .card-subtitle {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
 }
 
 .cost-chart-empty {
@@ -218,10 +229,8 @@
   margin-right: 6px;
 }
 
-/* Overview KPIs: shared cards.css handles 3×2 for six cards.
-   Sub-view rows (4 / 8) keep 4-column desktop occupancy. */
+/* Sub-view KPI rows: shared .stat-card system; 4-col when 4 cards, 4-col for 8 */
 .cost-analysis-page .stats-grid.cost-sub-kpis {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0 0 var(--card-gap);
 }
 

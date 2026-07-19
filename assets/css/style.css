@@ -13,6 +13,7 @@
 @import url("./base/typography.css");
 @import url("./base/utilities.css");
 @import url("./base/layout.css");
+@import url("./base/motion.css");
 
 /* ==========================================
    COMPONENTS
@@ -31,6 +32,7 @@
 @import url("./components/dropdown.css");
 @import url("./components/pagination.css");
 @import url("./components/toolbar.css");
+@import url("./components/skeleton.css");
 
 /* ==========================================
    PAGE STYLES
