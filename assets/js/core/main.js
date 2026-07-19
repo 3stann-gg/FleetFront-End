@@ -358,12 +358,19 @@ function applyTheme(theme, options = {}) {
     }
   }
 
+  /* Menu active state follows saved preference; during preview keep menu on saved */
   syncThemeMenuState();
 }
 
+/**
+ * Sync profile-dropdown theme radios only.
+ * Settings page uses name="settingsTheme" and must not share data-theme-option.
+ */
 function syncThemeMenuState() {
   const current = getSavedTheme();
-  const options = document.querySelectorAll("[data-theme-option]");
+  const options = document.querySelectorAll(
+    "#sidebarProfileMenu [data-theme-option]",
+  );
 
   options.forEach((option) => {
     const value = option.getAttribute("data-theme-option");

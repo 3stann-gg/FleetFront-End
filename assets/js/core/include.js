@@ -535,6 +535,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
+  if (document.getElementById("settingsPage")) {
+    if (typeof initSettingsPage === "function") {
+      initSettingsPage();
+    }
+  }
+
   if (typeof initDispatchFilters === "function") {
     initDispatchFilters();
   }
