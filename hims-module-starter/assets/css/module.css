@@ -1,0 +1,95 @@
+/**
+ * Module-specific CSS placeholder
+ * Prefer design tokens from the shared system.
+ * Do not redefine buttons, cards, tables, or modals.
+ */
+
+.module-footer {
+  margin-top: var(--space-8, 2rem);
+  padding: var(--space-6, 1.5rem) 0;
+  text-align: center;
+}
+
+.module-footer .fleet-meta {
+  margin: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-3, 0.75rem);
+  justify-content: flex-end;
+  margin-top: var(--space-6, 1.5rem);
+}
+
+/* Authentication layout — centered card, no app shell */
+.auth-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6, 1.5rem);
+}
+
+.auth-shell {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card {
+  padding: var(--space-8, 2rem);
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: var(--space-6, 1.5rem);
+}
+
+.auth-brand h1 {
+  margin: var(--space-3, 0.75rem) 0 var(--space-1, 0.25rem);
+  font-size: 1.35rem;
+}
+
+.auth-brand .logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--primary, #00a86b);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: var(--space-4, 1rem);
+}
+
+.auth-footer-note {
+  text-align: center;
+  margin-top: var(--space-5, 1.25rem);
+}
+
+/* Detail view key/value list */
+.detail-list {
+  display: grid;
+  gap: var(--space-4, 1rem);
+}
+
+.detail-list dt {
+  font-size: 0.8rem;
+  color: var(--text-muted, #6b7280);
+  margin: 0;
+}
+
+.detail-list dd {
+  margin: 0.15rem 0 0;
+  font-weight: 500;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5, 1.25rem);
+}

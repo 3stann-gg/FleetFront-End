@@ -1,0 +1,29 @@
+/**
+ * HIMS Design Tokens — Border radius
+ * Verified from assets/css/base/variables.css
+ */
+
+:root {
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+
+  /* Semantic aliases */
+  --radius-card: var(--radius-lg);
+  --radius-control: var(--radius-md);
+  --radius-button: var(--radius-md);
+}
+
+/**
+ * Usage:
+ * - Cards / panels: --radius-card (14px)
+ * - Inputs, selects, search: --radius-control (10px)
+ * - Buttons: --radius-button (10px)
+ * - Small chips / tight UI: --radius-sm (8px)
+ * - Soft large surfaces: --radius-xl (18px)
+ * - Pills / badges that need full rounding: --radius-pill
+ *
+ * Avoid inventing ad-hoc radii (e.g. 12px) in module CSS when a token exists.
+ */

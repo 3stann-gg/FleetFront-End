@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy | HIMS</title>
+    <link rel="icon" href="../../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+  </head>
+  <body data-page="prescriptions">
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-panel">
+          <div class="sidebar-header">
+            <div class="sidebar-logo" data-tooltip="HIMS Pharmacy">
+              <div class="logo-icon" aria-hidden="true"><i class="ph-fill ph-pill" style="font-size: 1.25rem"></i></div>
+              <div class="logo-text sidebar-brand-text">
+                <h2>HIMS Pharmacy</h2>
+                <span class="brand-tagline">Pharmacy</span>
+                <span class="brand-suite">Hospital Operations Suite</span>
+              </div>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            <span class="nav-title">PHARMACY</span>
+            <ul>
+              <li>
+                <a href="#" class="nav-link active" data-page="prescriptions" data-tooltip="Prescriptions">
+                  <i class="ph-fill ph-prescription"></i><span class="nav-label">Prescriptions</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link" data-page="inventory" data-tooltip="Inventory">
+                  <i class="ph-fill ph-package"></i><span class="nav-label">Inventory</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link" data-page="dispensing" data-tooltip="Dispensing">
+                  <i class="ph-fill ph-hand-coins"></i><span class="nav-label">Dispensing</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">
+            <div class="sidebar-profile">
+              <span class="profile-avatar" aria-hidden="true">PH</span>
+              <span class="profile-info">
+                <span class="profile-name">Pharmacy Desk</span>
+                <span class="profile-role">Pharmacist</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="navbar-custom">
+          <div class="navbar-left">
+            <button type="button" class="menu-toggle" aria-label="Menu"><i class="ph ph-list"></i></button>
+            <div class="app-identity">
+              <p class="app-identity-title">Pharmacy Management</p>
+              <span class="app-identity-subtitle">Hospital Operations Suite</span>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass"></i>
+              <input type="text" placeholder="Search prescriptions or drugs..." aria-label="Search pharmacy" />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button type="button" class="icon-btn" aria-label="Notifications"><i class="ph ph-bell"></i></button>
+            <button type="button" class="icon-btn" aria-label="Messages"><i class="ph ph-envelope-simple"></i></button>
+          </div>
+        </header>
+        <section class="page-wrapper">
+          <div class="page-header">
+            <div>
+              <h1>Prescription Queue</h1>
+              <p>Shared HIMS toolbar and table patterns with pharmacy labels.</p>
+            </div>
+            <button type="button" class="btn-primary"><i class="ph ph-plus"></i> New Prescription</button>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon warning"><i class="ph-fill ph-queue"></i></div>
+              <div class="stat-content"><h3>19</h3><p>In queue</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon success"><i class="ph-fill ph-check-circle"></i></div>
+              <div class="stat-content"><h3>54</h3><p>Dispensed today</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon danger"><i class="ph-fill ph-package"></i></div>
+              <div class="stat-content"><h3>7</h3><p>Low stock</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon info"><i class="ph-fill ph-pill"></i></div>
+              <div class="stat-content"><h3>312</h3><p>SKUs</p></div>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search-box">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" placeholder="Rx number or patient..." aria-label="Search" />
+              </div>
+              <select class="filter-select" aria-label="Status">
+                <option value="all">All status</option>
+                <option>Queued</option>
+                <option>Dispensed</option>
+                <option>Cancelled</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-outline">Refresh</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="table-responsive">
+              <table class="fleet-table">
+                <thead>
+                  <tr>
+                    <th>Rx No.</th>
+                    <th>Patient</th>
+                    <th>Prescriber</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>RX-8821</td>
+                    <td>Sample Patient</td>
+                    <td>Dr. Sample</td>
+                    <td><span class="status-badge pending">Queued</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="action-btn" aria-label="View"><i class="ph ph-eye"></i></button>
+                        <button type="button" class="action-btn" aria-label="Dispense"><i class="ph ph-check"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

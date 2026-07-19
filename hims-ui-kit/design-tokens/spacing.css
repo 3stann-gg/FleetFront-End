@@ -1,0 +1,47 @@
+/**
+ * HIMS Design Tokens — Spacing
+ * 8px-based scale from assets/css/base/variables.css
+ */
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* Layout rhythm aliases */
+  --card-gap: var(--space-6);
+  --section-gap: var(--space-7);
+  --toolbar-gap: var(--space-5);
+  --content-padding: 30px;
+}
+
+/**
+ * Usage guidance (consume tokens; do not hardcode new gaps):
+ *
+ * Cards
+ *   Internal padding often space-5 / space-6; card stacks use --card-gap.
+ *
+ * Forms
+ *   Field gaps: space-3–space-5; form-grid row/column gaps follow space-5.
+ *
+ * Sections
+ *   Between major page blocks: --section-gap (space-7).
+ *
+ * Tables
+ *   Cell padding uses component CSS; toolbar above tables uses --toolbar-gap.
+ *
+ * Modals
+ *   Body padding aligns with space-5 / space-6; overlay padding 20px at tablet.
+ *
+ * Navigation
+ *   Sidebar/nav item spacing uses space-2–space-4; content inset --content-padding.
+ */

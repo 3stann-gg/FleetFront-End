@@ -1,0 +1,31 @@
+/**
+ * HIMS Design Tokens — Z-index
+ * Verified from assets/css/base/variables.css + responsive shell overrides
+ */
+
+:root {
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-sidebar: 700;
+  --z-navbar: 800;
+  --z-modal: 1000;
+
+  /* Sidebar tooltip (variables.css) */
+  --sidebar-tooltip-z: 1200;
+}
+
+/**
+ * Stacking map (verified production behavior):
+ *
+ * 100   Dropdown menus / popovers within content
+ * 500   Sticky headers / sticky table chrome
+ * 700   Desktop sidebar base token
+ * 800   Navbar
+ * 1000  Modal overlay / dialogs
+ * 1050  Mobile sidebar backdrop (responsive.css hard value)
+ * 1100  Mobile off-canvas sidebar (responsive.css hard value)
+ * 1200  Sidebar tooltips (collapsed mode)
+ *
+ * Do not invent competing z-index ladders in module CSS.
+ * If a layer is required, extend this scale deliberately.
+ */

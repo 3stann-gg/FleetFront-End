@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Patient | Patient Management</title>
+    <link rel="icon" href="../../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/module.css" />
+  </head>
+  <body data-page="patients">
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-panel">
+          <div class="sidebar-header">
+            <div class="sidebar-logo" data-tooltip="HIMS Patient">
+              <div class="logo-icon" aria-hidden="true">
+                <i class="ph-fill ph-users" style="font-size: 1.25rem"></i>
+              </div>
+              <div class="logo-text sidebar-brand-text">
+                <h2>HIMS Patient</h2>
+                <span class="brand-tagline">Patient Management</span>
+                <span class="brand-suite">Hospital Operations Suite</span>
+              </div>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            <span class="nav-title">MAIN MENU</span>
+            <ul>
+              <li>
+                <a href="dashboard.html" class="nav-link" data-page="dashboard" data-tooltip="Dashboard">
+                  <i class="ph-fill ph-squares-four"></i><span class="nav-label">Dashboard</span>
+                </a>
+              </li>
+            </ul>
+            <span class="nav-title">PATIENTS</span>
+            <ul>
+              <li>
+                <a href="index.html" class="nav-link" data-page="patients" data-tooltip="Patients">
+                  <i class="ph-fill ph-users"></i><span class="nav-label">Patients</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link" data-page="admissions" data-tooltip="Admissions">
+                  <i class="ph-fill ph-bed"></i><span class="nav-label">Admissions</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">
+            <div class="sidebar-profile">
+              <span class="profile-avatar" aria-hidden="true">RN</span>
+              <span class="profile-info">
+                <span class="profile-name">Nurse Desk</span>
+                <span class="profile-role">Patient Services</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="navbar-custom">
+          <div class="navbar-left">
+            <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
+              <i class="ph ph-list"></i>
+            </button>
+            <div class="app-identity">
+              <p class="app-identity-title">Patient Management</p>
+              <span class="app-identity-subtitle">Hospital Operations Suite</span>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" placeholder="Search patients..." aria-label="Search" />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button type="button" class="icon-btn" aria-label="Notifications"><i class="ph ph-bell"></i></button>
+            <button type="button" class="icon-btn" aria-label="Messages"><i class="ph ph-envelope-simple"></i></button>
+          </div>
+        </header>
+
+        <section class="page-wrapper">
+          <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <a href="index.html">Patients</a>
+            <span aria-hidden="true">/</span>
+            <span>Register</span>
+          </nav>
+
+          <div class="page-header">
+            <div>
+              <h1>Register Patient</h1>
+              <p>Example create form. No API — demonstration of starter form layout only.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <form class="fleet-form" id="patientCreateForm" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="patientFirst">First name <span class="required">*</span></label>
+                  <input type="text" id="patientFirst" name="firstName" required />
+                </div>
+                <div class="form-group">
+                  <label for="patientLast">Last name <span class="required">*</span></label>
+                  <input type="text" id="patientLast" name="lastName" required />
+                </div>
+                <div class="form-group">
+                  <label for="patientDob">Date of birth</label>
+                  <input type="date" id="patientDob" name="dob" />
+                </div>
+                <div class="form-group">
+                  <label for="patientWard">Ward</label>
+                  <select id="patientWard" name="ward">
+                    <option>OPD</option>
+                    <option>ER</option>
+                    <option>Inpatient</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="patientNotes">Notes</label>
+                  <textarea id="patientNotes" name="notes" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <a href="index.html" class="btn-outline">Cancel</a>
+                <button type="submit" class="btn-primary">Save Patient</button>
+              </div>
+            </form>
+          </div>
+
+          <footer class="module-footer">
+            <p class="fleet-meta">HIMS · Patient Management · Starter Example</p>
+          </footer>
+        </section>
+      </main>
+      <div id="toast"><div id="toastContainer" class="toast-container"></div></div>
+    </div>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/form.js"></script>
+    <script src="../../assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create | HIMS Module</title>
+    <link rel="icon" href="../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+  </head>
+  <body data-page="create">
+    <div class="app">
+      <div id="sidebar"></div>
+      <main class="main-content">
+        <div id="navbar"></div>
+        <section class="page-wrapper">
+          <div class="page-header">
+            <div>
+              <h1>Create Record</h1>
+              <p>Fill in the required fields to create a new record.</p>
+            </div>
+          </div>
+          <div class="card">
+            <form class="fleet-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="createName">Name <span class="required">*</span></label>
+                  <input type="text" id="createName" required />
+                  <p class="field-error" hidden></p>
+                </div>
+                <div class="form-group">
+                  <label for="createType">Type <span class="required">*</span></label>
+                  <select id="createType" required>
+                    <option value="">Select…</option>
+                    <option>Type A</option>
+                    <option>Type B</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="createDate">Date</label>
+                  <input type="date" id="createDate" />
+                </div>
+                <div class="form-group">
+                  <label for="createStatus">Status</label>
+                  <select id="createStatus">
+                    <option>Pending</option>
+                    <option>Active</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="createNotes">Notes</label>
+                  <textarea id="createNotes" rows="4"></textarea>
+                </div>
+              </div>
+              <div class="u-flex u-gap-3" style="justify-content: flex-end; margin-top: var(--space-6)">
+                <button type="button" class="btn-outline">Cancel</button>
+                <button type="submit" class="btn-primary">Save Record</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+      <div id="toast"><div id="toastContainer" class="toast-container"></div></div>
+    </div>
+  </body>
+</html>

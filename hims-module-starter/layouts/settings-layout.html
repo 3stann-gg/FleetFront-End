@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings | HIMS Module</title>
+    <link rel="icon" href="../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/module.css" />
+  </head>
+  <body data-page="settings">
+    <!-- SETTINGS LAYOUT — preference cards, shared theme key only -->
+    <div class="app">
+      <div id="sidebar"></div>
+      <main class="main-content">
+        <div id="navbar"></div>
+        <section class="page-wrapper">
+          <div class="page-header">
+            <div>
+              <h1>Settings</h1>
+              <p>Configure module preferences. Use the shared HIMS theme key for appearance.</p>
+            </div>
+            <button type="button" class="btn-primary">Save Settings</button>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3>General</h3></div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="unitName">Unit / department name</label>
+                <input type="text" id="unitName" placeholder="e.g. Outpatient Clinic" />
+              </div>
+              <div class="form-group">
+                <label for="defaultStatus">Default status</label>
+                <select id="defaultStatus">
+                  <option>Active</option>
+                  <option>Pending</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3>Appearance</h3></div>
+            <p class="fleet-meta">Prefer the shared HIMS theme preference (same engine as Fleet). Storage key: himsFleetTheme.</p>
+          </div>
+
+          <footer class="module-footer">
+            <p class="fleet-meta">Hospital Information Management System · Module Name</p>
+          </footer>
+        </section>
+      </main>
+      <div id="toast"><div id="toastContainer" class="toast-container"></div></div>
+    </div>
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/form.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

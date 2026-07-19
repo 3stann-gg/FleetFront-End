@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Record | HIMS Module</title>
+    <link rel="icon" href="../../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/module.css" />
+  </head>
+  <body data-page="management">
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-panel">
+          <div class="sidebar-header">
+            <div class="sidebar-logo" data-tooltip="HIMS Module">
+              <div class="logo-icon" aria-hidden="true">
+                <i class="ph-fill ph-folder" style="font-size: 1.25rem"></i>
+              </div>
+              <div class="logo-text sidebar-brand-text">
+                <h2>HIMS Module</h2>
+                <span class="brand-tagline">Module Name</span>
+                <span class="brand-suite">Hospital Operations Suite</span>
+              </div>
+            </div>
+          </div>
+          <nav class="sidebar-nav">
+            <span class="nav-title">MAIN MENU</span>
+            <ul>
+              <li>
+                <a href="../dashboard/index.html" class="nav-link" data-page="dashboard" data-tooltip="Dashboard">
+                  <i class="ph-fill ph-squares-four"></i><span class="nav-label">Dashboard</span>
+                </a>
+              </li>
+            </ul>
+            <span class="nav-title">MODULE</span>
+            <ul>
+              <li>
+                <a href="../management/index.html" class="nav-link" data-page="management" data-tooltip="Records">
+                  <i class="ph-fill ph-folder"></i><span class="nav-label">Records</span>
+                </a>
+              </li>
+              <li>
+                <a href="../reports/index.html" class="nav-link" data-page="reports" data-tooltip="Reports">
+                  <i class="ph-fill ph-chart-bar"></i><span class="nav-label">Reports</span>
+                </a>
+              </li>
+              <li>
+                <a href="../analytics/index.html" class="nav-link" data-page="analytics" data-tooltip="Analytics">
+                  <i class="ph-fill ph-chart-line"></i><span class="nav-label">Analytics</span>
+                </a>
+              </li>
+              <li>
+                <a href="../settings/index.html" class="nav-link" data-page="settings" data-tooltip="Settings">
+                  <i class="ph-fill ph-gear"></i><span class="nav-label">Settings</span>
+                </a>
+              </li>
+              <li>
+                <a href="../profile/index.html" class="nav-link" data-page="profile" data-tooltip="Profile">
+                  <i class="ph-fill ph-user"></i><span class="nav-label">Profile</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">
+            <div class="sidebar-profile">
+              <span class="profile-avatar" aria-hidden="true">HM</span>
+              <span class="profile-info">
+                <span class="profile-name">User Name</span>
+                <span class="profile-role">Role</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="navbar-custom">
+          <div class="navbar-left">
+            <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
+              <i class="ph ph-list"></i>
+            </button>
+            <div class="app-identity">
+              <p class="app-identity-title">Module Name Management</p>
+              <span class="app-identity-subtitle">Hospital Operations Suite</span>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" placeholder="Search records..." aria-label="Global search" />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button type="button" class="icon-btn" aria-label="Notifications"><i class="ph ph-bell"></i></button>
+            <button type="button" class="icon-btn" aria-label="Messages"><i class="ph ph-envelope-simple"></i></button>
+          </div>
+        </header>
+
+        <section class="page-wrapper">
+          <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <a href="../management/index.html">Records</a>
+            <span aria-hidden="true">/</span>
+            <span>Create</span>
+          </nav>
+
+          <div class="page-header">
+            <div>
+              <h1>Create Record</h1>
+              <p>Fill in the required fields to create a new record. No API calls in the starter.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <form class="fleet-form" id="createForm" novalidate>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="createName">Name <span class="required">*</span></label>
+                  <input type="text" id="createName" name="name" required />
+                  <p class="field-error" hidden></p>
+                </div>
+                <div class="form-group">
+                  <label for="createType">Type <span class="required">*</span></label>
+                  <select id="createType" name="type" required>
+                    <option value="">Select…</option>
+                    <option>Type A</option>
+                    <option>Type B</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="createDate">Date</label>
+                  <input type="date" id="createDate" name="date" />
+                </div>
+                <div class="form-group">
+                  <label for="createStatus">Status</label>
+                  <select id="createStatus" name="status">
+                    <option>Pending</option>
+                    <option>Active</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="createNotes">Notes</label>
+                  <textarea id="createNotes" name="notes" rows="4" placeholder="Optional notes"></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <a href="../management/index.html" class="btn-outline">Cancel</a>
+                <button type="submit" class="btn-primary">Save Record</button>
+              </div>
+            </form>
+          </div>
+
+          <footer class="module-footer">
+            <p class="fleet-meta">Hospital Information Management System · Module Name · Starter</p>
+          </footer>
+        </section>
+      </main>
+      <div id="toast"><div id="toastContainer" class="toast-container"></div></div>
+    </div>
+    <script src="../../assets/js/utils.js"></script>
+    <script src="../../assets/js/theme.js"></script>
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/form.js"></script>
+    <script src="../../assets/js/main.js"></script>
+  </body>
+</html>

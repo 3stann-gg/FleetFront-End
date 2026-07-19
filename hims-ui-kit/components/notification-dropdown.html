@@ -1,0 +1,27 @@
+<!--
+  HIMS UI Kit — Notification panel (presentation pattern)
+  Pair with navbar .icon-btn[aria-label=Notifications]
+  Uses existing dropdown surface tokens/classes where possible
+-->
+<div class="export-dropdown hims-utility-dropdown" id="himsNotificationDropdown">
+  <button
+    type="button"
+    class="icon-btn export-menu-toggle"
+    aria-label="Notifications"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <i class="ph ph-bell" aria-hidden="true"></i>
+  </button>
+  <div class="export-menu" hidden role="menu" aria-label="Notifications list">
+    <button type="button" class="export-menu-item" role="menuitem">
+      Sample notification title
+    </button>
+    <button type="button" class="export-menu-item" role="menuitem">
+      Another notification
+    </button>
+    <button type="button" class="export-menu-item" role="menuitem">
+      View all notifications
+    </button>
+  </div>
+</div>

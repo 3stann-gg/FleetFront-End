@@ -1,0 +1,36 @@
+/**
+ * HIMS Design Tokens — Shadows / elevation
+ * Verified from assets/css/base/variables.css (light + dark overrides in colors/theme)
+ */
+
+:root,
+html[data-theme="light"] {
+  --color-shadow: rgba(15, 23, 42, 0.06);
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.08);
+  --shadow-primary: 0 6px 16px rgba(0, 168, 107, 0.18);
+  --hover-shadow: var(--shadow-sm);
+}
+
+html[data-theme="dark"] {
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.22);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.38);
+  --shadow-primary: 0 6px 16px rgba(18, 184, 122, 0.18);
+  --hover-shadow: var(--shadow-sm);
+}
+
+/**
+ * Elevation usage:
+ * - xs: hairline separation (subtle dividers / flat lists)
+ * - sm: default card rest state / hover lift (--hover-shadow)
+ * - md: elevated panels, dropdowns
+ * - lg: modals, high emphasis floating UI
+ * - primary: brand-tinted emphasis (primary CTAs, brand highlights)
+ *
+ * Design rule: restrained elevation — prefer borders + soft shadows over heavy drop shadows.
+ */

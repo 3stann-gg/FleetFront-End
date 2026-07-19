@@ -1,0 +1,49 @@
+/**
+ * HIMS Design Tokens — Breakpoints
+ * Verified from assets/css/base/responsive.css media queries.
+ *
+ * Note: CSS custom properties cannot be used inside @media in all engines.
+ * These tokens are documentation + JS/layout reference constants.
+ * Production media queries use the raw pixel values listed below.
+ */
+
+:root {
+  /* Named reference values (match production @media) */
+  --bp-xxs-max: 399px; /* very small phones */
+  --bp-xs-max: 575px; /* small phones */
+  --bp-sm-max: 767px; /* tablet portrait / large mobile */
+  --bp-md-max: 991px; /* tablet landscape — off-canvas shell */
+  --bp-lg-max: 1199px; /* laptop / compact desktop */
+  --bp-desktop-min: 992px; /* desktop collapse behavior starts */
+
+  /* Component sizing (shell) — verified layout tokens */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 88px;
+  --sidebar-collapse: var(--sidebar-collapsed-width);
+  --navbar-height: 72px;
+  --control-height: 48px;
+  --control-height-sm: 44px;
+  --sidebar-tooltip-max-width: 220px;
+}
+
+/**
+ * Responsive behavior summary (verified):
+ *
+ * Desktop (min-width: 992px)
+ *   Fixed sidebar; body.sidebar-collapsed shrinks main-content to collapsed width.
+ *
+ * Laptop / compact desktop (max-width: 1199px)
+ *   Reduced page padding; stats often 2 columns; navbar may wrap search full width.
+ *
+ * Tablet landscape and smaller (max-width: 991px)
+ *   Off-canvas sidebar (translateX); main-content full width; backdrop z-index 1050.
+ *
+ * Tablet portrait / large mobile (max-width: 767px)
+ *   Single-column stats; tighter padding (space-4).
+ *
+ * Small phones (max-width: 575px, 399px)
+ *   Further compacting of shell and controls (see responsive.css).
+ *
+ * Print
+ *   Separate @media print rules exist for clean output.
+ */

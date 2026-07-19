@@ -1,0 +1,45 @@
+/**
+ * HIMS Design Tokens — Theme engine entry
+ *
+ * Composes token layers for documentation / optional module consumption.
+ * Production application still loads assets/css/base/variables.css via style.css.
+ * Do not create a second theme storage key or parallel engine.
+ */
+
+@import url("./colors.css");
+@import url("./typography.css");
+@import url("./spacing.css");
+@import url("./radius.css");
+@import url("./shadow.css");
+@import url("./animation.css");
+@import url("./breakpoints.css");
+@import url("./z-index.css");
+
+/**
+ * THEME ENGINE (documented; implementation unchanged)
+ *
+ * Preference values (localStorage): light | dark | system
+ * Storage key: himsFleetTheme
+ * Resolved attribute: html[data-theme="light" | "dark"]
+ *
+ * Boot: assets/js/core/theme-boot.js (pre-paint, <head>)
+ * Runtime: assets/js/core/main.js applyTheme / getThemePreference / system listener
+ *
+ * Light Theme
+ *   :root and html[data-theme="light"] define semantic surfaces, brand mint #00a86b
+ *
+ * Dark Theme
+ *   html[data-theme="dark"] overrides color/shadow tokens; structure tokens shared
+ *
+ * System
+ *   Preference "system" resolves via prefers-color-scheme → light or dark data-theme
+ *
+ * Future High Contrast Theme (recommended, not implemented)
+ *   Add html[data-theme="high-contrast"] overrides only for color/border/text tokens
+ *   Keep spacing, radius, type scale, and z-index shared
+ *   Extend theme-boot + applyTheme validators carefully; do not fork CSS architecture
+ *
+ * Inheritance rule
+ *   Dark mode inherits non-color structure tokens from :root (spacing, type, radius,
+ *   motion, breakpoints, z-index) and only redefines visual surface tokens.
+ */

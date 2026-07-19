@@ -1,0 +1,145 @@
+<!--
+  HIMS UI Kit — Sidebar (generic)
+  Customize: brand text, menu groups, links, data-page values, profile name/role
+  Do not change core structure or shared CSS classes.
+-->
+<aside class="sidebar">
+  <div class="sidebar-panel">
+    <div class="sidebar-header">
+      <div class="sidebar-logo" data-tooltip="HIMS">
+        <div class="logo-icon" aria-hidden="true">
+          <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="none" focusable="false">
+            <path fill="currentColor" fill-rule="evenodd" d="M13.25 3.5h5.5c.97 0 1.75.78 1.75 1.75v5.75h5.75c.97 0 1.75.78 1.75 1.75v5.5c0 .97-.78 1.75-1.75 1.75H20.5v5.75c0 .97-.78 1.75-1.75 1.75h-5.5c-.97 0-1.75-.78-1.75-1.75V20h-5.75c-.97 0-1.75-.78-1.75-1.75v-5.5c0-.97.78-1.75 1.75-1.75H11.5V5.25c0-.97.78-1.75 1.75-1.75zm2.75 4.75a1.85 1.85 0 1 0 0 3.7 1.85 1.85 0 0 0 0-3.7zM14.2 12.8h3.6c.72 0 1.3.58 1.3 1.3v2.55c0 .2-.08.4-.22.54l-1.48 1.48c-.14.14-.34.22-.54.22h-1.72c-.2 0-.4-.08-.54-.22l-1.48-1.48a.77.77 0 0 1-.22-.54V14.1c0-.72.58-1.3 1.3-1.3z"/>
+            <path fill="currentColor" d="M24.1 7.2c2.9.2 5.1 2.2 5.5 4.9-.4.15-1.05.3-1.85.35-1.95.12-3.55-.95-4.15-2.55-.35-.9-.3-1.85.05-2.7z"/>
+          </svg>
+        </div>
+        <div class="logo-text sidebar-brand-text">
+          <h2>HIMS</h2>
+          <span class="brand-tagline">Module Name</span>
+          <span class="brand-suite">Hospital Operations Suite</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-title">MAIN MENU</span>
+      <ul>
+        <li>
+          <a href="#" class="nav-link active" data-page="dashboard" data-tooltip="Dashboard">
+            <i class="ph-fill ph-squares-four"></i>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+
+      <span class="nav-title">MODULE</span>
+      <ul>
+        <li>
+          <a href="#" class="nav-link" data-page="records" data-tooltip="Records">
+            <i class="ph-fill ph-folder"></i>
+            <span class="nav-label">Records</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-page="reports" data-tooltip="Reports">
+            <i class="ph-fill ph-chart-bar"></i>
+            <span class="nav-label">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link" data-page="settings" data-tooltip="Settings">
+            <i class="ph-fill ph-gear"></i>
+            <span class="nav-label">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-profile-wrap">
+        <button
+          type="button"
+          class="sidebar-profile"
+          id="sidebarProfileToggle"
+          data-tooltip="Profile"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="sidebarProfileMenu"
+          aria-label="User profile menu"
+        >
+          <span class="profile-avatar" aria-hidden="true">HM</span>
+          <span class="profile-info">
+            <span class="profile-name">User Name</span>
+            <span class="profile-role">Role</span>
+          </span>
+          <span class="profile-chevron" aria-hidden="true">
+            <i class="ph ph-caret-up-down"></i>
+          </span>
+        </button>
+
+        <div class="sidebar-profile-menu" id="sidebarProfileMenu" role="menu" hidden aria-hidden="true">
+          <a href="#" class="profile-menu-item" role="menuitem" data-profile-action="profile">
+            <i class="ph ph-user-circle" aria-hidden="true"></i>
+            <span>Profile</span>
+          </a>
+          <a href="#" class="profile-menu-item" role="menuitem" data-profile-action="account-settings">
+            <i class="ph ph-gear" aria-hidden="true"></i>
+            <span>System Settings</span>
+          </a>
+          <div class="profile-appearance-group">
+            <button
+              type="button"
+              class="profile-menu-item profile-appearance-trigger"
+              id="profileAppearanceTrigger"
+              role="menuitem"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-controls="profileAppearanceSubmenu"
+            >
+              <i class="ph ph-palette" aria-hidden="true"></i>
+              <span class="profile-menu-item-text">Appearance</span>
+              <span class="profile-appearance-current" id="profileAppearanceCurrent">Light</span>
+              <i class="ph ph-caret-right profile-submenu-chevron" aria-hidden="true"></i>
+            </button>
+            <div
+              class="profile-appearance-submenu"
+              id="profileAppearanceSubmenu"
+              role="menu"
+              hidden
+              aria-label="Appearance theme"
+            >
+              <button type="button" class="profile-menu-item profile-theme-option" role="menuitemradio" data-theme-option="light" aria-checked="false">
+                <i class="ph ph-sun" aria-hidden="true"></i><span>Light</span>
+                <i class="ph ph-check profile-theme-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="profile-menu-item profile-theme-option" role="menuitemradio" data-theme-option="dark" aria-checked="false">
+                <i class="ph ph-moon" aria-hidden="true"></i><span>Dark</span>
+                <i class="ph ph-check profile-theme-check" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="profile-menu-item profile-theme-option" role="menuitemradio" data-theme-option="system" aria-checked="false">
+                <i class="ph ph-desktop" aria-hidden="true"></i><span>System</span>
+                <i class="ph ph-check profile-theme-check" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <div class="profile-menu-divider" role="separator"></div>
+          <a href="#" class="profile-menu-item profile-menu-item--danger" role="menuitem" data-profile-action="logout">
+            <i class="ph ph-sign-out" aria-hidden="true"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    id="desktopSidebarToggle"
+    class="desktop-sidebar-toggle sidebar-edge-toggle"
+    aria-label="Collapse sidebar"
+    aria-controls="sidebar"
+    aria-expanded="true"
+  >
+    <i class="ph ph-caret-double-left"></i>
+  </button>
+</aside>

@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIMS Component Library</title>
+    <link rel="icon" href="../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/component-library.css" />
+  </head>
+  <body data-page="component-library">
+    <div class="app">
+      <aside class="sidebar">
+        <div class="sidebar-panel">
+          <div class="sidebar-header">
+            <div class="sidebar-logo" data-tooltip="HIMS UI Kit">
+              <div class="logo-icon" aria-hidden="true">
+                <i class="ph-fill ph-squares-four" style="font-size: 1.25rem"></i>
+              </div>
+              <div class="logo-text sidebar-brand-text">
+                <h2>HIMS UI Kit</h2>
+                <span class="brand-tagline">Component Library</span>
+                <span class="brand-suite">Hospital Operations Suite</span>
+              </div>
+            </div>
+          </div>
+          <nav class="sidebar-nav" aria-label="Catalog sections">
+            <span class="nav-title">LIBRARY</span>
+            <ul>
+              <li>
+                <a class="nav-link active" href="#intro" data-tooltip="Intro">
+                  <i class="ph-fill ph-info"></i><span class="nav-label">Introduction</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#colors" data-tooltip="Colors">
+                  <i class="ph-fill ph-palette"></i><span class="nav-label">Colors</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#buttons" data-tooltip="Buttons">
+                  <i class="ph-fill ph-cursor-click"></i><span class="nav-label">Buttons</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#forms" data-tooltip="Forms">
+                  <i class="ph-fill ph-textbox"></i><span class="nav-label">Forms</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#cards" data-tooltip="Cards">
+                  <i class="ph-fill ph-squares-four"></i><span class="nav-label">Cards</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#tables" data-tooltip="Tables">
+                  <i class="ph-fill ph-table"></i><span class="nav-label">Tables</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#modals" data-tooltip="Modals">
+                  <i class="ph-fill ph-browsers"></i><span class="nav-label">Modals</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#status" data-tooltip="Status">
+                  <i class="ph-fill ph-tag"></i><span class="nav-label">Status</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#states" data-tooltip="States">
+                  <i class="ph-fill ph-circle-dashed"></i><span class="nav-label">States</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#theme" data-tooltip="Theme">
+                  <i class="ph-fill ph-moon-stars"></i><span class="nav-label">Theme</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="#checklist" data-tooltip="Checklist">
+                  <i class="ph-fill ph-check-square"></i><span class="nav-label">Checklist</span>
+                </a>
+              </li>
+            </ul>
+            <span class="nav-title">DOCS</span>
+            <ul>
+              <li>
+                <a class="nav-link" href="./docs/COMPONENT-LIBRARY-GUIDE.md" data-tooltip="Guide">
+                  <i class="ph-fill ph-book-open"></i><span class="nav-label">Guide</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link" href="../docs/HIMS-UI-DESIGN-STANDARD.md" data-tooltip="UI Standard">
+                  <i class="ph-fill ph-blueprint"></i><span class="nav-label">UI Standard</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">
+            <div class="sidebar-profile">
+              <span class="profile-avatar" aria-hidden="true">UI</span>
+              <span class="profile-info">
+                <span class="profile-name">HIMS UI Kit</span>
+                <span class="profile-role">Shared components</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="navbar-custom">
+          <div class="navbar-left">
+            <button type="button" class="menu-toggle" aria-label="Toggle navigation menu">
+              <i class="ph ph-list"></i>
+            </button>
+            <div class="app-identity">
+              <p class="app-identity-title">HIMS Component Library</p>
+              <span class="app-identity-subtitle">Shared visual reference · Fleet design language</span>
+            </div>
+          </div>
+          <div class="navbar-center">
+            <div class="search-box">
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <input type="search" placeholder="Jump via TOC below…" aria-label="Catalog hint" readonly />
+            </div>
+          </div>
+          <div class="navbar-right">
+            <button type="button" class="icon-btn" aria-label="Notifications (demo)"><i class="ph ph-bell"></i></button>
+            <button type="button" class="icon-btn" aria-label="Messages (demo)"><i class="ph ph-envelope-simple"></i></button>
+          </div>
+        </header>
+
+        <section class="page-wrapper">
+          <div class="cl-page">
+            <!-- 1. Introduction -->
+            <header class="cl-intro" id="intro">
+              <p class="cl-kicker">Hospital Information Management System</p>
+              <h1>HIMS Component Library</h1>
+              <p class="cl-lead">
+                Shared visual reference for all HIMS frontend developers. Built from the
+                <strong>Fleet &amp; Transportation</strong> reference implementation so every module
+                can reuse the same shell, tokens, and components—without inventing a second design system.
+              </p>
+              <ul class="cl-meta-list">
+                <li><strong>Purpose:</strong> preview &amp; copy shared UI</li>
+                <li><strong>Reference:</strong> Fleet frontend</li>
+                <li><strong>Usage:</strong> keep classes; change content only</li>
+              </ul>
+            </header>
+
+            <nav aria-label="Table of contents">
+              <ul class="cl-toc">
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#icons">Icons</a></li>
+                <li><a href="#buttons">Buttons</a></li>
+                <li><a href="#forms">Form controls</a></li>
+                <li><a href="#form-layouts">Form layouts</a></li>
+                <li><a href="#cards">Cards</a></li>
+                <li><a href="#stats">Statistics</a></li>
+                <li><a href="#status">Status badges</a></li>
+                <li><a href="#alerts">Alerts</a></li>
+                <li><a href="#toasts">Toasts</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#toolbar">Toolbar</a></li>
+                <li><a href="#pagination">Pagination</a></li>
+                <li><a href="#modals">Modals</a></li>
+                <li><a href="#dropdowns">Dropdowns</a></li>
+                <li><a href="#navigation">Navigation</a></li>
+                <li><a href="#search-filters">Search &amp; filters</a></li>
+                <li><a href="#loading">Loading</a></li>
+                <li><a href="#empty">Empty states</a></li>
+                <li><a href="#errors">Error states</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#notifications">Notifications</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#charts">Charts</a></li>
+                <li><a href="#theme">Theme</a></li>
+                <li><a href="#responsive">Responsive</a></li>
+                <li><a href="#a11y">Accessibility</a></li>
+                <li><a href="#usage-rules">Usage rules</a></li>
+                <li><a href="#code-examples">Code examples</a></li>
+                <li><a href="#matrix">Status matrix</a></li>
+                <li><a href="#checklist">Checklist</a></li>
+                <li><a href="#related">Related files</a></li>
+              </ul>
+            </nav>
+
+            <!-- 2. Colors -->
+            <section class="cl-section" id="colors">
+              <h2>2. Color palette</h2>
+              <p class="cl-section-desc">
+                Verified tokens from <code>assets/css/base/variables.css</code> (light theme defaults).
+                Dark theme redefines the same token names under <code>html[data-theme="dark"]</code>.
+              </p>
+              <div class="cl-swatch-grid">
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-primary)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Primary</strong>
+                    <code>--color-primary</code>
+                    <code>#00a86b</code>
+                    Primary actions, accents
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-primary-hover)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Primary hover</strong>
+                    <code>--color-primary-hover</code>
+                    <code>#008f5b</code>
+                    Hover states
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-primary-dark)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Primary dark</strong>
+                    <code>--color-primary-dark</code>
+                    <code>#006d43</code>
+                    Strong accents
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-primary-soft)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Primary soft</strong>
+                    <code>--color-primary-soft</code>
+                    Soft fills, selection
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-bg)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Background</strong>
+                    <code>--color-bg</code>
+                    <code>#f5f7fa</code>
+                    App canvas
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-surface); border-bottom: 1px solid var(--color-border)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Surface</strong>
+                    <code>--color-surface</code>
+                    <code>#ffffff</code>
+                    Cards / panels
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-text)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Text</strong>
+                    <code>--color-text</code>
+                    <code>#24313f</code>
+                    Primary text
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-text-muted)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Text muted</strong>
+                    <code>--color-text-muted</code>
+                    Secondary text
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-success-strong)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Success</strong>
+                    <code>--color-success-strong</code>
+                    Positive status
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-warning)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Warning</strong>
+                    <code>--color-warning</code>
+                    <code>#f59e0b</code>
+                    Caution / pending
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-danger)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Danger</strong>
+                    <code>--color-danger</code>
+                    <code>#dc2626</code>
+                    Errors / delete
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-info)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Info</strong>
+                    <code>--color-info</code>
+                    <code>#3b82f6</code>
+                    Informational
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--sidebar-bg)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Sidebar</strong>
+                    <code>--sidebar-bg</code>
+                    <code>#071e27</code>
+                    Shell navigation
+                  </div>
+                </div>
+                <div class="cl-swatch">
+                  <div class="cl-swatch-color" style="background: var(--color-border)"></div>
+                  <div class="cl-swatch-meta">
+                    <strong>Border</strong>
+                    <code>--color-border</code>
+                    Dividers / outlines
+                  </div>
+                </div>
+              </div>
+              <p class="cl-note">Status: <span class="cl-tag cl-tag--ok">Implemented</span> in design tokens</p>
+            </section>
+
+            <!-- 3. Typography -->
+            <section class="cl-section" id="typography">
+              <h2>3. Typography</h2>
+              <p class="cl-section-desc">
+                Font family: <strong>Poppins</strong> (<code>--font-family</code>), loaded via Google Fonts in
+                <code>typography.css</code>. Weights 300–700.
+              </p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Type samples <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-type-row">
+                    <h1 class="page-title" style="margin: 0">Main page title</h1>
+                    <span class="cl-type-meta">.page-title · clamp ~1.75–2rem · weight 600 · tight line-height</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <h2 style="margin: 0">Section title</h2>
+                    <span class="cl-type-meta">h2 · --font-size-2xl (26px) · semibold</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <h3 style="margin: 0">Card title</h3>
+                    <span class="cl-type-meta">h3 · --font-size-xl (20px) · semibold</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-body" style="margin: 0">Body text for descriptions and supporting content.</p>
+                    <span class="cl-type-meta">.fleet-body / body · --font-size-md (15px) · regular · line-height ~1.55–1.7</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-small" style="margin: 0">Small text for dense UI.</p>
+                    <span class="cl-type-meta">.fleet-small · --font-size-sm (13px)</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-meta" style="margin: 0">Muted meta text for secondary details.</p>
+                    <span class="cl-type-meta">.fleet-meta · --font-size-meta (12px) · medium · muted</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-label" style="margin: 0">Form label style</p>
+                    <span class="cl-type-meta">.fleet-label · --font-size-label (13px) · medium</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-caption" style="margin: 0">Caption / helper caption</p>
+                    <span class="cl-type-meta">.fleet-caption · --font-size-xs (12px) · light text</span>
+                  </div>
+                  <div class="cl-type-row">
+                    <p class="fleet-kpi-value" style="margin: 0">1,248</p>
+                    <span class="cl-type-meta">.fleet-kpi-value · --font-size-kpi (26px) · semibold · tabular nums</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4. Icons -->
+            <section class="cl-section" id="icons">
+              <h2>4. Icons</h2>
+              <p class="cl-section-desc">
+                Icon library: <strong>Phosphor Icons</strong> (CDN). Classes: <code>ph</code>, <code>ph-fill</code>.
+              </p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Navigation <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-icon-grid">
+                    <div class="cl-icon-item"><i class="ph-fill ph-squares-four"></i>Dashboard</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-folder"></i>Records</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-gear"></i>Settings</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-users"></i>Users</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-chart-bar"></i>Reports</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-list"></i>Menu</div>
+                  </div>
+                </div>
+              </div>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Actions · Status · Healthcare</div>
+                <div class="cl-preview-body">
+                  <div class="cl-icon-grid">
+                    <div class="cl-icon-item"><i class="ph ph-plus"></i>Add</div>
+                    <div class="cl-icon-item"><i class="ph ph-pencil-simple"></i>Edit</div>
+                    <div class="cl-icon-item"><i class="ph ph-trash"></i>Delete</div>
+                    <div class="cl-icon-item"><i class="ph ph-eye"></i>View</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-check-circle"></i>Success</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-warning"></i>Warning</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-first-aid"></i>Care</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-heartbeat"></i>Health</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-flask"></i>Lab</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-pill"></i>Pharmacy</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-receipt"></i>Billing</div>
+                    <div class="cl-icon-item"><i class="ph-fill ph-user"></i>Patient</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 5. Buttons -->
+            <section class="cl-section" id="buttons">
+              <h2>5. Buttons</h2>
+              <p class="cl-section-desc">Variants from <code>assets/css/components/buttons.css</code>.</p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Variants <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary">Primary</button>
+                    <button type="button" class="btn-outline">Outline / secondary</button>
+                    <button type="button" class="btn-success">Success</button>
+                    <button type="button" class="btn-danger">Danger</button>
+                  </div>
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary btn-sm">Small</button>
+                    <button type="button" class="btn-primary">Default</button>
+                    <button type="button" class="btn-primary btn-lg">Large</button>
+                    <button type="button" class="icon-btn" aria-label="Icon button"><i class="ph ph-bell"></i></button>
+                    <button type="button" class="btn-filter"><i class="ph ph-funnel"></i> Filter</button>
+                    <button type="button" class="table-btn">Table</button>
+                    <button type="button" class="action-btn" aria-label="Row action"><i class="ph ph-eye"></i></button>
+                  </div>
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary" disabled>Disabled</button>
+                    <button type="button" class="btn-primary is-loading" disabled>Loading…</button>
+                    <button type="button" class="btn-primary" id="clLoadingBtnDemo">Save changes</button>
+                  </div>
+                  <p class="cl-note">
+                    No dedicated <code>.btn-warning</code> class in production CSS—use outline + warning badge, or danger/success as appropriate.
+                    <span class="cl-tag cl-tag--future">Recommended for Future</span> if a shared warning button is needed suite-wide.
+                  </p>
+                </div>
+                <details class="cl-code">
+                  <summary>HTML example</summary>
+                  <pre><code>&lt;button type="button" class="btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn-outline"&gt;Cancel&lt;/button&gt;
+&lt;button type="button" class="btn-danger"&gt;Delete&lt;/button&gt;
+&lt;button type="button" class="icon-btn" aria-label="Notifications"&gt;
+  &lt;i class="ph ph-bell" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+                </details>
+              </div>
+            </section>
+
+            <!-- 6. Forms -->
+            <section class="cl-section" id="forms">
+              <h2>6. Form controls</h2>
+              <p class="cl-section-desc">Patterns from <code>forms.css</code>. Use <code>.form-group</code> + labels.</p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Inputs <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <form class="fleet-form" onsubmit="return false">
+                    <div class="form-grid">
+                      <div class="form-group">
+                        <label for="clText">Text</label>
+                        <input type="text" id="clText" placeholder="Enter text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clEmail">Email</label>
+                        <input type="email" id="clEmail" placeholder="name@hospital.example" autocomplete="email" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clPassword">Password</label>
+                        <input type="password" id="clPassword" autocomplete="current-password" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clNumber">Number</label>
+                        <input type="number" id="clNumber" min="0" step="1" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clDate">Date</label>
+                        <input type="date" id="clDate" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clTime">Time</label>
+                        <input type="time" id="clTime" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clSelect">Select</label>
+                        <select id="clSelect">
+                          <option value="">Choose…</option>
+                          <option>Option A</option>
+                          <option>Option B</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="clFile">File upload</label>
+                        <input type="file" id="clFile" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clImage">Image upload</label>
+                        <input type="file" id="clImage" accept="image/*" />
+                      </div>
+                      <div class="form-group">
+                        <label for="clDisabled">Disabled</label>
+                        <input type="text" id="clDisabled" value="Not editable" disabled />
+                      </div>
+                      <div class="form-group">
+                        <label for="clReadonly">Read-only</label>
+                        <input type="text" id="clReadonly" value="System ID" readonly />
+                      </div>
+                      <div class="form-group">
+                        <label for="clRequired">Required <span class="required">*</span></label>
+                        <input type="text" id="clRequired" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="clHelp">With help text</label>
+                        <input type="text" id="clHelp" />
+                        <p class="form-helper">Helpful guidance for this field.</p>
+                      </div>
+                      <div class="form-group">
+                        <label for="clError">Validation error</label>
+                        <input type="text" id="clError" class="is-invalid" value="Bad value" aria-invalid="true" />
+                        <p class="field-error">This field has an error.</p>
+                      </div>
+                      <div class="form-group full-width">
+                        <label for="clTextarea">Textarea</label>
+                        <textarea id="clTextarea" rows="3" placeholder="Notes"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-check"><input type="checkbox" /> Checkbox option</label>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-check"><input type="radio" name="clRadio" /> Radio A</label>
+                        <label class="form-check"><input type="radio" name="clRadio" /> Radio B</label>
+                      </div>
+                    </div>
+                    <div class="form-group" style="margin-top: var(--space-4)">
+                      <label>Search input (toolbar pattern)</label>
+                      <div class="search-box">
+                        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+                        <input type="search" placeholder="Search…" aria-label="Search demo" />
+                      </div>
+                    </div>
+                  </form>
+                  <p class="cl-note">
+                    Dedicated “success field” border class is not a separate production system—use helper text + success toast after save.
+                    <span class="cl-tag cl-tag--future">Recommended for Future</span> if a shared success field style is needed.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 7. Form layouts -->
+            <section class="cl-section" id="form-layouts">
+              <h2>7. Form layouts</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Two-column grid <span class="cl-tag cl-tag--ok">Implemented</span> · <code>.form-grid</code></div>
+                <div class="cl-preview-body">
+                  <div class="form-grid">
+                    <div class="form-group"><label>Field</label><input type="text" /></div>
+                    <div class="form-group"><label>Field</label><input type="text" /></div>
+                    <div class="form-group full-width"><label>Full width</label><input type="text" /></div>
+                  </div>
+                  <p class="cl-note">Single column: stack <code>.form-group</code> without grid, or one column in a card. Modal forms use the same grid inside <code>.modal-body</code>.</p>
+                  <p class="cl-note">Three-column compact forms are not a first-class shared layout—use page CSS only if needed. <span class="cl-tag cl-tag--future">Recommended for Future</span></p>
+                </div>
+              </div>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Inline filter form <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="toolbar">
+                    <div class="toolbar-left">
+                      <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Search…" aria-label="Filter search" />
+                      </div>
+                      <select class="filter-select" aria-label="Status"><option>All status</option></select>
+                      <input type="date" class="filter-select" aria-label="Date" />
+                    </div>
+                    <div class="toolbar-right">
+                      <button type="button" class="btn-outline">Clear</button>
+                      <button type="button" class="btn-primary">Apply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 8–9 Cards & stats -->
+            <section class="cl-section" id="cards">
+              <h2>8. Cards</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Card types <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body cl-stack">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3>Standard card</h3>
+                      <button type="button" class="btn-outline btn-sm">Action</button>
+                    </div>
+                    <p class="fleet-meta">Use for sections, summaries, and grouped content.</p>
+                    <div class="modal-footer" style="border: 0; padding: var(--space-4) 0 0; justify-content: flex-start">
+                      <button type="button" class="btn-outline">Secondary</button>
+                      <button type="button" class="btn-primary">Primary</button>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header"><h3>Information card</h3><span class="badge-green">Info</span></div>
+                    <p>Supporting notes, instructions, or highlights.</p>
+                  </div>
+                  <div class="card">
+                    <div class="card-header"><h3>Chart / analytics card</h3></div>
+                    <p class="report-chart-empty">No chart data yet.</p>
+                  </div>
+                  <p class="cl-note">Clickable cards: add button semantics or a link wrapper carefully—prefer explicit buttons for accessibility. <span class="cl-tag cl-tag--kit">Included in UI Kit</span></p>
+                </div>
+              </div>
+            </section>
+
+            <section class="cl-section" id="stats">
+              <h2>9. Statistics cards</h2>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-icon"><i class="ph-fill ph-folder"></i></div>
+                  <div class="stat-content"><h3>1,248</h3><p>Total Records</p></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon success"><i class="ph-fill ph-users"></i></div>
+                  <div class="stat-content"><h3>86</h3><p>Active Users</p></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon warning"><i class="ph-fill ph-clock"></i></div>
+                  <div class="stat-content"><h3>14</h3><p>Pending Requests</p></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon info"><i class="ph-fill ph-check-circle"></i></div>
+                  <div class="stat-content"><h3>320</h3><p>Completed Transactions</p></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon"><i class="ph-fill ph-package"></i></div>
+                  <div class="stat-content"><h3>52</h3><p>Available Resources</p></div>
+                </div>
+              </div>
+              <p class="cl-note">Source: <code>.stats-grid</code> + <code>.stat-card</code> · <span class="cl-tag cl-tag--ok">Implemented</span></p>
+            </section>
+
+            <!-- 10 Status -->
+            <section class="cl-section" id="status">
+              <h2>10. Status badges</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Semantic badges <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <span class="status-badge available">Active / Available</span>
+                    <span class="status-badge inactive">Inactive</span>
+                    <span class="status-badge pending">Pending</span>
+                    <span class="status-badge completed">Completed</span>
+                    <span class="status-badge cancelled">Cancelled</span>
+                    <span class="status-badge maintenance">Maintenance</span>
+                    <span class="status-badge in-progress">In Progress</span>
+                    <span class="status-badge trip">On Trip / Ongoing</span>
+                    <span class="badge-green">Label</span>
+                  </div>
+                  <div class="cl-row">
+                    <span class="status-chip status-chip--success">OK</span>
+                    <span class="status-chip status-chip--warning">Warning</span>
+                    <span class="status-chip status-chip--danger">Alert</span>
+                    <span class="status-chip status-chip--info">Info</span>
+                  </div>
+                  <p class="cl-note">Approved/Rejected appear in some module page CSS (e.g. reservations). Prefer success/danger semantics when adding suite-wide statuses.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 11 Alerts -->
+            <section class="cl-section" id="alerts">
+              <h2>11. Alerts</h2>
+              <p class="cl-section-desc">
+                Fleet production feedback is primarily <strong>toast</strong> + field errors. The following alert strips are
+                <strong>catalog helpers</strong> using design tokens (not a separate product framework).
+              </p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Alert samples <span class="cl-tag cl-tag--kit">Included in UI Kit catalog</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-alert cl-alert--info"><i class="ph-fill ph-info"></i><div><strong>Information</strong><p>Helpful context for the user.</p></div></div>
+                  <div class="cl-alert cl-alert--success"><i class="ph-fill ph-check-circle"></i><div><strong>Success</strong><p>The operation completed successfully.</p></div></div>
+                  <div class="cl-alert cl-alert--warning"><i class="ph-fill ph-warning"></i><div><strong>Warning</strong><p>Please review before continuing.</p></div></div>
+                  <div class="cl-alert cl-alert--error"><i class="ph-fill ph-warning-circle"></i><div><strong>Error</strong><p>Something went wrong. Try again.</p></div></div>
+                  <div class="cl-alert cl-alert--neutral"><i class="ph ph-minus-circle"></i><div><strong>Neutral</strong><p>General notice without strong severity.</p></div></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 12 Toasts -->
+            <section class="cl-section" id="toasts">
+              <h2>12. Toast notifications</h2>
+              <p class="cl-section-desc">
+                Production styles: <code>toast.css</code> + <code>showToast()</code>. Placement: top-right (desktop), bottom on small screens.
+                Typical duration: a few seconds (implementation-dependent).
+              </p>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Demo stage <span class="cl-tag cl-tag--ok">Implemented styles</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-success" data-cl-toast="success" data-cl-toast-msg="Saved successfully.">Success toast</button>
+                    <button type="button" class="btn-danger" data-cl-toast="error" data-cl-toast-msg="Unable to save changes.">Error toast</button>
+                    <button type="button" class="btn-outline" data-cl-toast="warning" data-cl-toast-msg="Please review required fields.">Warning toast</button>
+                    <button type="button" class="btn-outline" data-cl-toast="info" data-cl-toast-msg="New updates are available.">Info toast</button>
+                  </div>
+                  <div class="cl-toast-stage" id="clToastStage" aria-live="polite"></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 13 Tables -->
+            <section class="cl-section" id="tables">
+              <h2>13. Tables</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Standard HIMS table <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="table-responsive">
+                    <table class="fleet-table">
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox" aria-label="Select all" /></th>
+                          <th class="sortable">Record ID</th>
+                          <th>Patient / subject</th>
+                          <th>Department</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><input type="checkbox" aria-label="Select row 1" /></td>
+                          <td>REC-1001</td>
+                          <td>Sample Person A</td>
+                          <td>Outpatient</td>
+                          <td><span class="status-badge available">Active</span></td>
+                          <td>
+                            <div class="action-buttons">
+                              <button type="button" class="action-btn" aria-label="View"><i class="ph ph-eye"></i></button>
+                              <button type="button" class="action-btn" aria-label="Edit"><i class="ph ph-pencil-simple"></i></button>
+                              <button type="button" class="action-btn action-delete" aria-label="Delete"><i class="ph ph-trash"></i></button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="is-selected">
+                          <td><input type="checkbox" checked aria-label="Select row 2" /></td>
+                          <td>REC-1002</td>
+                          <td>Sample Person B</td>
+                          <td>Emergency</td>
+                          <td><span class="status-badge pending">Pending</span></td>
+                          <td>
+                            <div class="action-buttons">
+                              <button type="button" class="action-btn" aria-label="View"><i class="ph ph-eye"></i></button>
+                              <button type="button" class="action-btn" aria-label="Edit"><i class="ph ph-pencil-simple"></i></button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" aria-label="Select row 3" /></td>
+                          <td>REC-1003</td>
+                          <td>Sample Person C</td>
+                          <td>Inpatient</td>
+                          <td><span class="status-badge completed">Completed</span></td>
+                          <td>
+                            <div class="action-buttons">
+                              <button type="button" class="action-btn" aria-label="View"><i class="ph ph-eye"></i></button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 14 Toolbar -->
+            <section class="cl-section" id="toolbar">
+              <h2>14. Table toolbar</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Toolbar <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="toolbar">
+                    <div class="toolbar-left">
+                      <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Search records..." aria-label="Search" />
+                      </div>
+                      <select class="filter-select" aria-label="Status"><option>All status</option><option>Active</option></select>
+                      <input type="date" class="filter-select" aria-label="From" />
+                      <input type="date" class="filter-select" aria-label="To" />
+                    </div>
+                    <div class="toolbar-right">
+                      <button type="button" class="btn-outline"><i class="ph ph-arrows-clockwise"></i> Refresh</button>
+                      <button type="button" class="btn-outline"><i class="ph ph-export"></i> Export</button>
+                      <button type="button" class="btn-danger btn-sm">Bulk delete</button>
+                      <button type="button" class="btn-primary"><i class="ph ph-plus"></i> Add</button>
+                    </div>
+                  </div>
+                  <p class="cl-note">On smaller screens, toolbar rows wrap (see responsive CSS).</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 15 Pagination -->
+            <section class="cl-section" id="pagination">
+              <h2>15. Pagination</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Pagination <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="table-footer">
+                    <span>Showing <strong>1</strong>–<strong>10</strong> of <strong>50</strong> records</span>
+                    <div class="pagination">
+                      <button type="button" disabled aria-label="Previous">‹</button>
+                      <button type="button" class="active" aria-current="page">1</button>
+                      <button type="button">2</button>
+                      <button type="button">3</button>
+                      <button type="button" aria-label="Next">›</button>
+                    </div>
+                  </div>
+                  <p class="cl-note">Items-per-page selector is module-specific when present—not a single shared global control. <span class="cl-tag cl-tag--future">Recommended for Future</span> as a shared control if needed suite-wide.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 16 Modals -->
+            <section class="cl-section" id="modals">
+              <h2>16. Modals</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Interactive demos <span class="cl-tag cl-tag--ok">Implemented chrome</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary" data-cl-open-modal="clModalForm">Open form modal</button>
+                    <button type="button" class="btn-outline" data-cl-open-modal="clModalInfo">Open info modal</button>
+                    <button type="button" class="btn-danger" data-cl-open-modal="clModalDelete">Open delete confirmation</button>
+                  </div>
+                  <p class="cl-note">Large modal = default <code>.custom-modal</code> (~960px). Separate small-modal class is not a first-class production system. <span class="cl-tag cl-tag--future">Recommended for Future</span></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 17 Dropdowns -->
+            <section class="cl-section" id="dropdowns">
+              <h2>17. Dropdowns</h2>
+              <div class="cl-preview" id="clDropdownDemo">
+                <div class="cl-preview-label">Action / utility menus <span class="cl-tag cl-tag--ok">Implemented</span> export menu pattern</div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <div class="export-dropdown">
+                      <button type="button" class="btn-outline export-menu-toggle" aria-expanded="false" aria-haspopup="true">
+                        Actions <i class="ph ph-caret-down"></i>
+                      </button>
+                      <div class="export-menu" hidden role="menu">
+                        <button type="button" class="export-menu-item" role="menuitem">View</button>
+                        <button type="button" class="export-menu-item" role="menuitem">Edit</button>
+                        <button type="button" class="export-menu-item" role="menuitem">Export</button>
+                      </div>
+                    </div>
+                    <div class="export-dropdown">
+                      <button type="button" class="btn-outline export-menu-toggle" aria-expanded="false">
+                        Filter <i class="ph ph-caret-down"></i>
+                      </button>
+                      <div class="export-menu" hidden>
+                        <button type="button" class="export-menu-item">All</button>
+                        <button type="button" class="export-menu-item">Active</button>
+                        <button type="button" class="export-menu-item">Archived</button>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="cl-note">Profile / Appearance menus live in the production sidebar component. Notification/message lists beyond icon buttons are presentation demos in the UI Kit.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 18 Navigation -->
+            <section class="cl-section" id="navigation">
+              <h2>18. Navigation components</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Sidebar link preview <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-nav-preview" aria-hidden="false">
+                    <span class="nav-title">MODULE</span>
+                    <a href="#navigation" class="nav-link active"><i class="ph-fill ph-folder"></i><span>Records</span></a>
+                    <a href="#navigation" class="nav-link"><i class="ph-fill ph-chart-bar"></i><span>Reports</span></a>
+                    <a href="#navigation" class="nav-link"><i class="ph-fill ph-gear"></i><span>Settings</span></a>
+                  </div>
+                  <p class="cl-note">Navbar item + mobile trigger: see page chrome above (<code>.menu-toggle</code>). Breadcrumbs/tabs are not first-class shared components in Fleet. <span class="cl-tag cl-tag--future">Recommended for Future</span></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 19 Search filters already partly shown -->
+            <section class="cl-section" id="search-filters">
+              <h2>19. Search and filters</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Patterns <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-stack">
+                    <div>
+                      <p class="fleet-label">Global search (navbar)</p>
+                      <div class="search-box" style="max-width: 360px">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="search" placeholder="Global search…" aria-label="Global search demo" />
+                      </div>
+                    </div>
+                    <div>
+                      <p class="fleet-label">Page search + filters</p>
+                      <div class="toolbar">
+                        <div class="toolbar-left">
+                          <div class="search-box"><i class="ph ph-magnifying-glass"></i><input type="search" aria-label="Page search" placeholder="Page search…" /></div>
+                          <select class="filter-select" aria-label="Status filter"><option>All status</option><option>Active</option></select>
+                          <input type="date" class="filter-select" aria-label="Date filter" />
+                        </div>
+                        <div class="toolbar-right">
+                          <button type="button" class="btn-outline">Clear filters</button>
+                          <button type="button" class="btn-primary">Apply filters</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 20 Loading -->
+            <section class="cl-section" id="loading">
+              <h2>20. Loading states</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Skeleton + button loading <span class="cl-tag cl-tag--ok">Implemented</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary is-loading" disabled>Saving…</button>
+                    <span class="fleet-meta">Button <code>.is-loading</code></span>
+                  </div>
+                  <div class="skeleton-line" style="width: 45%; height: 16px; margin-bottom: 10px"></div>
+                  <div class="skeleton-line" style="width: 90%; height: 12px; margin-bottom: 8px"></div>
+                  <div class="skeleton-block" style="height: 80px; border-radius: var(--radius-md)"></div>
+                  <p class="cl-note">Dedicated spinner component is not a separate shared asset—use skeleton/loading button patterns. <span class="cl-tag cl-tag--future">Recommended for Future</span> if a suite-wide spinner atom is needed.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 21 Empty -->
+            <section class="cl-section" id="empty">
+              <h2>21. Empty states</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Generic empty patterns <span class="cl-tag cl-tag--kit">Included in UI Kit</span></div>
+                <div class="cl-preview-body">
+                  <div class="card" style="text-align: center; padding: var(--space-7)">
+                    <i class="ph ph-folder-open" style="font-size: 2rem; color: var(--color-text-muted)" aria-hidden="true"></i>
+                    <h3>No records found</h3>
+                    <p class="fleet-meta">There is nothing to show yet.</p>
+                    <button type="button" class="btn-primary"><i class="ph ph-plus"></i> Add record</button>
+                  </div>
+                  <p class="cl-note" style="margin-top: var(--space-4)">Also use module empty classes (e.g. chart empty) where analytics pages already define them.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 22 Errors -->
+            <section class="cl-section" id="errors">
+              <h2>22. Error states</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Helpful error messages <span class="cl-tag cl-tag--kit">Catalog patterns</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-alert cl-alert--error"><i class="ph-fill ph-warning-circle"></i><div><strong>General error</strong><p>Something went wrong. Please try again.</p></div></div>
+                  <div class="cl-alert cl-alert--error"><i class="ph-fill ph-wifi-slash"></i><div><strong>Network error</strong><p>Check your connection and retry.</p></div></div>
+                  <div class="cl-alert cl-alert--warning"><i class="ph-fill ph-lock"></i><div><strong>Access denied</strong><p>You do not have permission to view this resource.</p></div></div>
+                  <div class="cl-alert cl-alert--neutral"><i class="ph ph-file-dashed"></i><div><strong>Page not found</strong><p>This page does not exist or was moved.</p></div></div>
+                  <div class="cl-alert cl-alert--error"><i class="ph-fill ph-database"></i><div><strong>Failed data load</strong><p>We could not load this list. Refresh to try again.</p></div></div>
+                  <div class="cl-alert cl-alert--warning"><i class="ph-fill ph-list-checks"></i><div><strong>Validation summary</strong><p>Please correct the highlighted fields before saving.</p></div></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 23 Profile -->
+            <section class="cl-section" id="profile">
+              <h2>23. Profile components</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Profile pieces <span class="cl-tag cl-tag--ok">Implemented in shell</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <span class="profile-avatar" aria-hidden="true">JD</span>
+                    <div>
+                      <p class="fleet-label" style="margin: 0">Jane Doe</p>
+                      <p class="fleet-meta" style="margin: 0">Staff · Sample Department</p>
+                      <span class="badge-green">Active role</span>
+                    </div>
+                    <button type="button" class="btn-outline">Edit profile</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 24–25 Notifications & messages -->
+            <section class="cl-section" id="notifications">
+              <h2>24. Notification components</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Trigger <span class="cl-tag cl-tag--ok">Implemented</span> · list richness <span class="cl-tag cl-tag--future">Recommended for Future</span></div>
+                <div class="cl-preview-body">
+                  <button type="button" class="icon-btn" aria-label="Notifications"><i class="ph ph-bell"></i></button>
+                  <p class="cl-note">Fleet provides the navbar trigger. Full unread badges, timestamps, and mark-all-read are product features to standardize later.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="cl-section" id="messages">
+              <h2>25. Message components</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Trigger <span class="cl-tag cl-tag--ok">Implemented</span> · inbox UI <span class="cl-tag cl-tag--future">Recommended for Future</span></div>
+                <div class="cl-preview-body">
+                  <button type="button" class="icon-btn" aria-label="Messages"><i class="ph ph-envelope-simple"></i></button>
+                  <p class="cl-note">Same as notifications: icon trigger is shared; full messaging UI is not a completed shared subsystem.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 26 Charts -->
+            <section class="cl-section" id="charts">
+              <h2>26. Charts</h2>
+              <p class="cl-section-desc">
+                Verified approach: <strong>custom CSS/SVG containers</strong> (not Chart.js). Samples below are generic HIMS placeholders using design tokens.
+              </p>
+              <div class="cl-chart-grid">
+                <div class="cl-chart-box">
+                  <h4>Bar (sample)</h4>
+                  <div class="cl-bars" aria-hidden="true">
+                    <span style="height: 40%"></span><span style="height: 70%"></span><span style="height: 55%"></span>
+                    <span style="height: 90%"></span><span style="height: 60%"></span><span style="height: 35%"></span>
+                  </div>
+                </div>
+                <div class="cl-chart-box">
+                  <h4>Line (sample)</h4>
+                  <div class="cl-line" aria-hidden="true"></div>
+                </div>
+                <div class="cl-chart-box">
+                  <h4>Doughnut (sample)</h4>
+                  <div class="cl-donut" aria-hidden="true"></div>
+                </div>
+              </div>
+              <p class="cl-note"><span class="cl-tag cl-tag--ok">Implemented approach</span> in Fleet reports/cost modules · these blocks are catalog illustrations</p>
+            </section>
+
+            <!-- 27 Theme -->
+            <section class="cl-section" id="theme">
+              <h2>27. Theme preview</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">
+                  Shared theme system
+                  <span class="cl-tag cl-tag--ok">Implemented</span>
+                  Current: <strong id="clCurrentThemeLabel">Light</strong>
+                </div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-outline" data-cl-theme="light">Light</button>
+                    <button type="button" class="btn-outline" data-cl-theme="dark">Dark</button>
+                    <button type="button" class="btn-outline" data-cl-theme="system">System</button>
+                  </div>
+                  <p class="cl-note">Uses <code>himsFleetTheme</code> + <code>applyTheme()</code> when parent <code>main.js</code> is present; otherwise applies <code>data-theme</code> directly for this catalog.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 28 Responsive -->
+            <section class="cl-section" id="responsive">
+              <h2>28. Responsive preview</h2>
+              <div class="cl-responsive-grid">
+                <div class="card"><h3>Desktop (≥992px)</h3><p class="fleet-meta">Fixed sidebar, full toolbars, multi-column stats.</p></div>
+                <div class="card"><h3>Laptop (≤1199px)</h3><p class="fleet-meta">Stats often 2 columns; navbar may wrap.</p></div>
+                <div class="card"><h3>Tablet (≤991px)</h3><p class="fleet-meta">Off-canvas sidebar; full-width main; table horizontal scroll.</p></div>
+                <div class="card"><h3>Mobile (≤767px)</h3><p class="fleet-meta">Single-column stats; stacked toolbars; tighter padding.</p></div>
+              </div>
+            </section>
+
+            <!-- 29 A11y -->
+            <section class="cl-section" id="a11y">
+              <h2>29. Accessibility examples</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Patterns to preserve <span class="cl-tag cl-tag--ok">Baseline</span></div>
+                <div class="cl-preview-body">
+                  <div class="cl-row">
+                    <button type="button" class="btn-primary">Focus me (Tab)</button>
+                    <label class="fleet-label" for="a11yInput">Labeled input</label>
+                    <input id="a11yInput" type="text" placeholder="Associated via label" />
+                  </div>
+                  <div class="form-group" style="max-width: 320px">
+                    <label for="a11yErr">With error</label>
+                    <input id="a11yErr" class="is-invalid" aria-invalid="true" aria-describedby="a11yErrMsg" />
+                    <p class="field-error" id="a11yErrMsg">Visible error text helps all users.</p>
+                  </div>
+                  <p class="cl-note">This catalog is not an accessibility certification. Test keyboard paths for modals and dropdowns in each module.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 30 Usage rules -->
+            <section class="cl-section" id="usage-rules">
+              <h2>30. Component usage rules</h2>
+              <div class="cl-usage-grid">
+                <div class="card cl-usage-card">
+                  <h4>Buttons</h4>
+                  <p><strong>Use</strong> for actions. Primary = one main CTA per region.</p>
+                  <p><strong>Avoid</strong> multiple primaries competing.</p>
+                  <p><strong>Customize</strong> labels/icons only.</p>
+                </div>
+                <div class="card cl-usage-card">
+                  <h4>Tables</h4>
+                  <p><strong>Use</strong> for record lists and dense data.</p>
+                  <p><strong>Avoid</strong> cards-only layouts for long lists without need.</p>
+                  <p><strong>Keep</strong> <code>.fleet-table</code> structure.</p>
+                </div>
+                <div class="card cl-usage-card">
+                  <h4>Modals</h4>
+                  <p><strong>Use</strong> for focused create/edit/confirm flows.</p>
+                  <p><strong>Avoid</strong> multi-step wizards without design review.</p>
+                  <p><strong>Keep</strong> overlay + header/body/footer pattern.</p>
+                </div>
+                <div class="card cl-usage-card">
+                  <h4>Stats</h4>
+                  <p><strong>Use</strong> for 3–6 KPIs at page top.</p>
+                  <p><strong>Avoid</strong> overcrowding the grid.</p>
+                  <p><strong>Customize</strong> icon, value, label only.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 31 Code examples -->
+            <section class="cl-section" id="code-examples">
+              <h2>31. Code examples</h2>
+              <div class="cl-preview">
+                <div class="cl-preview-label">Copy-friendly snippets</div>
+                <details class="cl-code" open>
+                  <summary>Button</summary>
+                  <pre><code>&lt;button type="button" class="btn-primary"&gt;Save&lt;/button&gt;</code></pre>
+                </details>
+                <details class="cl-code">
+                  <summary>Input</summary>
+                  <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="name"&gt;Name &lt;span class="required"&gt;*&lt;/span&gt;&lt;/label&gt;
+  &lt;input id="name" type="text" required /&gt;
+&lt;/div&gt;</code></pre>
+                </details>
+                <details class="cl-code">
+                  <summary>Statistics card</summary>
+                  <pre><code>&lt;div class="stat-card"&gt;
+  &lt;div class="stat-icon success"&gt;&lt;i class="ph-fill ph-check-circle"&gt;&lt;/i&gt;&lt;/div&gt;
+  &lt;div class="stat-content"&gt;&lt;h3&gt;0&lt;/h3&gt;&lt;p&gt;Label&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </details>
+                <details class="cl-code">
+                  <summary>Badge / empty / modal (see sections above for full markup)</summary>
+                  <pre><code>&lt;span class="status-badge pending"&gt;Pending&lt;/span&gt;</code></pre>
+                </details>
+              </div>
+            </section>
+
+            <!-- 32 Matrix -->
+            <section class="cl-section" id="matrix">
+              <h2>32. Implemented vs recommended</h2>
+              <div class="card cl-table-wrap">
+                <table class="fleet-table">
+                  <thead>
+                    <tr>
+                      <th>Component</th>
+                      <th>Status</th>
+                      <th>Source</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sidebar / Navbar shell</td>
+                      <td><span class="cl-tag cl-tag--ok">Implemented</span></td>
+                      <td>Fleet components + CSS</td>
+                      <td>Reference production fragments</td>
+                    </tr>
+                    <tr>
+                      <td>Buttons, forms, tables, badges</td>
+                      <td><span class="cl-tag cl-tag--ok">Implemented</span></td>
+                      <td><code>assets/css/components/*</code></td>
+                      <td>Use shared classes</td>
+                    </tr>
+                    <tr>
+                      <td>Modals / toasts / skeleton</td>
+                      <td><span class="cl-tag cl-tag--ok">Implemented</span></td>
+                      <td>Fleet CSS + toast.js</td>
+                      <td>Toast API: showToast</td>
+                    </tr>
+                    <tr>
+                      <td>Theme light/dark/system</td>
+                      <td><span class="cl-tag cl-tag--ok">Implemented</span></td>
+                      <td>theme-boot + main.js</td>
+                      <td>Key: himsFleetTheme</td>
+                    </tr>
+                    <tr>
+                      <td>UI Kit fragments / templates</td>
+                      <td><span class="cl-tag cl-tag--kit">Included in UI Kit</span></td>
+                      <td><code>hims-ui-kit/</code></td>
+                      <td>Copy for new modules</td>
+                    </tr>
+                    <tr>
+                      <td>Catalog alert strips</td>
+                      <td><span class="cl-tag cl-tag--kit">Included in UI Kit</span></td>
+                      <td>component-library.css</td>
+                      <td>Docs helpers using tokens</td>
+                    </tr>
+                    <tr>
+                      <td>Full notification/message inbox</td>
+                      <td><span class="cl-tag cl-tag--future">Recommended for Future</span></td>
+                      <td>—</td>
+                      <td>Beyond icon triggers</td>
+                    </tr>
+                    <tr>
+                      <td>Shared warning button / small modal</td>
+                      <td><span class="cl-tag cl-tag--future">Recommended for Future</span></td>
+                      <td>—</td>
+                      <td>Not first-class today</td>
+                    </tr>
+                    <tr>
+                      <td>Chart.js library</td>
+                      <td><span class="cl-tag cl-tag--future">Not used</span></td>
+                      <td>Custom CSS/SVG</td>
+                      <td>Do not introduce casually</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- 33 Checklist -->
+            <section class="cl-section" id="checklist">
+              <h2>33. Developer checklist</h2>
+              <ul class="cl-checklist card" style="padding: var(--space-5)">
+                <li><input type="checkbox" id="c1" /><label for="c1">Used existing component / kit markup</label></li>
+                <li><input type="checkbox" id="c2" /><label for="c2">Used approved CSS variable</label></li>
+                <li><input type="checkbox" id="c3" /><label for="c3">Used approved icon library (Phosphor)</label></li>
+                <li><input type="checkbox" id="c4" /><label for="c4">Tested light theme</label></li>
+                <li><input type="checkbox" id="c5" /><label for="c5">Tested dark theme</label></li>
+                <li><input type="checkbox" id="c6" /><label for="c6">Tested responsive layout</label></li>
+                <li><input type="checkbox" id="c7" /><label for="c7">Tested keyboard interaction</label></li>
+                <li><input type="checkbox" id="c8" /><label for="c8">Checked console errors</label></li>
+                <li><input type="checkbox" id="c9" /><label for="c9">Avoided duplicate CSS</label></li>
+                <li><input type="checkbox" id="c10" /><label for="c10">Avoided duplicate JavaScript</label></li>
+              </ul>
+            </section>
+
+            <!-- 34 Related -->
+            <section class="cl-section" id="related">
+              <h2>34. Related files</h2>
+              <div class="card">
+                <ul>
+                  <li><a href="./README.md">hims-ui-kit/README.md</a></li>
+                  <li><a href="./docs/COMPONENT-LIBRARY-GUIDE.md">hims-ui-kit/docs/COMPONENT-LIBRARY-GUIDE.md</a></li>
+                  <li><a href="./components/">hims-ui-kit/components/</a></li>
+                  <li><a href="./templates/">hims-ui-kit/templates/</a></li>
+                  <li><a href="./examples/">hims-ui-kit/examples/</a></li>
+                  <li><a href="../docs/HIMS-UI-DESIGN-STANDARD.md">docs/HIMS-UI-DESIGN-STANDARD.md</a></li>
+                  <li><a href="../docs/05-DESIGN-SYSTEM.md">docs/05-DESIGN-SYSTEM.md</a></li>
+                  <li><a href="../docs/06-COMPONENT-SYSTEM.md">docs/06-COMPONENT-SYSTEM.md</a></li>
+                  <li><a href="../docs/17-CODING-STANDARDS.md">docs/17-CODING-STANDARDS.md</a></li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Demo modals -->
+    <div class="modal-overlay" id="clModalForm" aria-hidden="true">
+      <div class="custom-modal" role="dialog" aria-modal="true" aria-labelledby="clModalFormTitle">
+        <div class="modal-header">
+          <div>
+            <h2 id="clModalFormTitle">Form modal</h2>
+            <p>Standard create/edit pattern.</p>
+          </div>
+          <button type="button" class="modal-close" data-cl-close-modal aria-label="Close"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="clm1">Name <span class="required">*</span></label>
+              <input id="clm1" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="clm2">Type</label>
+              <select id="clm2"><option>Option A</option><option>Option B</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-cl-close-modal>Cancel</button>
+          <button type="button" class="btn-primary" data-cl-close-modal>Save</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="clModalInfo" aria-hidden="true">
+      <div class="custom-modal" role="dialog" aria-modal="true" aria-labelledby="clModalInfoTitle">
+        <div class="modal-header">
+          <div><h2 id="clModalInfoTitle">Information</h2></div>
+          <button type="button" class="modal-close" data-cl-close-modal aria-label="Close"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="modal-body">
+          <p>Use information modals for read-only details without a destructive action.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-primary" data-cl-close-modal>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="clModalDelete" aria-hidden="true">
+      <div class="custom-modal delete-modal" role="dialog" aria-modal="true" aria-labelledby="clModalDeleteTitle">
+        <div class="delete-icon"><i class="ph-fill ph-warning-circle"></i></div>
+        <h2 id="clModalDeleteTitle">Delete confirmation</h2>
+        <p>Are you sure you want to delete <strong>this record</strong>?</p>
+        <p class="delete-note">This action cannot be undone.</p>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" data-cl-close-modal>Cancel</button>
+          <button type="button" class="btn-danger" data-cl-close-modal><i class="ph ph-trash"></i> Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/core/main.js"></script>
+    <script src="./assets/js/component-library.js"></script>
+  </body>
+</html>

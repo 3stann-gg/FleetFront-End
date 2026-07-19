@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reports | HIMS Module</title>
+    <link rel="icon" href="../../assets/images/brand/favicon.svg" type="image/svg+xml" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="../../assets/js/core/theme-boot.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+  </head>
+  <body data-page="reports">
+    <div class="app">
+      <div id="sidebar"></div>
+      <main class="main-content">
+        <div id="navbar"></div>
+        <section class="page-wrapper">
+          <div class="page-header">
+            <div>
+              <h1>Reports</h1>
+              <p>Generate and export module reports.</p>
+            </div>
+            <div class="export-dropdown">
+              <button type="button" class="btn-outline export-menu-toggle" aria-expanded="false">
+                <i class="ph ph-export" aria-hidden="true"></i>
+                Export
+              </button>
+              <div class="export-menu" hidden>
+                <button type="button" class="export-menu-item">Print</button>
+                <button type="button" class="export-menu-item">PDF</button>
+                <button type="button" class="export-menu-item">Excel</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <select class="filter-select" aria-label="Report type">
+                <option>Summary Report</option>
+                <option>Detailed Report</option>
+              </select>
+              <input type="date" class="filter-select" aria-label="Start date" />
+              <input type="date" class="filter-select" aria-label="End date" />
+            </div>
+            <div class="toolbar-right">
+              <button type="button" class="btn-primary">Run Report</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="ph-fill ph-chart-pie-slice"></i></div>
+              <div class="stat-content"><h3>0</h3><p>Total Items</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon success"><i class="ph-fill ph-trend-up"></i></div>
+              <div class="stat-content"><h3>0</h3><p>Completed</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon warning"><i class="ph-fill ph-trend-down"></i></div>
+              <div class="stat-content"><h3>0</h3><p>Pending</p></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon info"><i class="ph-fill ph-percent"></i></div>
+              <div class="stat-content"><h3>0%</h3><p>Rate</p></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3>Report Results</h3></div>
+            <p class="fleet-meta">Table or chart content for the selected report goes here.</p>
+          </div>
+        </section>
+      </main>
+      <div id="toast"><div id="toastContainer" class="toast-container"></div></div>
+    </div>
+  </body>
+</html>

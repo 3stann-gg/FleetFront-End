@@ -1,0 +1,62 @@
+/**
+ * HIMS Design Tokens — Animation & transitions
+ * Verified from assets/css/base/variables.css + motion.css + sidebar tokens
+ */
+
+:root {
+  /* Easing */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: var(--ease-out);
+
+  /* Durations (core interactive range 150–220ms) */
+  --duration-fast: 150ms;
+  --duration-normal: 180ms;
+  --duration-slow: 220ms;
+
+  /* Composite transitions */
+  --transition-fast: var(--duration-fast) var(--ease-out);
+  --transition-normal: var(--duration-normal) var(--ease-out);
+  --transition-slow: var(--duration-slow) var(--ease-out);
+
+  /* Hover motion */
+  --hover-lift: 0;
+  --hover-shadow: var(--shadow-sm);
+
+  /* Focus ring geometry */
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+
+  /* Navigation / sidebar (verified slower shell motion) */
+  --sidebar-transition-duration: 380ms;
+  --sidebar-label-transition-duration: 240ms;
+  --sidebar-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --sidebar-label-expand-delay: 90ms;
+  --sidebar-tooltip-duration: 140ms;
+  --sidebar-profile-menu-duration: 170ms;
+}
+
+/**
+ * Verified usage map:
+ *
+ * Hover (buttons, links, rows)
+ *   background/border/color/box-shadow: --transition-fast
+ *   cards: box-shadow → --hover-shadow (no vertical lift; --hover-lift is 0)
+ *
+ * Modal
+ *   entrance: fleetModalIn with --transition-normal + --ease-out
+ *
+ * Dropdown / export menu
+ *   fleetFadeSlideDown with --transition-normal
+ *   profile menu: opacity/transform --duration-normal
+ *
+ * Theme transition
+ *   body background-color + color: --transition-fast
+ *   respects prefers-reduced-motion: reduce → transition none
+ *
+ * Navigation / sidebar
+ *   width/transform: --sidebar-transition-duration + --sidebar-transition-easing
+ *   labels: --sidebar-label-transition-duration (+ expand delay)
+ *   tooltips: --sidebar-tooltip-duration
+ *
+ * Keyframes live in assets/css/base/motion.css (production). Do not re-fork.
+ */
